@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/23 16:15:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 08:25:59 by jnivala          ###   ########.fr       */
+/*   Created: 2020/11/20 15:43:09 by tmaarela          #+#    #+#             */
+/*   Updated: 2021/01/21 12:27:00 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../wolf3d.h"
+#include "../../doom_nukem.h"
 
-// void	error_output_sdl(char *msg, t_home *home)
-// {
-// 	SDL_DestroyWindow(home->win.window);
-// 	ft_putendl_fd(msg, 2);
-// 	exit(0);
-// }
+void	error_output_sdl(char *msg, t_home *home)
+{
+	SDL_DestroyWindow(home->win.window);
+	ft_putendl_fd(msg, 2);
+	exit(0);
+}
 
 void	error_output(char *msg)
 {
