@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:10 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:32:08 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 16:58:47 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@
 int		create_map_file(t_home *home);
 int		open_file(t_home *home, char *path);
 int		open_map_file(t_home *home, char *path);
+int		load_textures(SDL_Surface **textures, int nbr_of_textures);
 
 #endif
