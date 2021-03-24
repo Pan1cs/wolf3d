@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/26 13:08:18 by jnivala           #+#    #+#              #
-#    Updated: 2020/12/23 15:50:30 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/24 14:12:51 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,6 +95,8 @@ ft_cpow3.c\
 ft_csub.c\
 ft_cabs.c\
 ft_cadd.c\
+ft_fmax.c\
+ft_fmin.c\
 
 INC = ./libft.h ./get_next_line.h
 
