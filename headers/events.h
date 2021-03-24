@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_a.c                                           :+:      :+:    :+:   */
+/*   events.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 16:39:11 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:39:13 by jnivala          ###   ########.fr       */
+/*   Created: 2021/03/24 14:59:09 by jnivala           #+#    #+#             */
+/*   Updated: 2021/03/24 14:59:11 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../wolf3d.h"
+#ifndef EVENTS_H
+# define EVENTS_H
 
-t_xy			vec2(float x, float y)
-{
-	return ((t_xy){x, y});
-}
+/*
+** Event handlers
+*/
 
-t_xy			vec2_add(t_xy a, t_xy b)
-{
-	return ((t_xy)
-	{
-		a.x + b.x,
-		a.y + b.y
-	});
-}
+void			key_input(t_player *plr, SDL_Event *e, t_home *home);
+void			mouse_handle(t_player *plr, t_home *home, SDL_Event *e);
 
-t_xy			vec2_dec(t_xy a, t_xy b)
-{
-	return ((t_xy)
-	{
-		a.x - b.x,
-		a.y - b.y
-	});
-}
+#endif

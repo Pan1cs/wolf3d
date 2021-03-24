@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/24 14:35:11 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/24 16:17:03 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ WIN_LIBRARY_PATHS = -LSDL2\lib -LSDL2_mixer_win\lib -Llibft
 LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
 WIN_COMPILER_FLAGS = -w
-LINUX_COMPILER_FLAGS = -Wall -Wextra
+LINUX_COMPILER_FLAGS = -Wall -Wextra -g
 
 WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf -lft
 LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lSDL2_ttf -lft -lm -g
@@ -34,8 +34,8 @@ ifeq ($(OS),Windows_NT)
 else
 	TARGET_SYSTEM := $(shell uname -s)
 	TARGET_SYSTEM := $(patsubst CYGWIN%,Cygwin,$(TARGET_SYSTEM))
-    TARGET_SYSTEM := $(patsubst MSYS%,MSYS,$(TARGET_SYSTEM))
-    TARGET_SYSTEM := $(patsubst MINGW%,MSYS,$(TARGET_SYSTEM))
+	TARGET_SYSTEM := $(patsubst MSYS%,MSYS,$(TARGET_SYSTEM))
+	TARGET_SYSTEM := $(patsubst MINGW%,MSYS,$(TARGET_SYSTEM))
 endif
 
 ifeq ($(TARGET_SYSTEM),Windows)
@@ -65,7 +65,6 @@ endif
 
 SRC_LIST = \
 	$(SLASH)main.c \
-	$(SLASH)utilities$(SLASH)error_output.c \
 	$(SLASH)raycaster$(SLASH)calc_distances.c \
 	$(SLASH)raycaster$(SLASH)calc_ground_texels.c \
 	$(SLASH)raycaster$(SLASH)calc_sector_texels.c \

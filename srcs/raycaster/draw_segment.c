@@ -6,14 +6,14 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:36:44 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 16:35:54 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
 static void		draw_vertical_wall_strip(t_xy offset, size_t height,
-							t_texture *tex, t_frame *frame)
+							SDL_Surface *tex, t_frame *frame)
 {
 	size_t	cur_y;
 	t_xyz	corr_texel;
@@ -30,16 +30,18 @@ static void		draw_vertical_wall_strip(t_xy offset, size_t height,
 		if (i++ % 16)
 			corr_texel = inv_z(texel);
 		if (cur_y + offset.y >= 0 && cur_y + offset.y < SCREEN_HEIGHT)
+			// put_pixel(frame->draw_surf, offset.x,
+			// 	cur_y + offset.y, get_texel(corr_texel.x * tex->w,
+			// 	corr_texel.y * tex->h, tex));
 			put_pixel(frame->draw_surf, offset.x,
-				cur_y + offset.y, get_texel(corr_texel.x * tex->w,
-				corr_texel.y * tex->h, tex));
+				cur_y + offset.y, lightcoral);
 		cur_y++;
 		texel.y += frame->uv_step.y;
 	}
 }
 
 static void		draw_vertical_floor_strip(t_xyz offset, size_t height,
-							t_texture *tex, t_frame *frame)
+							SDL_Surface *tex, t_frame *frame)
 {
 	size_t	cur_y;
 	t_xyz	corr_texel;
@@ -62,9 +64,11 @@ static void		draw_vertical_floor_strip(t_xyz offset, size_t height,
 			// put_pixel(frame->draw_surf, offset.x,
 			// 	cur_y + offset.y, get_texel(corr_texel.x * tex->w,
 			// 	corr_texel.y * tex->h, tex));
+			// put_pixel(frame->draw_surf, offset.x,
+			// 	cur_y + offset.y, get_texel(corr_texel.x * tex->w,
+			// 	corr_texel.y * tex->h, tex));
 			put_pixel(frame->draw_surf, offset.x,
-				cur_y + offset.y, get_texel(corr_texel.x * tex->w,
-				corr_texel.y * tex->h, tex));
+				cur_y + offset.y, lightcoral);
 		cur_y++;
 		texel.y += frame->ground_uv_step.y;
 	}
@@ -76,7 +80,7 @@ void			draw_vertically(t_frame *frame, t_home *home, t_player *plr)
 	t_xyz		start;
 	t_xyz		end;
 	t_xyz		bottom;
-	t_texture	*wall_tex;
+	SDL_Surface	*wall_tex;
 	// t_texture	*ground_tex;
 
 	obj_x = 0;
@@ -116,7 +120,7 @@ void			draw_segment(t_frame *frame, t_home *home, t_player *plr)
 {
 	// if (frame->left.wall->c != 'b')
 	// 	return ;
-	t_texture	*wall_tex;
+	SDL_Surface	*wall_tex;
 	// if (frame->left.wall->idx < 0)
 	wall_tex = get_tex(frame->left.wall->idx, home->editor_tex);
 	// else

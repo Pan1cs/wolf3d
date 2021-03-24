@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_a.c                                           :+:      :+:    :+:   */
+/*   entity.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 16:39:11 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:39:13 by jnivala          ###   ########.fr       */
+/*   Created: 2021/03/24 14:59:03 by jnivala           #+#    #+#             */
+/*   Updated: 2021/03/24 14:59:04 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../wolf3d.h"
+#ifndef ENTITY_H
+# define ENTITY_H
 
-t_xy			vec2(float x, float y)
+typedef struct		s_enemy
 {
-	return ((t_xy){x, y});
-}
+	int				hp;
+}					t_enemy;
 
-t_xy			vec2_add(t_xy a, t_xy b)
-{
-	return ((t_xy)
-	{
-		a.x + b.x,
-		a.y + b.y
-	});
-}
-
-t_xy			vec2_dec(t_xy a, t_xy b)
-{
-	return ((t_xy)
-	{
-		a.x - b.x,
-		a.y - b.y
-	});
-}
+#endif

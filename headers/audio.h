@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_a.c                                           :+:      :+:    :+:   */
+/*   audio.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 16:39:11 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:39:13 by jnivala          ###   ########.fr       */
+/*   Created: 2021/01/22 13:35:03 by jnivala           #+#    #+#             */
+/*   Updated: 2021/01/26 13:47:24 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../wolf3d.h"
 
-t_xy			vec2(float x, float y)
-{
-	return ((t_xy){x, y});
-}
+#ifndef AUDIO_H
+# define AUDIO_H
 
-t_xy			vec2_add(t_xy a, t_xy b)
+typedef struct	s_audio
 {
-	return ((t_xy)
-	{
-		a.x + b.x,
-		a.y + b.y
-	});
-}
-
-t_xy			vec2_dec(t_xy a, t_xy b)
-{
-	return ((t_xy)
-	{
-		a.x - b.x,
-		a.y - b.y
-	});
-}
+	Mix_Music	*music;
+	Mix_Chunk	*footstep1;
+	Mix_Chunk	*footstep2;
+}				t_audio;
+#endif

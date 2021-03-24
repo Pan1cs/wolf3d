@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joonasnivala <joonasnivala@student.42.f    +#+  +:+       +#+        */
+/*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 13:40:00 by joonasnival      ###   ########.fr       */
+/*   Updated: 2021/03/24 16:28:58 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,47 @@
 
 # endif
 # include "../libft/libft.h"
+# include "../headers/macros.h"
+# include "../headers/vectors.h"
+# include "../headers/entity.h"
+# include "../headers/sector.h"
+# include "../headers/calculations.h"
+# include "../headers/colours.h"
+# include "../headers/program.h"
+# include "../headers/audio.h"
+# include "../headers/player.h"
+# include "../headers/player_functions.h"
+# include "../headers/raycast.h"
+# include "../headers/drawing_functions.h"
+# include "../headers/events.h"
+# include "../headers/porting.h"
+# include "../headers/parsing.h"
+# include "../headers/map.h"
+
+/*
+** Miscellanious
+*/
+
+void			update_screen(t_home *home, t_frame *frame, t_player *plr);
+void			setup(char *mapname, t_home *home, t_player *plr, t_frame *frame);
+void			error_output_sdl(char *msg, t_home *home);
+void			error_output(char *msg);
+void			load_audio(t_audio *audio);
+void			cleanup_audio(t_audio *audio);
+void			play_footsteps(t_player *plr);
+
+/*
+** Minimap
+*/
+
+t_xy			scale(t_xy a);
+void			draw_minimap(t_xy size, t_xy pos, t_xy dir, t_home *home);
+void			draw_grid(t_frame *frame);
+int				update_sector(t_home *home);
+void			translate_world_view(t_home *home, t_xy step);
+void			transform_world_view(t_home *home, float delta_dir);
+
+void			draw_text(t_home *home, char *text, t_frame *frame, t_xy pos);
 
 
 void	error_output(char *msg);

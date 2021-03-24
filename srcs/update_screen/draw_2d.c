@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 13:27:48 by tmaarela          #+#    #+#             */
-/*   Updated: 2021/03/24 14:38:08 by jnivala          ###   ########.fr       */
+/*   Created: 2021/03/24 16:38:27 by jnivala           #+#    #+#             */
+/*   Updated: 2021/03/24 16:38:28 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void			draw_2d(t_home *home, t_frame *frame, t_player *plr)
 	frame->pxl_offset = 0.0f;
 	scan_fov(home, frame, plr, 0);
 	draw_2d_fov(frame, plr);
-	draw_text(home, "x:", frame, (t_xy){10.0f, 10.0f});
-	draw_text(home, ft_ftoa(plr->pos.x, 7, 1), frame, (t_xy){10.0f, 30.0f});
-	draw_text(home, "y:", frame, (t_xy){10.0f, 50.0f});
-	draw_text(home, ft_ftoa(plr->pos.y, 7, 1), frame, (t_xy){10.0f, 70.0f});
-	draw_text(home, "dir:", frame, (t_xy){10.0f, 90.0f});
-	draw_text(home, ft_ftoa(plr->dir.x, 7, 1), frame, (t_xy){10.0f, 110.0f});
+	// draw_text(home, "x:", frame, (t_xy){10.0f, 10.0f});
+	// draw_text(home, ft_ftoa(plr->pos.x, 7, 1), frame, (t_xy){10.0f, 30.0f});
+	// draw_text(home, "y:", frame, (t_xy){10.0f, 50.0f});
+	// draw_text(home, ft_ftoa(plr->pos.y, 7, 1), frame, (t_xy){10.0f, 70.0f});
+	// draw_text(home, "dir:", frame, (t_xy){10.0f, 90.0f});
+	// draw_text(home, ft_ftoa(plr->dir.x, 7, 1), frame, (t_xy){10.0f, 110.0f});
 
 }

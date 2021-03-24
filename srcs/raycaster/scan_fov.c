@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 12:37:06 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:38:04 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 16:35:52 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../wolf3d.h"
 
 int				draw_tex_line(t_xy start, t_xy end,
-								t_texture *tex, SDL_Surface *surf)
+								SDL_Surface *tex, SDL_Surface *surf)
 {
 	t_xy	length;
 	t_xy	ratio;
@@ -33,7 +33,8 @@ int				draw_tex_line(t_xy start, t_xy end,
 	{
 		if (pos.x >= 0 && pos.x < SCREEN_WIDTH &&
 			pos.y >= 0 && pos.y < SCREEN_HEIGHT)
-			put_pixel(surf, pos.x, pos.y, get_texel(pos.x, pos.y, tex));
+			// put_pixel(surf, pos.x, pos.y, get_texel(pos.x, pos.y, tex));
+			put_pixel(surf, pos.x, pos.y, lightcoral);
 		pos.x += ratio.x * ((start.x < end.x) ? 1 : -1);
 		pos.y += ratio.y * ((start.y < end.y) ? 1 : -1);
 	}
@@ -57,7 +58,7 @@ static float	round_angle(float angle, float *pxl_offset)
 		return ((float)trunc);
 }
 
-t_texture		*get_tex(int idx, t_texture	**textures)
+SDL_Surface		*get_tex(int idx, SDL_Surface	**textures)
 {
 	if (idx >= 0)
 		error_output("idx larger or equal to zero\n");

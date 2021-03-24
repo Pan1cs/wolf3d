@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2_a.c                                           :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 16:39:11 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:39:13 by jnivala          ###   ########.fr       */
+/*   Created: 2021/01/21 14:36:51 by tmaarela          #+#    #+#             */
+/*   Updated: 2021/03/24 15:56:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../wolf3d.h"
+#ifndef PLAYER_H
+# define PLAYER_H
 
-t_xy			vec2(float x, float y)
+typedef struct		s_input
 {
-	return ((t_xy){x, y});
-}
+	int				right;
+	int				left;
+	int				up;
+	int				down;
+	int				z;
+	int				x;
+}					t_input;
 
-t_xy			vec2_add(t_xy a, t_xy b)
+typedef struct		s_player
 {
-	return ((t_xy)
-	{
-		a.x + b.x,
-		a.y + b.y
-	});
-}
+	t_xy			pos;
+	t_xy			dir;
+	t_xy			move_dir;
+	float			pitch;
+	float			z;
+	float			height;
+	t_input			input;
+	clock_t			time;
+	t_audio			audio;
+	float			angle;
+	int				current_sector;
+}					t_player;
 
-t_xy			vec2_dec(t_xy a, t_xy b)
-{
-	return ((t_xy)
-	{
-		a.x - b.x,
-		a.y - b.y
-	});
-}
+#endif

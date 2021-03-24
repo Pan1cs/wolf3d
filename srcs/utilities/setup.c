@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:38:17 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 16:19:37 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void			init_player(t_player *plr)
 
 void			setup(char *mapname, t_home *home, t_player *plr, t_frame *frame)
 {
-	ft_putendl_fd(mapname, 1);
+	// ft_putendl_fd(mapname, 1);
 	home->win.width = SCREEN_WIDTH;
 	home->win.height = SCREEN_HEIGHT;
 	home->t.fps = 0;
@@ -67,6 +67,6 @@ void			setup(char *mapname, t_home *home, t_player *plr, t_frame *frame)
 	load_audio(&plr->audio);
 	// if (Mix_PlayingMusic() == 0)
 	// 	Mix_PlayMusic(plr->audio.music, -1);
-	init_textures(home);
+	// init_textures(home);
 	init_player(plr);
 }

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:10:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:38:12 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 15:58:19 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			transform_world_view(t_home *home, float delta_dir)
 	int			walls;
 
 	i = 0;
-	while (i < home->nb_of_sectors)
+	while (i < home->nbr_of_sectors)
 	{
 		walls = home->sectors[i]->nb_of_walls;
 		current_point = home->sectors[i]->points;
@@ -41,7 +41,7 @@ void			translate_world_view(t_home *home, t_xy step)
 	int			walls;
 
 	i = 0;
-	while (i < home->nb_of_sectors)
+	while (i < home->nbr_of_sectors)
 	{
 		walls = home->sectors[i]->nb_of_walls;
 		current_point = home->sectors[i]->points;
@@ -64,7 +64,7 @@ void			translate_world_view(t_home *home, t_xy step)
 // 	static t_xy	prev_step;
 
 // 	i = 0;
-// 	while (i < home->nb_of_sectors)
+// 	while (i < home->nbr_of_sectors)
 // 	{
 // 		walls = home->sectors[i]->nb_of_walls;
 // 		current_point = home->sectors[i]->points;
