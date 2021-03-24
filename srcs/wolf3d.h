@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: joonasnivala <joonasnivala@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 08:27:29 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 13:40:00 by joonasnival      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 #  define CREATE_FILE O_CREAT
 #  define TRUNCATE O_TRUNC
 #  include <math.h>
-#  include "/usr/local/include/SDL2/SDL_mixer.h"
+#  include <SDL2/SDL_mixer.h>
 #  include <string.h>
 #  include <unistd.h>
 # elif __APPLE__

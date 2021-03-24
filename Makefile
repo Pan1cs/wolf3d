@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
+#    By: joonasnivala <joonasnivala@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/24 11:09:01 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/24 13:46:41 by joonasnival      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT_WIN = libft\libft.a
 LIBFT_LINUX = libft/libft.a
 
 WIN_INCLUDE_PATHS = -ISDL2\include\SDL2 -ISDL2_mixer_win\include\SDL2 -Ilibft
-LINUX_INCLUDE_PATHS = -I/SDL2/include/SDL2/ -Ilibft
+LINUX_INCLUDE_PATHS = -I/SDL2/include/SDL2/ -I/usr/include/SDL2 -Ilibft
 
 WIN_LIBRARY_PATHS = -LSDL2\lib -LSDL2_mixer_win\lib -Llibft
 LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
@@ -53,7 +53,7 @@ else
 	CFLAGS = $(LINUX_COMPILER_FLAGS)
 	LDFLAGS = $(LINUX_LINK_FLAGS)
 	LIBFT = $(LIBFT_LINUX)
-	SLASH = \/
+	SLASH = /
 	MKDIR := mkdir -p
 	RM = /bin/rm -rf
 ifndef ($(shell command -v sdl2-config 2> /dev/null))
