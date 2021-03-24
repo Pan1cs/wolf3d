@@ -6,12 +6,11 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/24 09:07:25 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/24 10:15:36 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
-
 S = srcs/
 O = objs/
 libft_dir = libft/
@@ -74,7 +73,13 @@ LINUX_COMPILER_FLAGS = -Wall -Wextra
 WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf -lft
 LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lSDL2_ttf -lft -lm -g
 
-ifeq ($(OS), Windows_NT)
+ifeq ($(OS),Windows_NT)
+	TARGET_SYSTEM := Windows
+else
+	TARGET_SYSTEM := $(shell uname -s)
+endif
+
+ifeq ($(uname_S), Windows)
 	INCLUDES = $(WIN_INCLUDE_PATHS)
 	LIBS = $(WIN_LIBRARY_PATHS)
 	CFLAGS = $(WIN_COMPILER_FLAGS)
@@ -84,6 +89,7 @@ else
 	LIBS = $(LINUX_LIBRARY_PATHS)
 	CFLAGS = $(LINUX_COMPILER_FLAGS)
 	LDFLAGS = $(LINUX_LINK_FLAGS)
+	SDL_VERSION := $(shell sdl2-config --version)
 endif
 
 .PHONY: all clean fclean re
@@ -109,8 +115,18 @@ $(LIBFT):
 	make -C $(libft_dir)
 
 dependencies:
-	sudo apt-get install libsdl2-dev libsdl2-mixer-2.0-0 libsdl2-ttf-dev && \
-	cd SDL2_mixer_linux && ./configure && make && sudo make install
+ifeq ($(TARGET_SYSTEM)$(SDL_VERSION), Linux2.0.12)
+		@if [ ! -d "SDL2_mixer_linux/build" ]; then \
+		cd SDL2_mixer_linux && ./configure && make && sudo make install; \
+		fi
+else
+		@echo "Installing project dependencies."
+		@sudo apt-get install libsdl2-dev libsdl2-mixer-2.0-0 libsdl2-ttf-dev && \
+		@if [ ! -d "SDL2_mixer_linux/build" ]; then \
+		cd SDL2_mixer_linux && ./configure && make && sudo make install; \
+		fi
+		@echo "Dependencies installed."
+endif
 
 $(NAME): $(LIBFT) dependencies $(OBJ)
 	$(CC) $(OBJ) $(LIBS) $(LDFLAGS) -o $@
