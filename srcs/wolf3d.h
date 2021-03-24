@@ -52,7 +52,7 @@
 #  define APPEND_FILE _O_APPEND
 #  define CREATE_FILE _O_CREAT
 #  define TRUNCATE _O_TRUNC
-#  include "SDL2_mixer_win/include/SDL2/SDL_mixer.h"
+#  include "../SDL2_mixer_win/include/SDL2/SDL_mixer.h"
 #  include <io.h>
 #  include <stdio.h>
 

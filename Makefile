@@ -11,14 +11,61 @@
 # **************************************************************************** #
 
 NAME = wolf3d
-S = srcs/
-O = objs/
-libft_dir = libft/
-LIBFT = $(libft_dir)libft.a
+S = srcs
+O = objs
+
+LIBFT_WIN = libft\libft.a
+LIBFT_LINUX = libft/libft.a
+
+WIN_INCLUDE_PATHS = -ISDL2\include\SDL2 -ISDL2_mixer_win\include\SDL2 -Ilibft
+LINUX_INCLUDE_PATHS = -I/SDL2/include/SDL2/ -Ilibft
+
+WIN_LIBRARY_PATHS = -LSDL2\lib -LSDL2_mixer_win\lib -Llibft
+LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
+
+WIN_COMPILER_FLAGS = -w
+LINUX_COMPILER_FLAGS = -Wall -Wextra
+
+WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf -lft
+LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lSDL2_ttf -lft -lm -g
+
+ifeq ($(OS),Windows_NT)
+	TARGET_SYSTEM := Windows
+else
+	TARGET_SYSTEM := $(shell uname -s)
+	TARGET_SYSTEM := $(patsubst CYGWIN%,Cygwin,$(TARGET_SYSTEM))
+    TARGET_SYSTEM := $(patsubst MSYS%,MSYS,$(TARGET_SYSTEM))
+    TARGET_SYSTEM := $(patsubst MINGW%,MSYS,$(TARGET_SYSTEM))
+endif
+
+ifeq ($(TARGET_SYSTEM),Windows)
+	INCLUDES = $(WIN_INCLUDE_PATHS)
+	LIBS = $(WIN_LIBRARY_PATHS)
+	CFLAGS = $(WIN_COMPILER_FLAGS)
+	LDFLAGS = $(WIN_LINK_FLAGS)
+	LIBFT = $(LIBFT_WIN)
+	SLASH = \\
+	MKDIR = mkdir
+	RM = del /s/q
+else
+	INCLUDES = $(LINUX_INCLUDE_PATHS)
+	LIBS = $(LINUX_LIBRARY_PATHS)
+	CFLAGS = $(LINUX_COMPILER_FLAGS)
+	LDFLAGS = $(LINUX_LINK_FLAGS)
+	LIBFT = $(LIBFT_LINUX)
+	SLASH = \/
+	MKDIR := mkdir -p
+	RM = /bin/rm -rf
+ifndef ($(shell command -v sdl2-config 2> /dev/null))
+	SDL_VERSION := ""
+else
+	SDL_VERSION := $(shell sdl2-config --version)
+endif
+endif
 
 SRC_LIST = \
-	main.c \
-	utilities/error_output.c \
+	$(SLASH)main.c \
+	$(SLASH)utilities$(SLASH)error_output.c \
 	# vec_math/vec2_a.c \
 	# vec_math/vec2_b.c \
 	# update_player/key_input.c \
@@ -53,62 +100,25 @@ SRC_LIST = \
 	# porting/open_file2.c \
 
 HEADERS = $(addprefix $S,\
-		wolf3d.h\
+		$(SLASH)wolf3d.h\
 	)
 SRC = $(addprefix $S, $(SRC_LIST))
 OBJ = $(SRC:$S%=$O%.o)
-RM = /bin/rm -rf
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
-
-WIN_INCLUDE_PATHS = -ISDL2\include\SDL2 -ISDL2_mixer_win\include\SDL2
-LINUX_INCLUDE_PATHS = -I/SDL2/include/SDL2/ -I$(libft_dir)
-
-WIN_LIBRARY_PATHS = -LSDL2\lib -LSDL2_mixer_win\lib -L$(libft_dir)
-LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -L$(libft_dir)
-
-WIN_COMPILER_FLAGS = -w
-LINUX_COMPILER_FLAGS = -Wall -Wextra
-
-WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf -lft
-LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lSDL2_ttf -lft -lm -g
-
-ifeq ($(OS),Windows_NT)
-	TARGET_SYSTEM := Windows
-else
-	TARGET_SYSTEM := $(shell uname -s)
-endif
-
-ifeq ($(uname_S), Windows)
-	INCLUDES = $(WIN_INCLUDE_PATHS)
-	LIBS = $(WIN_LIBRARY_PATHS)
-	CFLAGS = $(WIN_COMPILER_FLAGS)
-	LDFLAGS = $(WIN_LINK_FLAGS)
-else
-	INCLUDES = $(LINUX_INCLUDE_PATHS)
-	LIBS = $(LINUX_LIBRARY_PATHS)
-	CFLAGS = $(LINUX_COMPILER_FLAGS)
-	LDFLAGS = $(LINUX_LINK_FLAGS)
-ifndef ($(shell command -v sdl2-config 2> /dev/null))
-	SDL_VERSION := ""
-else
-	SDL_VERSION := $(shell sdl2-config --version)
-endif
-endif
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
 
 $O:
-	mkdir -p $@
-	mkdir -p $@utilities
-	mkdir -p $@update_player
-	mkdir -p $@update_screen
-	mkdir -p $@parsing
-	mkdir -p $@porting
-	mkdir -p $@raycaster
-	mkdir -p $@vec_math
+	$(MKDIR) $@
+	$(MKDIR) $@$(SLASH)utilities
+	$(MKDIR) $@$(SLASH)update_player
+	$(MKDIR) $@$(SLASH)update_screen
+	$(MKDIR) $@$(SLASH)parsing
+	$(MKDIR) $@$(SLASH)porting
+	$(MKDIR) $@$(SLASH)raycaster
+	$(MKDIR) $@$(SLASH)vec_math
 
 $(OBJ): | $O
 
@@ -116,7 +126,7 @@ $(OBJ): $O%.o: $S% $(HEADERS)
 	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
 
 $(LIBFT):
-	make -C $(libft_dir)
+	make -C libft
 
 dependencies:
 ifeq ($(TARGET_SYSTEM), Linux)
@@ -145,8 +155,10 @@ cleanobjdir: cleanobj
 	$(RM) $O
 
 clean: cleanobjdir
+ifeq ($(TARGET_SYSTEM), Linux)
 	make -C SDL2_mixer_linux/ clean
-	make -C $(libft_dir) clean
+endif
+	make -C libft clean
 
 fclean: clean
 	$(RM) $(NAME)
