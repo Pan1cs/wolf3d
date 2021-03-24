@@ -6,11 +6,11 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 13:36:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/02/09 09:56:27 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 14:38:13 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../doom_nukem.h"
+#include "../wolf3d.h"
 
 void	update_screen(t_home *home, t_frame *frame, t_player *plr)
 {

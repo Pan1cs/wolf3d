@@ -6,11 +6,11 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 11:29:47 by jnivala           #+#    #+#             */
-/*   Updated: 2021/02/19 14:37:28 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 14:38:10 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../doom_nukem.h"
+#include "../wolf3d.h"
 
 t_step	*steplen(t_step *ground, int current_y, t_ray_floor hor,
 	t_player *plr)

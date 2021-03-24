@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update_sector.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnivala <joonas.hj.nivala@gmail.com>       +#+  +:+       +#+        */
+/*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 10:11:24 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/19 11:51:07 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 14:38:13 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../doom_nukem.h"
+#include "../wolf3d.h"
 
 int				update_sector(t_home *home)
 {

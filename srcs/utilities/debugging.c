@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   debugging.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnivala <joonas.hj.nivala@gmail.com>       +#+  +:+       +#+        */
+/*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 13:49:30 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/18 15:06:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 14:38:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../doom_nukem.h"
+#include "../wolf3d.h"
 void		debug_wall(t_home *home, t_frame *frame)
 {
 	if (frame->left.wall->c == 'b')

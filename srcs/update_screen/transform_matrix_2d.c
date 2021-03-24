@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   transform_matrix_2d.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnivala <joonas.hj.nivala@gmail.com>       +#+  +:+       +#+        */
+/*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:10:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/19 14:14:12 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 14:38:12 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../doom_nukem.h"
+#include "../wolf3d.h"
 
 void			transform_world_view(t_home *home, float delta_dir)
 {

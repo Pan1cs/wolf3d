@@ -6,12 +6,12 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 12:37:06 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/23 13:47:43 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 14:38:04 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../../doom_nukem.h"
+#include "../wolf3d.h"
 
 int				draw_tex_line(t_xy start, t_xy end,
 								t_texture *tex, SDL_Surface *surf)

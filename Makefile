@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: joonasnivala <joonasnivala@student.42.f    +#+  +:+       +#+         #
+#    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/24 13:46:41 by joonasnival      ###   ########.fr        #
+#    Updated: 2021/03/24 14:35:11 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,38 +66,37 @@ endif
 SRC_LIST = \
 	$(SLASH)main.c \
 	$(SLASH)utilities$(SLASH)error_output.c \
-	# vec_math/vec2_a.c \
-	# vec_math/vec2_b.c \
-	# update_player/key_input.c \
-	# update_player/mouse_handle.c \
-	# update_player/movement.c \
-	# update_player/update_player.c \
-	# update_screen/draw_shapes.c \
-	# update_screen/put_pixel.c \
-	# update_screen/update_screen.c \
-	# update_screen/draw_tex_pixel.c \
-	# update_screen/steplen.c \
-	# update_screen/draw_2d.c \
-	# update_screen/update_sector.c \
-	# update_screen/transform_matrix_2d.c \
-	# utilities/setup.c \
-	# utilities/audio.c \
-	# utilities/linkedlist.c \
-	# raycaster/line_line_intersection.c \
-	# raycaster/get_wall_points.c \
-	# raycaster/setup_frame.c \
-	# raycaster/recursion_checks.c \
-	# raycaster/get_distance.c \
-	# raycaster/scan_fov.c \
-	# raycaster/ft_calc_distances.c \
-	# raycaster/draw_ground.c \
-	# raycaster/draw_segment.c \
-	# parsing/read_map.c	\
-	# parsing/parse_sector.c \
-	# porting/png.c \
-	# porting/create_mapfile.c \
-	# porting/open_file1.c \
-	# porting/open_file2.c \
+	$(SLASH)raycaster$(SLASH)calc_distances.c \
+	$(SLASH)raycaster$(SLASH)calc_ground_texels.c \
+	$(SLASH)raycaster$(SLASH)calc_sector_texels.c \
+	$(SLASH)raycaster$(SLASH)calc_wall_texels.c \
+	$(SLASH)raycaster$(SLASH)draw_segment.c \
+	$(SLASH)raycaster$(SLASH)get_distance.c \
+	$(SLASH)raycaster$(SLASH)get_wall_points.c \
+	$(SLASH)raycaster$(SLASH)line_line_intersection.c \
+	$(SLASH)raycaster$(SLASH)recursion_checks.c \
+	$(SLASH)raycaster$(SLASH)scan_fov.c \
+	$(SLASH)raycaster$(SLASH)setup_frame.c \
+	$(SLASH)update_player$(SLASH)key_input.c \
+	$(SLASH)update_player$(SLASH)mouse_handle.c \
+	$(SLASH)update_player$(SLASH)movement.c \
+	$(SLASH)update_player$(SLASH)update_player.c \
+	$(SLASH)update_screen$(SLASH)draw_2d.c \
+	$(SLASH)update_screen$(SLASH)draw_shapes.c \
+	$(SLASH)update_screen$(SLASH)draw_tex_pixel.c \
+	$(SLASH)update_screen$(SLASH)put_pixel.c \
+	$(SLASH)update_screen$(SLASH)steplen.c \
+	$(SLASH)update_screen$(SLASH)transform_matrix_2d.c \
+	$(SLASH)update_screen$(SLASH)update_screen.c \
+	$(SLASH)update_screen$(SLASH)update_sector.c \
+	$(SLASH)utilities$(SLASH)audio.c \
+	$(SLASH)utilities$(SLASH)debugging.c \
+	$(SLASH)utilities$(SLASH)error_output.c \
+	$(SLASH)utilities$(SLASH)linkedlist.c \
+	$(SLASH)utilities$(SLASH)setup.c \
+	$(SLASH)vec_math$(SLASH)vec2_a.c \
+	$(SLASH)vec_math$(SLASH)vec2_b.c \
+	$(SLASH)vec_math$(SLASH)vec2_c.c \
 
 HEADERS = $(addprefix $S,\
 		$(SLASH)wolf3d.h\

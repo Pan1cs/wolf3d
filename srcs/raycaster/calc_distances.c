@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_segment.c                                     :+:      :+:    :+:   */
+/*   calc_distances.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/23 14:16:34 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/24 14:35:50 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../doom_nukem.h"
+#include "../wolf3d.h"
 
 void	calc_distances(t_frame *frame, t_texture *tex, t_player *plr)
 {
 	float	left_z;
 	float	right_z;
-	
+
 	left_z = vec2_perp_dist(frame->left.l_pt);
 	right_z = vec2_perp_dist(frame->left.r_pt);
 	frame->top_left.x = SCREEN_WIDTH - ((SCREEN_HEIGHT /
