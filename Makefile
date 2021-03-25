@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/25 11:55:40 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/25 13:06:41 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ ifeq ($(TARGET_SYSTEM),Windows)
 	SLASH = \\
 	MKDIR = mkdir
 	RM = del /s/q
+	SDL2_EXISTS := SDL2_included
 else
 	INCLUDES = $(LINUX_INCLUDE_PATHS)
 	LIBS = $(LINUX_LIBRARY_PATHS)
