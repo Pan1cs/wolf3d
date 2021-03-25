@@ -6,16 +6,15 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:33:39 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:38:01 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:17:21 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-
-static int		check_if_same_wall(t_xy a, t_xy b, t_xy r_point)
+static int		check_if_same_wall(t_point **p0, t_point **p1, t_xy r_point)
 {
-	if (a.x == b.x && a.y == b.y)
+	if (*p0 == *p1)
 	{
 		if (r_point.x != -1 && r_point.y != -1)
 			return (1);
@@ -89,7 +88,7 @@ void			get_wall_pts(t_frame *frame, int walls, int current_pxl)
 		frame->left.l_pt = frame->left.wall->x0;
 		frame->left.r_pt = frame->left.wall->next->x0;
 	}
-	if (check_if_same_wall(frame->left.wall->x0,
-		frame->right.wall->x0, frame->right.r_pt))
+	if (check_if_same_wall(&frame->left.wall,
+		&frame->right.wall, frame->right.r_pt))
 		frame->left.r_pt = frame->right.r_pt;
 }
