@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/25 09:27:07 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/25 11:55:40 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ SRC_LIST = \
 	$(SLASH)vec_math$(SLASH)vec2_a.c \
 	$(SLASH)vec_math$(SLASH)vec2_b.c \
 	$(SLASH)vec_math$(SLASH)vec2_c.c \
+	$(SLASH)vec_math$(SLASH)vec3.c \
 
 HEADERS = $(addprefix $S,\
 		$(SLASH)wolf3d.h\

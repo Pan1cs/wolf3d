@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:25:45 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:48:11 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,26 @@ void			init_player(t_player *plr)
 	plr->current_sector = 0;
 }
 
-void			setup(char *mapname, t_home *home, t_player *plr, t_frame *frame)
+/*
+** if (TTF_Init() < 0)
+** 	error_output_sdl("Fatal: Failed to init TTF.", home);
+** home->font = TTF_OpenFont("Cybrpnuk2.ttf", 16);
+** if (home->font == NULL)
+** 		error_output_sdl("Fatal: Failed to init given font.", home);
+** if (Mix_PlayingMusic() == 0)
+** 		Mix_PlayMusic(plr->audio.music, -1);
+*/
+
+void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 {
-	load_map_file(home, mapname);
+	load_map_file(home, map);
 	home->win.width = SCREEN_WIDTH;
 	home->win.height = SCREEN_HEIGHT;
 	home->t.fps = 0;
 	home->t.frames = 0;
 	home->offset = vec2(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f);
 	home = init_sdl(home, frame);
-	// if (TTF_Init() < 0)
-	// 	error_output_sdl("Fatal: Failed to init TTF.", home);
-	// home->font = TTF_OpenFont("Cybrpnuk2.ttf", 16);
-	// if (home->font == NULL)
-	// 	error_output_sdl("Fatal: Failed to init given font.", home);
 	load_audio(&plr->audio);
 	load_textures(&home->editor_tex, 7);
-	// if (Mix_PlayingMusic() == 0)
-	// 	Mix_PlayMusic(plr->audio.music, -1);
-	// init_textures(home);
 	init_player(plr);
 }

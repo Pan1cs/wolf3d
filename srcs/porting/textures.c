@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:53:07 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:04:25 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:34:40 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			get_texel(int x, int y, SDL_Surface *tex)
 	int		offset_x;
 	int		offset_y;
 	int		bpp;
-	Uint32 *p;
+	Uint32	*p;
 
 	offset_x = x % tex->w;
 	offset_y = y % tex->h;
@@ -33,7 +33,6 @@ static int	load_texture(SDL_Surface **texture, char *path)
 		error_output("ERROR: Texture not found.");
 	return (0);
 }
-
 
 int			load_textures(SDL_Surface ***textures, int nbr_of_textures)
 {

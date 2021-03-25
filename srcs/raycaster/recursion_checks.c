@@ -6,13 +6,13 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 08:51:30 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:38:03 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:30:21 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-void		continue_from_last_sector(t_point *start, t_ray_pt *fov, t_frame *frame)
+void	continue_from_last_sector(t_point *start, t_ray_pt *fov, t_frame *frame)
 {
 	t_point *p0;
 
@@ -39,9 +39,8 @@ int		check_if_portal(t_point *p0)
 		return (FALSE);
 }
 
-int				check_if_same_pt(int current_pxl, t_ray_pt *fov)
+int		check_if_same_pt(int current_pxl, t_ray_pt *fov)
 {
-
 	if (current_pxl == 0
 		&& get_distance(fov->l_pt, fov->r_pt) < 0.001)
 		return (TRUE);

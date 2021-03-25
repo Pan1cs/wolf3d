@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:08:38 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:36:25 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:58:31 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct			s_point
 typedef struct		s_sector
 {
 	t_point			*points;
+	t_point			*orig_points;
 	t_enemy			*enemies;
 	int				nb_of_walls;
 	int				idx_sector;

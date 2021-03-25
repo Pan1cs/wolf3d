@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:25:17 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:49:48 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,22 @@ void		flight_keys_up(t_player *plr, SDL_KeyCode sym)
 
 void		key_input(t_player *plr, SDL_Event *e, t_home *home)
 {
-		if (e->type == SDL_QUIT)
-		{
-			cleanup_audio(&plr->audio);
-			error_output_sdl("User closed the window", home);
-		}
-		else if (e->type == SDL_KEYDOWN && e->key.keysym.sym == k_esc)
-		{
-			cleanup_audio(&plr->audio);
-			error_output_sdl("User closed the window", home);
-		}
-		else if (e->type == SDL_KEYDOWN)
-		{
-			arrow_keys_down(plr, e->key.keysym.sym);
-			flight_keys_down(plr, e->key.keysym.sym);
-		}
-		else if (e->type == SDL_KEYUP)
-		{
-			arrow_keys_up(plr, e->key.keysym.sym);
-			flight_keys_up(plr, e->key.keysym.sym);
-		}
+	if (e->type == SDL_QUIT)
+	{
+		cleanup_audio(&plr->audio);
+		error_output_sdl("User closed the window", home);
+	}
+	else if (e->type == SDL_KEYDOWN && e->key.keysym.sym == k_esc)
+	{
+		cleanup_audio(&plr->audio);
+		error_output_sdl("User closed the window", home);
+	}
+	else if (e->type == SDL_KEYDOWN)
+	{
+		arrow_keys_down(plr, e->key.keysym.sym);
+	}
+	else if (e->type == SDL_KEYUP)
+	{
+		arrow_keys_up(plr, e->key.keysym.sym);
+	}
 }

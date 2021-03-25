@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:31:08 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:40:35 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 11:54:33 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void				add_point(t_point **point, t_point *new)
 	}
 }
 
-void				add_points(t_sector *sector, unsigned char *buf, unsigned int  **pos)
+void				add_points(t_sector *sector,
+	unsigned char *buf, unsigned int **pos)
 {
 	size_t		walls;
 	t_point		*temp;
@@ -71,6 +72,7 @@ void				add_points(t_sector *sector, unsigned char *buf, unsigned int  **pos)
 		tex_id = ft_atoi((const char*)buf + **pos);
 		**pos += ft_nb_len(tex_id, 10) + 1;
 		add_point(&sector->points, new_point(coord, tex_id));
+		add_point(&sector->orig_points, new_point(coord, tex_id));
 	}
 	temp = sector->points;
 	while (temp->next)

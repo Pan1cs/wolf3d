@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:24:28 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 11:44:00 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void			player_move(t_player *plr, t_home *home, float delta_time)
 	}
 }
 
-void				movement(t_player *plr, t_home *home)
+void			movement(t_player *plr, t_home *home)
 {
 	float		delta_time;
 	clock_t		ctime;

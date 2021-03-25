@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:28:41 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:39:56 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,22 @@ void	parse_sector_data(unsigned char *buf, t_home *home)
 int		load_map_file(t_home *home, char *path)
 {
 	int				fd;
-	unsigned char	*buf;
+	unsigned char	buf[BUF_SIZE + 1];
 	unsigned int	size;
 
 	if ((fd = OPEN_FILE(path, READ_ONLY)) < 0)
-		error_output("Failed to open file\n");
+		error_output("ERROR: Failed to open map");
 	else
 	{
-		if (!(buf = (unsigned char *)malloc(sizeof(unsigned char) * BUF_SIZE + 1)))
-			error_output("Memory allocation of source buffer failed\n");
 		size = READ_FILE(fd, buf, BUF_SIZE);
 		if (size <= 0)
-			error_output("Failed to read file\n");
+			error_output("ERROR: Failed to read map.");
 		else if (size >= BUF_SIZE)
-			error_output("File is too large\n");
+			error_output("ERROR: Map is too large.");
 		if (CLOSE_FILE(fd) == -1)
-			error_output("Could not close file\n");
+			error_output("ERROR: Could not close the file.");
 		buf[BUF_SIZE] = '\0';
 		parse_sector_data(buf, home);
-		free(buf);
 	}
 	return (0);
 }

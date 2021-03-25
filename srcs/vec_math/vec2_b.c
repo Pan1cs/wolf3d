@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:38:16 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:38:18 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 11:57:36 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ t_xy			vec2_norm(t_xy v)
 	});
 }
 
-t_xy			vec2_mul(t_xy v, float scalar)
-{
-	return ((t_xy){
-		v.x * scalar,
-		v.y * scalar
-	});
-}
-
 float			vec2_dot(t_xy a, t_xy b)
 {
 	return (a.x * b.x + a.y * b.y);
@@ -46,15 +38,10 @@ float			vec2_dot(t_xy a, t_xy b)
 
 float			vec2_mag(t_xy a)
 {
-	return sqrtf(a.x * a.x + a.y * a.y);
+	return (sqrtf(a.x * a.x + a.y * a.y));
 }
 
 float			vec2_ang(t_xy a, t_xy b)
 {
-	return acosf(vec2_dot(a, b) / (vec2_mag(a) * vec2_mag(b)));
-}
-
-float			ft_map(float in, t_range from, t_range to)
-{
-	return (to.x + ((in - from.x) * (to.y - to.x)) / (from.y - from.x));
+	return (acosf(vec2_dot(a, b) / (vec2_mag(a) * vec2_mag(b))));
 }

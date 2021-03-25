@@ -6,13 +6,14 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:38:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:38:37 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 11:51:30 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-int				ft_draw_line(t_xy start, t_xy end, int color, SDL_Surface *surf)
+int		draw_line(t_xy start, t_xy end, int color,
+	SDL_Surface *surf)
 {
 	t_xy	length;
 	t_xy	ratio;
@@ -29,7 +30,8 @@ int				ft_draw_line(t_xy start, t_xy end, int color, SDL_Surface *surf)
 	pos.y = start.y;
 	while (pixels-- > 0)
 	{
-		if (pos.x >= 0 && pos.x < SCREEN_WIDTH && pos.y >= 0 && pos.y < SCREEN_HEIGHT)
+		if (pos.x >= 0 && pos.x < SCREEN_WIDTH
+			&& pos.y >= 0 && pos.y < SCREEN_HEIGHT)
 			put_pixel(surf, pos.x, pos.y, color);
 		pos.x += ratio.x * ((start.x < end.x) ? 1 : -1);
 		pos.y += ratio.y * ((start.y < end.y) ? 1 : -1);
@@ -39,52 +41,55 @@ int				ft_draw_line(t_xy start, t_xy end, int color, SDL_Surface *surf)
 
 void	draw_rect(t_xy xy, t_xy wh, t_frame *frame, int color)
 {
-	float j;
-	float i;
+	float	j;
+	float	i;
 
 	i = xy.x;
 	j = xy.y;
 	while (j < wh.y + xy.y)
 	{
-		ft_draw_line(vec2(i, j), vec2(i + wh.x, j), color, frame->draw_surf);
+		draw_line(vec2(i, j), vec2(i + wh.x, j), color, frame->draw_surf);
 		j++;
 	}
 }
 
 void	draw_rect_center(t_xy xy, t_xy wh, t_frame *frame)
 {
-	float j;
-	float i;
+	float	j;
+	float	i;
 
 	i = -wh.x / 2;
 	j = -wh.y / 2;
 	while (j < wh.y / 2 && i < SCREEN_WIDTH && j < SCREEN_HEIGHT)
 	{
-			ft_draw_line(vec2(xy.x + i, xy.y + j), vec2(xy.x + fabs(i), xy.y + j), 0x00A000, frame->draw_surf);
-			j++;
+		draw_line(vec2(xy.x + i, xy.y + j),
+			vec2(xy.x + fabs(i), xy.y + j), 0x00A000, frame->draw_surf);
+		j++;
 	}
 }
 
-void			draw_grid(t_frame *frame)
+void	draw_grid(t_frame *frame)
 {
 	int		i;
 	t_xy	dim;
 
-	dim = vec2(1, 1);//home->map.size;
+	dim = vec2(1, 1);
 	i = 0;
 	while (i < dim.y)
 	{
-		ft_draw_line(
+		draw_line(
 			vec2(0, i * MINIMAP_SIZE),
-			vec2(dim.x * MINIMAP_SIZE, i * MINIMAP_SIZE), 0xFFFFFF, frame->draw_surf);
+			vec2(dim.x * MINIMAP_SIZE,
+				i * MINIMAP_SIZE), 0xFFFFFF, frame->draw_surf);
 		++i;
 	}
 	i = 0;
 	while (i < dim.x)
 	{
-		ft_draw_line(
+		draw_line(
 			vec2(i * MINIMAP_SIZE, 0),
-			vec2(i * MINIMAP_SIZE, dim.y * MINIMAP_SIZE), 0xFFFFFF, frame->draw_surf);
+			vec2(i * MINIMAP_SIZE,
+				dim.y * MINIMAP_SIZE), 0xFFFFFF, frame->draw_surf);
 		++i;
 	}
 }

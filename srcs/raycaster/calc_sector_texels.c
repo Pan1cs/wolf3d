@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:36:20 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 11:38:48 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ static void		find_biggest_square(t_sector *sector)
 }
 
 /*
-**	Calc_sector texels needs to happen before any translation or transformation matrix is applied.
+**	Calc_sector texels needs to happen before any
+**	translation or transformation matrix is applied.
 */
+
 void			calc_sector_texels(t_sector *sector)
 {
 	sector->floor_top_left = vec3(sector->points->x0.x,

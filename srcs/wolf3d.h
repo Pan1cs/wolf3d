@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:32:06 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 11:44:58 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@
 */
 
 void			update_screen(t_home *home, t_frame *frame, t_player *plr);
-void			setup(char *mapname, t_home *home, t_player *plr, t_frame *frame);
+void			setup(char *map, t_home *home, t_player *plr, t_frame *frame);
 void			error_output_sdl(char *msg, t_home *home);
 void			error_output(char *msg);
 void			load_audio(t_audio *audio);
