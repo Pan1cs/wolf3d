@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:08:38 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:54:22 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 09:36:25 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,5 @@ typedef struct		s_sector
 	t_xyz			floor_bottom_left;
 	t_xyz			floor_bottom_right;
 }					t_sector;
-
-t_point			*new_point(t_xy x0, int idx);
-t_point			*add_point(t_point **point, t_point *new);
-t_point			*loop_list(t_point *head, t_point *current);
 
 #endif

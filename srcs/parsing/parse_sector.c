@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:31:08 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 17:37:51 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 09:40:35 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_point				*new_point(t_xy x0, int idx)
 	return (new);
 }
 
-t_point				*add_point(t_point **point, t_point *new)
+void				add_point(t_point **point, t_point *new)
 {
 	t_point *temp;
 
@@ -51,7 +51,7 @@ t_point				*add_point(t_point **point, t_point *new)
 	}
 }
 
-t_point				*add_points(t_sector *sector, unsigned char *buf, unsigned int  **pos)
+void				add_points(t_sector *sector, unsigned char *buf, unsigned int  **pos)
 {
 	size_t		walls;
 	t_point		*temp;
@@ -59,14 +59,16 @@ t_point				*add_points(t_sector *sector, unsigned char *buf, unsigned int  **pos
 	int			tex_id;
 
 	walls = sector->nb_of_walls;
+	if (sector == NULL)
+		return ;
 	sector->points = NULL;
 	while (walls--)
 	{
-		coord.x = ft_atoi(buf + **pos);
+		coord.x = ft_atoi((const char*)buf + **pos);
 		**pos += ft_nb_len(coord.x, 10) + 1;
-		coord.y = ft_atoi(buf + **pos);
+		coord.y = ft_atoi((const char*)buf + **pos);
 		**pos += ft_nb_len(coord.y, 10) + 1;
-		tex_id = ft_atoi(buf + **pos);
+		tex_id = ft_atoi((const char*)buf + **pos);
 		**pos += ft_nb_len(tex_id, 10) + 1;
 		add_point(&sector->points, new_point(coord, tex_id));
 	}
@@ -88,17 +90,17 @@ t_sector			*get_sector_data(unsigned char *buf, unsigned int *pos)
 	if (!ft_strstr((const char*)(buf + *pos), "sector"))
 		error_output("ERROR: Uncorrect number of sectors given");
 	*pos += 6;
-	new_sector->idx_sector = ft_atoi(buf + *pos);
+	new_sector->idx_sector = ft_atoi((const char*)buf + *pos);
 	*pos += ft_nb_len(new_sector->idx_sector, 10) + 1;
-	new_sector->nb_of_walls = ft_atoi(buf + *pos);
+	new_sector->nb_of_walls = ft_atoi((const char*)buf + *pos);
 	*pos += ft_nb_len(new_sector->nb_of_walls, 10) + 1;
-	new_sector->ground = ft_atoi(buf + *pos);
+	new_sector->ground = ft_atoi((const char*)buf + *pos);
 	*pos += ft_nb_len(new_sector->ground, 10) + 1;
-	new_sector->ceiling = ft_atoi(buf + *pos);
+	new_sector->ceiling = ft_atoi((const char*)buf + *pos);
 	*pos += ft_nb_len(new_sector->ceiling, 10) + 1;
-	new_sector->tex_floor = ft_atoi(buf + *pos);
+	new_sector->tex_floor = ft_atoi((const char*)buf + *pos);
 	*pos += ft_nb_len(new_sector->tex_floor, 10) + 1;
-	new_sector->tex_ceil = ft_atoi(buf + *pos);
+	new_sector->tex_ceil = ft_atoi((const char*)buf + *pos);
 	*pos += ft_nb_len(new_sector->tex_ceil, 10) + 1;
 	add_points(new_sector, buf, &pos);
 	return (new_sector);

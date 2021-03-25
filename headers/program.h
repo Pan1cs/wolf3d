@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:24 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:29:35 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 08:43:10 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct		s_home
 	SDL_Surface		**editor_tex;
 	t_time			t;
 	t_xy			offset;
-	int				nbr_of_sectors;
+	unsigned int	nbr_of_sectors;
 	int				nbr_of_textures;
 }					t_home;
 

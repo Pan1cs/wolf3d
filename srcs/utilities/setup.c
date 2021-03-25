@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 17:41:40 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 09:25:45 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_home	*init_sdl(t_home *home, t_frame *frame)
 {
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) < 0)
 		error_output_sdl("Fatal: SDL Initalization failed.", home);
-	home->win.window = SDL_CreateWindow("Hello World!", 100, 100,
+	home->win.window = SDL_CreateWindow("Wolf3d", 100, 100,
 		home->win.width, home->win.height, 0);
 	if (!home->win.window)
 		error_output_sdl("Fatal: Failed to create a window.", home);
@@ -52,7 +52,7 @@ void			init_player(t_player *plr)
 
 void			setup(char *mapname, t_home *home, t_player *plr, t_frame *frame)
 {
-	// ft_putendl_fd(mapname, 1);
+	load_map_file(home, mapname);
 	home->win.width = SCREEN_WIDTH;
 	home->win.height = SCREEN_HEIGHT;
 	home->t.fps = 0;

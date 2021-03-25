@@ -6,16 +6,11 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:14:05 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:38:18 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 08:29:21 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
-
-float	vec2_perp_dist(t_xy a)
-{
-	return (fabsf(a.x + a.y) * SQR2);
-}
 
 t_xyz	vec3_add(t_xyz a, t_xyz b)
 {

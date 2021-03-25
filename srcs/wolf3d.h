@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:28:58 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 09:32:06 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,8 @@ void			play_footsteps(t_player *plr);
 t_xy			scale(t_xy a);
 void			draw_minimap(t_xy size, t_xy pos, t_xy dir, t_home *home);
 void			draw_grid(t_frame *frame);
-int				update_sector(t_home *home);
 void			translate_world_view(t_home *home, t_xy step);
 void			transform_world_view(t_home *home, float delta_dir);
-
 void			draw_text(t_home *home, char *text, t_frame *frame, t_xy pos);
 
-
-void	error_output(char *msg);
 #endif

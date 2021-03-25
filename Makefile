@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/24 17:32:24 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/25 09:27:07 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,17 +56,13 @@ else
 	SLASH = /
 	MKDIR := mkdir -p
 	RM = /bin/rm -rf
-ifndef ($(shell command -v sdl2-config 2> /dev/null))
-	SDL_VERSION := ""
-else
-	SDL_VERSION := $(shell sdl2-config --version)
-endif
+	SDL2_EXISTS := $(shell command -v sdl2-config 2> /dev/null)
 endif
 
 SRC_LIST = \
 	$(SLASH)main.c \
 	$(SLASH)parsing$(SLASH)parse_sector.c \
-	$(SLASH)porting$(SLASH)load_textures.c \
+	$(SLASH)porting$(SLASH)textures.c \
 	$(SLASH)porting$(SLASH)open_files.c \
 	$(SLASH)raycaster$(SLASH)calc_distances.c \
 	$(SLASH)raycaster$(SLASH)calc_ground_texels.c \
@@ -90,7 +86,6 @@ SRC_LIST = \
 	$(SLASH)update_screen$(SLASH)steplen.c \
 	$(SLASH)update_screen$(SLASH)transform_matrix_2d.c \
 	$(SLASH)update_screen$(SLASH)update_screen.c \
-	$(SLASH)update_screen$(SLASH)update_sector.c \
 	$(SLASH)utilities$(SLASH)audio.c \
 	$(SLASH)utilities$(SLASH)debugging.c \
 	$(SLASH)utilities$(SLASH)error_output.c \
@@ -130,20 +125,15 @@ $(LIBFT):
 	make -C libft
 
 dependencies:
-ifeq ($(TARGET_SYSTEM), Linux)
-ifeq ($(SDL_VERSION), 2.0.10)
-		@if [ ! -d "SDL2_mixer_linux/build" ]; then \
-		cd SDL2_mixer_linux && ./configure && make && sudo make install; \
-		fi
-else
-		@echo "Installing project dependencies."
-		@echo $(SDL_VERSION)
-		@sudo apt-get install libsdl2-dev libsdl2-mixer-2.0-0 libsdl2-ttf-dev
-		@if [ ! -d "SDL2_mixer_linux/build" ]; then \
-		cd SDL2_mixer_linux && ./configure && make && sudo make install; \
-		fi
-		@echo "Dependencies installed."
+ifndef SDL2_EXISTS
+	@echo "Installing project dependencies."
+	@sudo apt-get install libsdl2-dev libsdl2-mixer-2.0-0 libsdl2-ttf-dev
+	@echo "Dependencies installed."
 endif
+ifeq ($(TARGET_SYSTEM), Linux)
+	@if [ ! -d "SDL2_mixer_linux/build" ]; then \
+	cd SDL2_mixer_linux && ./configure && make && sudo make install; \
+	fi
 endif
 
 $(NAME): $(LIBFT) dependencies $(OBJ)
