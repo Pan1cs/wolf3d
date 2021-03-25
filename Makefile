@@ -26,8 +26,8 @@ LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Lli
 WIN_COMPILER_FLAGS = -Wall -Wextra
 LINUX_COMPILER_FLAGS = -Wall -Wextra -g
 
-WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf -lft
-LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lSDL2_ttf -lft -lm -g
+WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lft
+LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lft -lm -g
 
 ifeq ($(OS),Windows_NT)
 	TARGET_SYSTEM := Windows
@@ -121,7 +121,7 @@ $O:
 $(OBJ): | $O
 
 $(OBJ): $O%.o: $S% $(HEADERS)
-	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIBFT):
 	make -C libft

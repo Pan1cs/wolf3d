@@ -32,18 +32,6 @@ void			draw_2d_fov(t_frame *frame, t_player *plr)
 	// 	vec2_mul(plr->dir, 400)), offset), lightgreen, frame->draw_surf);
 }
 
-void			draw_text(t_home *home, char *text, t_frame *frame, t_xy pos)
-{
-	SDL_Rect	rect;
-
-	SDL_Color color = {255, 255, 255, 255};
-	home->text_surf = TTF_RenderText_Solid(home->font, text, color);
-	rect.x = pos.x;
-	rect.y = pos.y;
-	SDL_BlitSurface(home->text_surf, NULL, frame->draw_surf, &rect);
-	SDL_FreeSurface(home->text_surf);
-}
-
 void			draw_2d(t_home *home, t_frame *frame, t_player *plr)
 {
 	static t_xy	prev_pos;
