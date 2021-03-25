@@ -23,7 +23,7 @@ LINUX_INCLUDE_PATHS = -I/SDL2/include/SDL2/ -I/usr/include/SDL2 -Ilibft
 WIN_LIBRARY_PATHS = -LSDL2\lib -LSDL2_mixer_win\lib -Llibft
 LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
-WIN_COMPILER_FLAGS = -w
+WIN_COMPILER_FLAGS = -Wall -Wextra
 LINUX_COMPILER_FLAGS = -Wall -Wextra -g
 
 WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_ttf -lft
@@ -104,7 +104,7 @@ SRC = $(addprefix $S, $(SRC_LIST))
 OBJ = $(SRC:$S%=$O%.o)
 CC = gcc
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re dependencies cleanobj cleanobjdir
 
 all: $(NAME)
 
@@ -154,7 +154,11 @@ endif
 	make -C libft clean
 
 fclean: clean
+ifeq ($(TARGET_SYSTEM), Windows)
+	$(RM) $(NAME).exe
+else
 	$(RM) $(NAME)
+endif
 	$(RM) $(LIBFT)
 
 re: fclean all

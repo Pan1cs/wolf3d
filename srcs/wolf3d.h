@@ -55,6 +55,8 @@
 #  include "../SDL2_mixer_win/include/SDL2/SDL_mixer.h"
 #  include <io.h>
 #  include <stdio.h>
+#  include <stdlib.h>
+#  include <math.h>
 
 # endif
 # include "../libft/libft.h"

@@ -122,9 +122,9 @@ endif
 all: $(NAME)
 
 $(NAME): $(SRC) $(INC)
-	@gcc -Wall -Werror -Wextra -c $(SRC) -I.
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
+	gcc -Wall -Werror -Wextra -c $(SRC) -I.
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 	@echo Successfully created $(NAME)
 
 clean:
