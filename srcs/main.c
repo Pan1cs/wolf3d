@@ -6,13 +6,13 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:10:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:42:10 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 09:45:50 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int  			main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_home		home;
 	t_player	plr;
@@ -20,7 +20,7 @@ int  			main(int argc, char **argv)
 	SDL_Event	e;
 
 	if (argc == 1)
-	 	error_output("usage: .\\play [map file path]");
+		error_output("usage: .\\play [map file path]");
 	setup(argv[1], &home, &plr, &frame);
 	while (1)
 	{
@@ -32,5 +32,5 @@ int  			main(int argc, char **argv)
 	}
 	TTF_Quit();
 	SDL_Quit();
-	return 0;
+	return (0);
 }

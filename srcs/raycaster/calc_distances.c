@@ -6,13 +6,13 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:33:07 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 09:54:19 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-void	calc_distances(t_frame *frame, SDL_Surface *tex, t_player *plr)
+void	calc_distances(t_frame *frame, t_player *plr)
 {
 	float	left_z;
 	float	right_z;

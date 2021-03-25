@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_l_pt.c                                   :+:      :+:    :+:   */
+/*   line_line_intersection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 15:33:39 by jnivala           #+#    #+#             */
-/*   Updated: 2021/02/22 14:07:34 by jnivala          ###   ########.fr       */
+/*   Created: 2021/03/25 10:13:01 by jnivala           #+#    #+#             */
+/*   Updated: 2021/03/25 10:13:35 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-t_xy		line_intersection(t_intersection *sect)
+t_xy	line_intersection(t_intersection *sect)
 {
 	t_xy point;
 
@@ -25,7 +25,7 @@ t_xy		line_intersection(t_intersection *sect)
 	return (vec2(-1, -1));
 }
 
-void		calc_intersection(t_point *pgon, t_ray *ray, t_intersection *sect)
+void	calc_intersection(t_point *pgon, t_ray *ray, t_intersection *sect)
 {
 	sect->y1 = pgon->x0.y;
 	sect->x1 = pgon->x0.x;
@@ -46,7 +46,7 @@ void		calc_intersection(t_point *pgon, t_ray *ray, t_intersection *sect)
 	sect->pos /= sect->den;
 }
 
-t_xy		line_intersection_raw(t_intersection *sect)
+t_xy	line_intersection_raw(t_intersection *sect)
 {
 	t_xy point;
 
@@ -59,7 +59,7 @@ t_xy		line_intersection_raw(t_intersection *sect)
 	return (vec2(-1, -1));
 }
 
-void		calc_intersection_raw(t_point *pgon, t_ray *ray, t_intersection *sect)
+void	calc_intersection_raw(t_point *pgon, t_ray *ray, t_intersection *sect)
 {
 	sect->y1 = pgon->x0.y;
 	sect->x1 = pgon->x0.x;

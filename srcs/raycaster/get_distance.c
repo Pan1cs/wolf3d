@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 15:22:31 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:37:59 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:00:01 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 float	get_distance(t_xy p1, t_xy p2)
 {
-	return (sqrtf((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y)));
+	return (sqrtf((p2.x - p1.x) * (p2.x - p1.x)
+		+ (p2.y - p1.y) * (p2.y - p1.y)));
 }

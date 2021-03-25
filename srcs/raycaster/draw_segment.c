@@ -6,11 +6,43 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:10:30 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:12:07 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
+
+/*
+** 	static void		draw_vertical_floor_strip(t_xyz offset, size_t height,
+** 							SDL_Surface *tex, t_frame *frame)
+** 	{
+** 	size_t	cur_y;
+** 	t_xyz	corr_texel;
+** 	t_xyz	texel;
+** 	float	current_distance;
+** 	float	weight;
+**
+** 	if (offset.x < 0 || offset.x > SCREEN_WIDTH)
+** 		return ;
+** 	cur_y = 0;
+** 	texel = frame->ground_uv_t_l;
+** 	while (cur_y < height)
+** 	{
+** 		// corr_texel = inv_z(texel);
+** 		current_distance = SCREEN_HEIGHT /
+**	((2.0f * (cur_y + offset.y + height)) - SCREEN_HEIGHT);
+** 		weight = current_distance / offset.z;
+** 		corr_texel.x = weight * texel.x + (1.0f - weight) * 320;
+** 		corr_texel.y = weight * texel.y + (1.0f - weight) * 240;
+** 		if (cur_y + offset.y >= 0 && cur_y + offset.y < SCREEN_HEIGHT)
+** 			put_pixel(frame->draw_surf, offset.x,
+** 				cur_y + offset.y, get_texel(corr_texel.x * tex->w,
+** 				corr_texel.y * tex->h, tex));
+** 		cur_y++;
+** 		texel.y += frame->ground_uv_step.y;
+** 	}
+** }
+*/
 
 static void		draw_vertical_wall_strip(t_xy offset, size_t height,
 							SDL_Surface *tex, t_frame *frame)
@@ -37,35 +69,6 @@ static void		draw_vertical_wall_strip(t_xy offset, size_t height,
 		texel.y += frame->uv_step.y;
 	}
 }
-
-// static void		draw_vertical_floor_strip(t_xyz offset, size_t height,
-// 							SDL_Surface *tex, t_frame *frame)
-// {
-// 	size_t	cur_y;
-// 	t_xyz	corr_texel;
-// 	t_xyz	texel;
-// 	float	current_distance;
-// 	float	weight;
-
-// 	if (offset.x < 0 || offset.x > SCREEN_WIDTH)
-// 		return ;
-// 	cur_y = 0;
-// 	texel = frame->ground_uv_t_l;
-// 	while (cur_y < height)
-// 	{
-// 		// corr_texel = inv_z(texel);
-// 		current_distance = SCREEN_HEIGHT / ((2.0f * (cur_y + offset.y + height)) - SCREEN_HEIGHT);
-// 		weight = current_distance / offset.z;
-// 		corr_texel.x = weight * texel.x + (1.0f - weight) * 320;
-// 		corr_texel.y = weight * texel.y + (1.0f - weight) * 240;
-// 		if (cur_y + offset.y >= 0 && cur_y + offset.y < SCREEN_HEIGHT)
-// 			put_pixel(frame->draw_surf, offset.x,
-// 				cur_y + offset.y, get_texel(corr_texel.x * tex->w,
-// 				corr_texel.y * tex->h, tex));
-// 		cur_y++;
-// 		texel.y += frame->ground_uv_step.y;
-// 	}
-// }
 
 void			draw_vertically(t_frame *frame, t_home *home)
 {
@@ -96,11 +99,10 @@ void			draw_vertically(t_frame *frame, t_home *home)
 
 void			draw_segment(t_frame *frame, t_home *home, t_player *plr)
 {
-
 	SDL_Surface	*wall_tex;
 
 	wall_tex = get_tex(frame->left.wall->idx, home->editor_tex);
-	calc_distances(frame, wall_tex, plr);
+	calc_distances(frame, plr);
 	calc_wall_texels(frame, wall_tex);
 	draw_vertically(frame, home);
 }

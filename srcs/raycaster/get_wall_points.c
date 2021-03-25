@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:33:39 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 10:17:21 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 10:20:32 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int		check_if_same_wall(t_point **p0, t_point **p1, t_xy r_point)
 		return (0);
 }
 
-static void		get_r_pt(t_point *start, t_ray_pt *fov, t_frame *frame, int walls)
+static void		get_r_pt(t_point *start, t_ray_pt *fov, t_frame *frame,
+	int walls)
 {
 	t_ray			ray;
 	t_intersection	sect;
@@ -50,7 +51,8 @@ static void		get_r_pt(t_point *start, t_ray_pt *fov, t_frame *frame, int walls)
 	fov->l_pt = fov->wall->x0;
 }
 
-static void		get_l_pt(t_point *start, t_ray_pt *fov, t_frame *frame, int walls)
+static void		get_l_pt(t_point *start, t_ray_pt *fov, t_frame *frame,
+	int walls)
 {
 	t_ray			ray;
 	t_intersection	sect;

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:30:26 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/25 09:51:25 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int					draw_tex_line(t_xy start, t_xy end,
 								SDL_Surface *tex, SDL_Surface *surf);
 SDL_Surface			*get_tex(int idx, SDL_Surface	**textures);
 void				scan_fov(t_home *home, t_frame *frame, t_player *plr, int current_pxl);
-void				calc_distances(t_frame *frame, SDL_Surface *tex, t_player *plr);
+void				calc_distances(t_frame *frame, t_player *plr);
 void				calc_wall_texels(t_frame *frame, SDL_Surface *tex);
 void				calc_ground_texels(t_sector *sector, t_frame *frame, SDL_Surface *tex);
 void				draw_segment(t_frame *frame, t_home *home, t_player *plr);
