@@ -63,6 +63,7 @@ void				add_points(t_sector *sector,
 	if (sector == NULL)
 		return ;
 	sector->points = NULL;
+	sector->orig_points = NULL;
 	while (walls--)
 	{
 		coord.x = ft_atoi((const char*)buf + **pos);

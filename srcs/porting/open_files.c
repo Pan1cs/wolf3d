@@ -38,7 +38,7 @@ void	parse_sector_data(unsigned char *buf, t_home *home)
 	pos += get_next_breaker(buf + pos) + 1;
 	home->nbr_of_sectors = ft_atoi((const char*)buf + pos);
 	pos += ft_nb_len(home->nbr_of_sectors, 10);
-	if (!(home->sectors = (t_sector**)malloc(sizeof(t_sector*) *
+	if (!(home->sectors = (t_sector**)malloc(sizeof(t_sector) *
 		(home->nbr_of_sectors + 1))))
 		error_output("ERROR: Failed to allocate memory for game sectors\n");
 	while (i < home->nbr_of_sectors)
@@ -67,6 +67,7 @@ int		load_map_file(t_home *home, char *path)
 		if (CLOSE_FILE(fd) == -1)
 			error_output("ERROR: Could not close the file.");
 		buf[BUF_SIZE] = '\0';
+		ft_putendl("Mapdata read to buffer, proceeding.");
 		parse_sector_data(buf, home);
 	}
 	return (0);

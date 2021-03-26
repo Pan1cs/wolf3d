@@ -26,7 +26,7 @@ LINUX_INCLUDE_PATHS = -I/SDL2/include/SDL2/ -I/usr/include/SDL2 -Ilibft
 WIN_LIBRARY_PATHS = -LSDL2\lib -Llibft
 LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
-WIN_COMPILER_FLAGS = -Wall -Wextra
+WIN_COMPILER_FLAGS = -Wall -Wextra -g
 LINUX_COMPILER_FLAGS = -Wall -Wextra -g
 
 WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lft
