@@ -30,6 +30,7 @@ typedef struct		s_frame
 	float			min_step;
 	int				old_idx;
 	SDL_Surface		*draw_surf;
+	SDL_Surface		*ground[4];
 	t_xy			plr_offset;
 	float			pxl_offset;
 	t_ray_pt		left;
@@ -42,12 +43,7 @@ typedef struct		s_frame
 	t_xyz			uv_top_right;
 	t_xyz			uv_bottom_left;
 	t_xyz			uv_bottom_right;
-	t_xyz			ground_uv_t_l;
-	t_xyz			ground_uv_t_r;
-	t_xyz			ground_uv_b_l;
-	t_xyz			ground_uv_b_r;
 	t_xyz			uv_step;
-	t_xyz			ground_uv_step;
 	t_xyz			step;
 	float			full_wall_dist;
 	float			visible_wall_dist;

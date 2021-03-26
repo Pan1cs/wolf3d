@@ -29,7 +29,6 @@ typedef struct		s_sector
 	int				idx_sector;
 	int				tex_floor;
 	int				tex_ceil;
-	float			ground;
 	float			ceiling;
 	t_xyz			floor_top_left;
 	t_xyz			floor_top_right;
