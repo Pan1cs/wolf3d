@@ -14,13 +14,16 @@ NAME = wolf3d
 S = srcs
 O = objs
 
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+mkfile_dir := $(dir $(mkfile_path))
+
 LIBFT_WIN = libft\libft.a
 LIBFT_LINUX = libft/libft.a
 
-WIN_INCLUDE_PATHS = -ISDL2\include\SDL2 -ISDL2_mixer_win\include\SDL2 -Ilibft
+WIN_INCLUDE_PATHS = -ISDL2\include\SDL2 -Ilibft
 LINUX_INCLUDE_PATHS = -I/SDL2/include/SDL2/ -I/usr/include/SDL2 -Ilibft
 
-WIN_LIBRARY_PATHS = -LSDL2\lib -LSDL2_mixer_win\lib -Llibft
+WIN_LIBRARY_PATHS = -LSDL2\lib -Llibft
 LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
 WIN_COMPILER_FLAGS = -Wall -Wextra
@@ -121,7 +124,7 @@ $O:
 $(OBJ): | $O
 
 $(OBJ): $O%.o: $S% $(HEADERS)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) -c -o $@ $(CFLAGS) $(INCLUDES) $<
 
 $(LIBFT):
 	make -C libft
@@ -139,7 +142,7 @@ ifeq ($(TARGET_SYSTEM), Linux)
 endif
 
 $(NAME): $(LIBFT) dependencies $(OBJ)
-	$(CC) $(OBJ) $(LIBS) $(LDFLAGS) -o $@
+	$(CC) -o $@ $(INCLUDES) $(LIBS) $(CFLAGS) $(OBJ) $(LDFLAGS)
 
 cleanobj:
 	$(RM) $(wildcard $(OBJ))
