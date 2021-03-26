@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/26 13:33:12 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/26 14:07:24 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ endif
 SRC_LIST = \
 	$(SLASH)main.c \
 	$(SLASH)parsing$(SLASH)parse_sector.c \
+	$(SLASH)parsing$(SLASH)free_sector.c \
 	$(SLASH)porting$(SLASH)textures.c \
 	$(SLASH)porting$(SLASH)open_files.c \
 	$(SLASH)raycaster$(SLASH)calc_distances.c \

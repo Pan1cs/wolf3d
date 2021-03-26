@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:10:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/26 12:27:11 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/26 14:14:12 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int			main(int argc, char **argv)
 		clear_surface(frame.draw_surf);
 		SDL_FreeSurface(frame.draw_surf);
 	}
+	free_sectors(&home);
 	free_textures(&home.editor_tex, 7);
 	cleanup_audio(&plr.audio);
 	quit_subsystems();

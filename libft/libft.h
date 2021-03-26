@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 14:35:57 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:37:16 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/26 13:42:23 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ size_t				ft_count_wrds(const char *s, int d);
 double				ft_dabs(double i);
 float				ft_fmax(float a, float b);
 float				ft_fmin(float a, float b);
+char				*ft_ftoa(float nb, int precision);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
