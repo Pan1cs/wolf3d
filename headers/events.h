@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:59:09 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:59:11 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/26 12:34:34 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 ** Event handlers
 */
 
+void			keys_up(t_player *plr, SDL_KeyCode sym);
+void			keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e);
 void			key_input(t_player *plr, SDL_Event *e, t_home *home);
 void			mouse_handle(t_player *plr, t_home *home, SDL_Event *e);
 

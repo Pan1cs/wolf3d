@@ -6,13 +6,13 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 10:49:48 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/26 12:31:33 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-void		arrow_keys_down(t_player *plr, SDL_KeyCode sym)
+void		keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 {
 	if (sym == k_s)
 		plr->input.down = 1;
@@ -22,9 +22,11 @@ void		arrow_keys_down(t_player *plr, SDL_KeyCode sym)
 		plr->input.right = 1;
 	if (sym == k_a)
 		plr->input.left = 1;
+	if (sym == k_esc || e->type == SDL_QUIT)
+		plr->input.quit = 1;
 }
 
-void		arrow_keys_up(t_player *plr, SDL_KeyCode sym)
+void		keys_up(t_player *plr, SDL_KeyCode sym)
 {
 	if (sym == k_s)
 		plr->input.down = 0;
@@ -36,40 +38,12 @@ void		arrow_keys_up(t_player *plr, SDL_KeyCode sym)
 		plr->input.left = 0;
 }
 
-void		flight_keys_down(t_player *plr, SDL_KeyCode sym)
-{
-	if (sym == k_z)
-		plr->input.z = 1;
-	if (sym == k_x)
-		plr->input.x = 1;
-}
-
-void		flight_keys_up(t_player *plr, SDL_KeyCode sym)
-{
-	if (sym == k_z)
-		plr->input.z = 0;
-	if (sym == k_x)
-		plr->input.x = 0;
-}
-
 void		key_input(t_player *plr, SDL_Event *e, t_home *home)
 {
-	if (e->type == SDL_QUIT)
-	{
-		cleanup_audio(&plr->audio);
-		error_output_sdl("User closed the window", home);
-	}
-	else if (e->type == SDL_KEYDOWN && e->key.keysym.sym == k_esc)
-	{
-		cleanup_audio(&plr->audio);
-		error_output_sdl("User closed the window", home);
-	}
-	else if (e->type == SDL_KEYDOWN)
-	{
-		arrow_keys_down(plr, e->key.keysym.sym);
-	}
+	if (e->type == SDL_KEYDOWN)
+		keys_down(plr, e->key.keysym.sym, e);
 	else if (e->type == SDL_KEYUP)
-	{
-		arrow_keys_up(plr, e->key.keysym.sym);
-	}
+		keys_up(plr, e->key.keysym.sym);
+	else
+		return ;
 }

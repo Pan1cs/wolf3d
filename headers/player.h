@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/21 14:36:51 by tmaarela          #+#    #+#             */
-/*   Updated: 2021/03/24 15:56:16 by jnivala          ###   ########.fr       */
+/*   Created: 2021/03/24 16:22:00 by jnivala           #+#    #+#             */
+/*   Updated: 2021/03/26 11:58:29 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct		s_input
 	int				down;
 	int				z;
 	int				x;
+	int				quit;
 }					t_input;
 
 typedef struct		s_player

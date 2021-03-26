@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:44:00 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/26 12:22:11 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,4 @@ void			movement(t_player *plr, t_home *home)
 	if (plr->input.up == 1 || plr->input.down == 1
 		|| plr->input.left == 1 || plr->input.right == 1)
 		player_move(plr, home, delta_time);
-	if (plr->input.z == 1)
-		plr->z += 0.1;
-	if (plr->input.x == 1)
-		plr->z -= 0.1;
 }

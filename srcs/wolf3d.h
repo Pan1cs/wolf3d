@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:44:58 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/26 11:36:47 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@
 # include "../libft/libft.h"
 # include "../headers/macros.h"
 # include "../headers/vectors.h"
-# include "../headers/entity.h"
 # include "../headers/sector.h"
 # include "../headers/calculations.h"
 # include "../headers/colours.h"
@@ -75,7 +74,6 @@
 # include "../headers/events.h"
 # include "../headers/porting.h"
 # include "../headers/parsing.h"
-# include "../headers/map.h"
 
 /*
 ** Miscellanious
@@ -88,6 +86,7 @@ void			error_output(char *msg);
 void			load_audio(t_audio *audio);
 void			cleanup_audio(t_audio *audio);
 void			play_footsteps(t_player *plr);
+void			quit_subsystems();
 
 /*
 ** Minimap
