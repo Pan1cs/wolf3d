@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/26 12:22:11 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/26 13:35:41 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void			player_move(t_player *plr, t_home *home, float delta_time)
 	}
 	else
 	{
-		printf("col dir x: %f, col dir y: %f\n", col_dir.x, col_dir.y);
+		ft_putstr("col dir x: , col dir y: ");
 	}
 }
 

@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/25 13:06:41 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/26 13:33:12 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,6 @@ SRC_LIST = \
 	$(SLASH)porting$(SLASH)textures.c \
 	$(SLASH)porting$(SLASH)open_files.c \
 	$(SLASH)raycaster$(SLASH)calc_distances.c \
-	$(SLASH)raycaster$(SLASH)calc_ground_texels.c \
 	$(SLASH)raycaster$(SLASH)calc_sector_texels.c \
 	$(SLASH)raycaster$(SLASH)calc_wall_texels.c \
 	$(SLASH)raycaster$(SLASH)draw_segment.c \
