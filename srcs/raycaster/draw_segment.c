@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/26 11:26:19 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 15:02:42 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,8 @@ static void		draw_vertical_wall_strip(t_xy offset, size_t height,
 		if (i++ % 16)
 			corr_texel = inv_z(texel);
 		if (cur_y + offset.y >= 0 && cur_y + offset.y < SCREEN_HEIGHT)
-			put_pixel(frame->draw_surf, offset.x,
-				cur_y + offset.y, get_texel(corr_texel.x * tex->w,
-				corr_texel.y * tex->h, tex));
+			draw_tex_pixel(tex, corr_texel,
+				(t_xy){offset.x, cur_y + offset.y}, frame);
 		cur_y++;
 		texel.y += frame->uv_step.y;
 	}

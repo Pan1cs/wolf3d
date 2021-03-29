@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:48:07 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 15:48:03 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ t_xy				init_ray(t_xy pos, t_xy plane, t_xy left, float angle);
 t_wall				cast_ray(t_xy pos, t_xy ray);
 void				draw_fov(t_home *home, t_player *plr);
 void				draw_2d_fov(t_frame *frame, t_player *plr);
-void				draw_2d(t_home *home, t_frame *frame, t_player *plr);
+void				draw_frame(t_home *home, t_frame *frame, t_player *plr);
 
 #endif

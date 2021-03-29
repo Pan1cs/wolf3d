@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 09:47:51 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 14:05:54 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 */
 
 # include "../SDL2/include/SDL2/SDL.h"
-# include "../SDL2/include/SDL2/SDL_ttf.h"
 # include <time.h>
 # include <fcntl.h>
 # include <dirent.h>
@@ -94,7 +93,6 @@ void			quit_subsystems();
 */
 
 t_xy			scale(t_xy a);
-void			draw_minimap(t_xy size, t_xy pos, t_xy dir, t_home *home);
 void			draw_grid(t_frame *frame);
 void			translate_world_view(t_home *home, t_xy step);
 void			transform_world_view(t_home *home, float delta_dir);

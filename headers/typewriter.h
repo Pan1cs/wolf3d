@@ -6,13 +6,13 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 09:46:39 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 10:30:39 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 12:58:57 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEWRITER_H
 # define TYPEWRITER_H
-# define TEXT_SIZE 3
+# define TEXT_SIZE 2
 
 typedef struct	s_pxl_c
 {

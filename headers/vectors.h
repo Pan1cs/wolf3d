@@ -6,18 +6,12 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:39 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:24:38 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 13:16:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
-
-typedef struct		s_screen_xy
-{
-	int				x;
-	int				y;
-}					t_screen_xy;
 
 typedef struct		s_xy
 {
@@ -65,4 +59,5 @@ t_xyz			inv_z(t_xyz a);
 float			interpolate_points(float x0, float x1, float y0, float y1);
 t_xy			vec3_to_vec2(t_xyz a);
 t_xy			vec2_normal(t_xy p0, t_xy p1);
+t_xy			vec2_halfway(t_xy p0, t_xy p1);
 #endif

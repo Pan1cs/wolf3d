@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:36:23 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 12:08:13 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		load_map_file(t_home *home, char *path)
 		buf[BUF_SIZE] = '\0';
 		ft_putendl("Mapdata read to buffer, proceeding.");
 		parse_sector_data(buf, home);
-		// calc_norm_vectors(home);
+		calc_normal_vectors(home);
 	}
 	return (0);
 }

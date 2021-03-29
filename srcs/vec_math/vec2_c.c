@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:14:05 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:58:29 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 13:04:28 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ float	interpolate_points(float x0, float x1, float y0, float y1)
 
 t_xy	vec2_normal(t_xy p0, t_xy p1)
 {
-	return ((t_xy){-(p1.y - p0.y), (p1.x - p0.x)});
+	return ((t_xy){(p1.y - p0.y), -(p1.x - p0.x)});
+}
+
+t_xy	vec2_halfway(t_xy p0, t_xy p1)
+{
+	return ((t_xy){(p0.x + p1.x) * 0.5, (p0.y + p1.y) * 0.5});
 }

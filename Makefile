@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/29 11:31:04 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/29 15:47:28 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ SRC_LIST = \
 	$(SLASH)raycaster$(SLASH)calc_distances.c \
 	$(SLASH)raycaster$(SLASH)calc_sector_texels.c \
 	$(SLASH)raycaster$(SLASH)calc_wall_texels.c \
+	$(SLASH)raycaster$(SLASH)colour_functions.c \
 	$(SLASH)raycaster$(SLASH)draw_segment.c \
 	$(SLASH)raycaster$(SLASH)get_distance.c \
 	$(SLASH)raycaster$(SLASH)get_wall_points.c \
@@ -84,7 +85,7 @@ SRC_LIST = \
 	$(SLASH)update_player$(SLASH)mouse_handle.c \
 	$(SLASH)update_player$(SLASH)movement.c \
 	$(SLASH)update_player$(SLASH)update_player.c \
-	$(SLASH)update_screen$(SLASH)draw_2d.c \
+	$(SLASH)update_screen$(SLASH)draw_frame.c \
 	$(SLASH)update_screen$(SLASH)draw_shapes.c \
 	$(SLASH)update_screen$(SLASH)draw_tex_pixel.c \
 	$(SLASH)update_screen$(SLASH)put_pixel.c \

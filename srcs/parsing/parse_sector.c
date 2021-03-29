@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:31:08 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:39:03 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 16:02:51 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,20 @@ void				add_point(t_point **point, t_point *new)
 	}
 }
 
+void				close_linkedlist(t_point **head)
+{
+	t_point *temp;
+
+	temp = *head;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = *head;
+}
+
 void				add_points(t_sector *sector,
 	unsigned char *buf, unsigned int **pos)
 {
 	size_t		walls;
-	t_point		*temp;
 	t_xy		coord;
 	int			tex_id;
 
@@ -75,10 +84,8 @@ void				add_points(t_sector *sector,
 		add_point(&sector->points, new_point(coord, tex_id));
 		add_point(&sector->orig_points, new_point(coord, tex_id));
 	}
-	temp = sector->points;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = sector->points;
+	close_linkedlist(&sector->points);
+	close_linkedlist(&sector->orig_points);
 }
 
 t_sector			*get_sector_data(unsigned char *buf, unsigned int *pos)

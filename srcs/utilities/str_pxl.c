@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 08:38:48 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:02:20 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 14:41:42 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	draw_letter(t_frame *frame, int x, int y, int *letter)
 			c = letter[(int)(cur.x + cur.y * 5)];
 			mod.x = cur.x * m + x;
 			mod.y = cur.y * m + y;
-			draw_rect(mod, vec2(TEXT_SIZE,TEXT_SIZE), frame, c);
+			draw_rect(mod, vec2(TEXT_SIZE, TEXT_SIZE), frame, c);
 			cur.x++;
 		}
 		cur.y++;

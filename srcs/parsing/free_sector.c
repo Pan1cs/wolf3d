@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:05:23 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:39:34 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 14:43:31 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	free_sectors(t_home *home)
 	while (i < home->nbr_of_sectors)
 	{
 		free_points(&home->sectors[i]->points, home->sectors[i]->nbr_of_walls);
-		free_points(&home->sectors[i]->orig_points, home->sectors[i]->nbr_of_walls);
+		free_points(&home->sectors[i]->orig_points,
+			home->sectors[i]->nbr_of_walls);
 		free(home->sectors[i]);
 		home->sectors[i] = NULL;
 		i++;

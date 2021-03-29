@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 13:36:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 10:45:29 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 15:47:53 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	update_screen(t_home *home, t_frame *frame, t_player *plr)
 {
-	draw_2d(home, frame, plr);
+	draw_frame(home, frame, plr);
 }

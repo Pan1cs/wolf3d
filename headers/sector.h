@@ -6,21 +6,21 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:08:38 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:31:43 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 15:34:26 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SECTOR_H
 # define SECTOR_H
 
-typedef struct			s_point
+typedef struct		s_point
 {
-	t_xy				x0;
-	t_xy				normal;
-	int					idx;
-	char				c;
-	struct s_point		*next;
-}						t_point;
+	t_xy			x0;
+	t_xy			normal;
+	float			wall_facing;
+	int				idx;
+	struct s_point	*next;
+}					t_point;
 
 typedef struct		s_sector
 {

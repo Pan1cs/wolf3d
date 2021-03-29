@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 09:42:12 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 10:55:55 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 14:40:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,8 @@ static t_pxl_c	letter_special_2(int l, int b, int c)
 							b, b, b, b, c, b, b, b, c, b, b, b, b, b, b, b, b}};
 	else
 		return (t_pxl_c){{b, b, b, b, b, b, c, b, c, b, b, b, b, c, b, b, b, c,
-							b, b, b, c, b, b, b, b, c, b, c, b, b, b, b, b, b }};
+							b, b, b, c, b, b, b, b, c, b, c, b, b, b, b, b, b}};
 }
-
 
 t_pxl_c			pxl_numbers(int l, int b, int c)
 {
