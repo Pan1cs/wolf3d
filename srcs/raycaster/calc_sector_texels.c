@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:38:48 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 11:39:05 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		find_biggest_square(t_sector *sector)
 	size_t		walls;
 	t_point		*temp;
 
-	walls = sector->nb_of_walls;
+	walls = sector->nbr_of_walls;
 	temp = sector->points;
 	while (walls)
 	{

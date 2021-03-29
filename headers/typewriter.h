@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   typewriter.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/23 15:10:02 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:33:02 by jnivala          ###   ########.fr       */
+/*   Created: 2021/03/29 09:46:39 by jnivala           #+#    #+#             */
+/*   Updated: 2021/03/29 10:30:39 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#ifndef TYPEWRITER_H
+# define TYPEWRITER_H
+# define TEXT_SIZE 3
 
-t_point		*new_point(t_xy x0, int idx);
-void		add_point(t_point **point, t_point *new);
-void		add_points(t_sector *sector, unsigned char *buf,
-	unsigned int  **pos);
-void		free_points(t_point **head, unsigned int nbr_of_walls);
-void		free_sectors(t_home *home);
-t_sector	*get_sector_data(unsigned char *buf, unsigned int *pos);
-void		calc_norm_vectors(t_home *home);
+typedef struct	s_pxl_c
+{
+	int			c[36];
+}				t_pxl_c;
 
+
+t_pxl_c			pxl_alphabet(int l, int b, int c);
+t_pxl_c			pxl_numbers(int l, int b, int c);
+void			str_pxl(t_frame *frame, t_xy coord, char *str);
 #endif

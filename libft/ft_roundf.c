@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.h                                           :+:      :+:    :+:   */
+/*   ft_roundf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 14:59:09 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:40:29 by jnivala          ###   ########.fr       */
+/*   Created: 2021/03/29 09:03:23 by jnivala           #+#    #+#             */
+/*   Updated: 2021/03/29 09:19:40 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EVENTS_H
-# define EVENTS_H
+float	ft_roundf(float nb, int prec)
+{
+	long double	fraction;
 
-/*
-** Event handlers
-*/
-
-void			keys_up(t_player *plr, SDL_KeyCode sym);
-void			keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e);
-void			key_input(t_player *plr, SDL_Event *e);
-void			mouse_handle(t_player *plr, t_home *home, SDL_Event *e);
-
-#endif
+	if (prec < 0)
+		return (nb);
+	fraction = 0.5;
+	while (prec)
+	{
+		fraction = fraction * 0.1;
+		prec--;
+	}
+	nb += fraction;
+	return (nb);
+}

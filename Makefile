@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/26 14:07:24 by jnivala          ###   ########.fr        #
+#    Updated: 2021/03/29 11:31:04 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ WIN_LIBRARY_PATHS = -LSDL2\lib -Llibft
 LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
 WIN_COMPILER_FLAGS = -Wall -Wextra -g
-LINUX_COMPILER_FLAGS = -Wall -Wextra -g
+LINUX_COMPILER_FLAGS = -Wall -Wextra -Werror -g
 
 WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lft
 LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lft -lm -g
@@ -67,6 +67,7 @@ SRC_LIST = \
 	$(SLASH)main.c \
 	$(SLASH)parsing$(SLASH)parse_sector.c \
 	$(SLASH)parsing$(SLASH)free_sector.c \
+	$(SLASH)parsing$(SLASH)calc_norm_vectors.c \
 	$(SLASH)porting$(SLASH)textures.c \
 	$(SLASH)porting$(SLASH)open_files.c \
 	$(SLASH)raycaster$(SLASH)calc_distances.c \
@@ -95,6 +96,9 @@ SRC_LIST = \
 	$(SLASH)utilities$(SLASH)error_output.c \
 	$(SLASH)utilities$(SLASH)linkedlist.c \
 	$(SLASH)utilities$(SLASH)setup.c \
+	$(SLASH)utilities$(SLASH)str_pxl.c \
+	$(SLASH)utilities$(SLASH)pxl_alphabet.c \
+	$(SLASH)utilities$(SLASH)pxl_numbers.c \
 	$(SLASH)vec_math$(SLASH)vec2_a.c \
 	$(SLASH)vec_math$(SLASH)vec2_b.c \
 	$(SLASH)vec_math$(SLASH)vec2_c.c \

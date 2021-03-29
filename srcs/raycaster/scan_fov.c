@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 12:37:06 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:13:13 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 11:32:35 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			scan_fov(t_home *home, t_frame *frame, t_player *plr,
 	continue_from_last_sector(frame->left.wall, &frame->left, frame);
 	while (frame->offset > frame->max_fov)
 	{
-		get_wall_pts(frame, home->sectors[frame->idx]->nb_of_walls, cur_pxl);
+		get_wall_pts(frame, home->sectors[frame->idx]->nbr_of_walls, cur_pxl);
 		cur_pxl = round_angle(vec2_ang(frame->left.l_pt, frame->left.r_pt),
 					&frame->pxl_offset);
 		if (check_if_portal(frame->left.wall) &&

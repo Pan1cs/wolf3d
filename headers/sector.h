@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:08:38 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/26 13:32:15 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 11:31:43 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct			s_point
 {
 	t_xy				x0;
+	t_xy				normal;
 	int					idx;
 	char				c;
 	struct s_point		*next;
@@ -25,7 +26,7 @@ typedef struct		s_sector
 {
 	t_point			*points;
 	t_point			*orig_points;
-	int				nb_of_walls;
+	unsigned int	nbr_of_walls;
 	int				idx_sector;
 	int				tex_floor;
 	int				tex_ceil;

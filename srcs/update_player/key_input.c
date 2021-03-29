@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/26 12:31:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 11:40:05 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		keys_up(t_player *plr, SDL_KeyCode sym)
 		plr->input.left = 0;
 }
 
-void		key_input(t_player *plr, SDL_Event *e, t_home *home)
+void		key_input(t_player *plr, SDL_Event *e)
 {
 	if (e->type == SDL_KEYDOWN)
 		keys_down(plr, e->key.keysym.sym, e);

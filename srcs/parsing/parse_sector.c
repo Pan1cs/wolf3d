@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:31:08 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:54:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 11:39:03 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void				add_points(t_sector *sector,
 	t_xy		coord;
 	int			tex_id;
 
-	walls = sector->nb_of_walls;
+	walls = sector->nbr_of_walls;
 	if (sector == NULL)
 		return ;
 	sector->points = NULL;
@@ -95,8 +95,8 @@ t_sector			*get_sector_data(unsigned char *buf, unsigned int *pos)
 	*pos += 6;
 	new_sector->idx_sector = ft_atoi((const char*)buf + *pos);
 	*pos += ft_nb_len(new_sector->idx_sector, 10) + 1;
-	new_sector->nb_of_walls = ft_atoi((const char*)buf + *pos);
-	*pos += ft_nb_len(new_sector->nb_of_walls, 10) + 1;
+	new_sector->nbr_of_walls = ft_atoi((const char*)buf + *pos);
+	*pos += ft_nb_len(new_sector->nbr_of_walls, 10) + 1;
 	new_sector->ground = ft_atoi((const char*)buf + *pos);
 	*pos += ft_nb_len(new_sector->ground, 10) + 1;
 	new_sector->ceiling = ft_atoi((const char*)buf + *pos);

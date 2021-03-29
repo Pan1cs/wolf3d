@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/26 11:36:47 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 09:47:51 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@
 # include "../headers/events.h"
 # include "../headers/porting.h"
 # include "../headers/parsing.h"
+# include "../headers/typewriter.h"
 
 /*
 ** Miscellanious

@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.h                                           :+:      :+:    :+:   */
+/*   calc_norm_vectors.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 14:59:09 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:40:29 by jnivala          ###   ########.fr       */
+/*   Created: 2021/03/29 11:13:37 by jnivala           #+#    #+#             */
+/*   Updated: 2021/03/29 11:33:14 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EVENTS_H
-# define EVENTS_H
+#include "../wolf3d.h"
 
-/*
-** Event handlers
-*/
+void		calc_norm_vectors(t_home *home)
+{
+	unsigned int	i;
+	unsigned int	j;
+	t_point			*temp;
 
-void			keys_up(t_player *plr, SDL_KeyCode sym);
-void			keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e);
-void			key_input(t_player *plr, SDL_Event *e);
-void			mouse_handle(t_player *plr, t_home *home, SDL_Event *e);
-
-#endif
+	i = 0;
+	while (i < home->nbr_of_sectors)
+	{
+		j = 0;
+		temp = home->sectors[i]->points;
+		while (j < home->sectors[i]->nbr_of_walls)
+		{
+			temp->normal = vec2_normal(temp->x0, temp->next->x0);
+			temp = temp->next;
+			j++;
+		}
+		i++;
+	}
+}

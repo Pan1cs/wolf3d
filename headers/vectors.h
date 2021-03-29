@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:39 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:59:39 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/29 11:24:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ typedef struct		s_maxpoints
 	t_xy			right;
 }					t_maxpoints;
 
-/*
-** Vector functions
-*/
-
 t_xy			vec2(float x, float y);
 t_xy			vec2_add(t_xy a, t_xy b);
 t_xy			vec2_dec(t_xy a, t_xy b);
@@ -68,5 +64,5 @@ t_xyz			vec3_add(t_xyz a, t_xyz b);
 t_xyz			inv_z(t_xyz a);
 float			interpolate_points(float x0, float x1, float y0, float y1);
 t_xy			vec3_to_vec2(t_xyz a);
-
+t_xy			vec2_normal(t_xy p0, t_xy p1);
 #endif
