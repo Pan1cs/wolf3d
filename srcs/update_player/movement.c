@@ -6,12 +6,24 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:33:41 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/30 10:33:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
-#include <stdio.h>
+
+// int				check_collision(t_sector *sector, t_player *plr, t_home *home)
+// {
+// 	t_point	*temp;
+
+
+// 	if (plr->pos.x < )
+// 	if (rect1.x < rect2.x + rect2.width &&
+// 		rect1.x + rect1.width > rect2.x &&
+// 		rect1.y < rect2.y + rect2.height &&
+// 		rect1.y + rect1.height > rect2.y)
+// }
+
 
 int				check_collision(t_sector *sector, t_player *plr, t_home *home)
 {
@@ -34,7 +46,7 @@ int				check_collision(t_sector *sector, t_player *plr, t_home *home)
 			if (get_distance(vec2(0, 0), point) < 2 && (p0->idx >= 0))
 			{
 				plr->current_sector = p0->idx;
-				// plr->pos = vec2_add(plr->pos, vec2_mul(plr->move_dir, 2));
+				plr->pos = vec2_add(plr->pos, vec2_mul(plr->move_dir, 2));
 				translate_world_view(home, vec2_mul(plr->move_dir, 2));
 				return (0);
 			}
@@ -89,12 +101,17 @@ void			player_move(t_player *plr, t_home *home, float delta_time)
 	play_footsteps(plr);
 	if (!collision)
 	{
-		// plr->pos = vec2_add(plr->pos, vec2_mul(plr->move_dir, 40 * delta_time));
+		plr->pos = vec2_add(plr->pos, vec2_mul(plr->move_dir, 40 * delta_time));
 		translate_world_view(home, vec2_mul(plr->move_dir, 40 * delta_time));
 	}
 	else
 	{
-		ft_putstr("col dir x: , col dir y: ");
+		ft_putstr("collision dir x: ");
+		ft_putstr(ft_ftoa(collision, 1));
+		ft_putchar('\n');
+		ft_putstr("col dir y: ");
+		ft_putstr(ft_ftoa(collision, 1));
+		ft_putchar('\n');
 	}
 }
 

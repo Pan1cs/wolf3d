@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 15:48:03 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/30 10:57:12 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void				scan_fov(t_home *home, t_frame *frame, t_player *plr, int current_pxl);
 void				calc_distances(t_frame *frame, t_player *plr);
 void				calc_wall_texels(t_frame *frame, SDL_Surface *tex);
 void				calc_ground_texels(t_sector *sector, t_frame *frame, SDL_Surface *tex);
-void				draw_segment(t_frame *frame, t_home *home, t_player *plr);
+void				draw_segment(t_frame *frame, t_home *home, t_player *plr, int wall);
 void				calc_sector_texels(t_sector *sector);
 void				draw_tex_col(t_tex_col *tex, float distance, SDL_Surface *surf);
 void				draw_fov_floor(t_home *home, t_player *plr);

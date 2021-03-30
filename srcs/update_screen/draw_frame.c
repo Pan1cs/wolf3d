@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 16:05:47 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/30 10:22:12 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,14 @@ void			draw_minimap(t_home *home, t_player *plr, t_frame *frame)
 
 void			draw_2d_fov(t_frame *frame, t_player *plr)
 {
-	t_xy	offset;
 	char	*dir_x;
 	char	*pos_x;
 	char	*pos_y;
 
 	// plr_pos = plr->pos;
-	offset = vec2(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f);
 	// fov_left = vec2_rot(plr->dir, -FOV * 0.5);
 	// fov_right = vec2_rot(plr->dir, FOV * 0.5);
-	dir_x = ft_ftoa(plr->dir.x, 7);
+	dir_x = ft_ftoa(plr->move_dir.x, 7);
 	pos_x = ft_ftoa(plr->pos.x, 5);
 	pos_y = ft_ftoa(plr->pos.y, 5);
 	str_pxl(frame, (t_xy){0, 10}, "x: ");

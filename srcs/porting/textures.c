@@ -6,11 +6,27 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:53:07 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/26 11:18:46 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/30 11:12:56 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
+
+int			get_floor(int floor_colour)
+{
+	if (floor_colour == -1)
+		return (darkolivegreen);
+	else if (floor_colour == -2)
+		return (steelblue);
+	else if (floor_colour == -3)
+		return (darkturquoise);
+	else if (floor_colour == -4)
+		return (snow);
+	else if (floor_colour == -5)
+		return (dimgray);
+	else
+		return (green);
+}
 
 int			get_texel(int x, int y, SDL_Surface *tex)
 {
