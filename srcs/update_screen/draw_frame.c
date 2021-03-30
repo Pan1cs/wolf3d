@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 14:33:39 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/30 15:14:39 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_xy			center_to_screen(t_xy loc)
 **
 */
 
-void			draw_minimap(t_home *home, t_player *plr, t_frame *frame)
+void			draw_minimap(t_home *home, t_frame *frame)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -55,9 +55,11 @@ void			draw_minimap(t_home *home, t_player *plr, t_frame *frame)
 				(t_xy){3.0f, 3.0f}, frame, yellow);
 			draw_line(center_to_screen(temp->x0),
 				center_to_screen(temp->next->x0), greenyellow, frame->draw_surf);
-			draw_line(center_to_screen(plr->pos), center_to_screen(vec2_add(plr->pos,
+			draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
+				center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
 	 			vec2_mul(fov_left, 400))), lightgreen, frame->draw_surf);
-			draw_line(center_to_screen(plr->pos), center_to_screen(vec2_add(plr->pos,
+			draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
+				center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
 	 			vec2_mul(fov_right, 400))), lightgreen, frame->draw_surf);
 			temp = temp->next;
 			j++;
@@ -72,7 +74,7 @@ void			draw_2d_fov(t_frame *frame, t_player *plr)
 	char	*pos_x;
 	char	*pos_y;
 
-	dir_x = ft_ftoa(plr->move_dir.x, 7);
+	dir_x = ft_ftoa(plr->dir.x, 7);
 	pos_x = ft_ftoa(plr->pos.x, 5);
 	pos_y = ft_ftoa(plr->pos.y, 5);
 	str_pxl(frame, (t_xy){0, 10}, "x: ");
@@ -98,5 +100,5 @@ void			draw_frame(t_home *home, t_frame *frame, t_player *plr)
 	frame->pxl_offset = 0.0f;
 	scan_fov(home, frame, plr, 0);
 	draw_2d_fov(frame, plr);
-	draw_minimap(home, plr, frame);
+	draw_minimap(home, frame);
 }
