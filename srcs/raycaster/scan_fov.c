@@ -52,7 +52,7 @@ void			scan_fov(t_home *home, t_frame *frame, t_player *plr,
 		if (check_if_portal(frame->left.wall) &&
 			!check_if_same_pt(cur_pxl, &frame->left))
 		{
-			setup_frame(frame, &new_frame, ++cur_pxl, frame->left.wall->idx);
+			setup_frame(frame, &new_frame, cur_pxl, frame->left.wall->idx);
 			scan_fov(home, &new_frame, plr, 0);
 			draw_segment(frame, home, plr, 0);
 			frame->offset = new_frame.offset;
