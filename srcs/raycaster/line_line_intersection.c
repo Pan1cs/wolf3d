@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 10:13:01 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 10:13:35 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/30 13:56:22 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ t_xy	line_intersection_raw(t_intersection *sect)
 		return (point);
 	}
 	return (vec2(-1, -1));
+}
+
+int		line_intersection_bool(t_intersection *sect)
+{
+	if (sect->neg > 0 && sect->neg <= 1 && sect->pos > -1)
+		return (1);
+	else
+		return (0);
 }
 
 void	calc_intersection_raw(t_point *pgon, t_ray *ray, t_intersection *sect)

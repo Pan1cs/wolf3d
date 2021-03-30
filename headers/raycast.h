@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 10:57:12 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/30 13:55:57 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void				calc_intersection(t_point *pgon, t_ray *ray, t_intersection *sect);
 t_xy				line_intersection(t_intersection *sect);
 void				calc_intersection_raw(t_point *pgon, t_ray *ray, t_intersection *sect);
 t_xy				line_intersection_raw(t_intersection *sect);
+int					line_intersection_bool(t_intersection *sect);
 void				get_wall_pts(t_frame *frame, int walls, int current_pxl);
 void				setup_frame(t_frame *frame, t_frame *new_frame, int current_pxl, int idx);
 int					check_connection(t_point *point, t_frame *frame);
