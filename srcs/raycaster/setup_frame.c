@@ -21,8 +21,8 @@ void		setup_frame(t_frame *frame, t_frame *new_frame,
 	if ((frame->offset - current_pxl) < 0)
 		new_frame->max_fov = 0.0f;
 	else
-		new_frame->max_fov = frame->offset - current_pxl + 1;
-	new_frame->offset = frame->offset - 1;
+		new_frame->max_fov = frame->offset - current_pxl;
+	new_frame->offset = frame->offset;
 	new_frame->draw_surf = frame->draw_surf;
 	new_frame->plr_offset = frame->plr_offset;
 	new_frame->pxl_offset = frame->pxl_offset;
