@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/29 15:47:28 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/01 11:10:51 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SRC_LIST = \
 	$(SLASH)raycaster$(SLASH)get_distance.c \
 	$(SLASH)raycaster$(SLASH)get_wall_points.c \
 	$(SLASH)raycaster$(SLASH)line_line_intersection.c \
+	$(SLASH)raycaster$(SLASH)line_segment_check.c \
 	$(SLASH)raycaster$(SLASH)recursion_checks.c \
 	$(SLASH)raycaster$(SLASH)scan_fov.c \
 	$(SLASH)raycaster$(SLASH)setup_frame.c \
@@ -103,6 +104,7 @@ SRC_LIST = \
 	$(SLASH)vec_math$(SLASH)vec2_a.c \
 	$(SLASH)vec_math$(SLASH)vec2_b.c \
 	$(SLASH)vec_math$(SLASH)vec2_c.c \
+	$(SLASH)vec_math$(SLASH)vec2_d.c \
 	$(SLASH)vec_math$(SLASH)vec3.c \
 
 HEADERS = $(addprefix $S,\

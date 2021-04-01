@@ -1,42 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   vec2_d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 16:22:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/31 14:57:53 by jnivala          ###   ########.fr       */
+/*   Created: 2021/04/01 11:09:03 by jnivala           #+#    #+#             */
+/*   Updated: 2021/04/01 11:11:44 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#include "../wolf3d.h"
 
-typedef struct		s_input
+t_xy	vec2_reverse(t_xy a)
 {
-	int				right;
-	int				left;
-	int				up;
-	int				down;
-	int				z;
-	int				x;
-	int				quit;
-}					t_input;
-
-typedef struct		s_player
-{
-	t_xy			pos;
-	t_xy			dir;
-	t_xy			move_dir;
-	float			pitch;
-	float			z;
-	float			height;
-	t_input			input;
-	Uint32			time;
-	t_audio			audio;
-	float			angle;
-	int				current_sector;
-}					t_player;
-
-#endif
+	return ((t_xy){-a.x, -a.y});
+}

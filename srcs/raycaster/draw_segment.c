@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 11:17:02 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/31 15:59:32 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@ static void		draw_vertical_floor_strip(t_xyz offset, size_t height,
 							int colour, t_frame *frame)
 {
 	size_t	cur_y;
-	float	scale;
-	float	step_y;
+	// float	scale;
 
 	if (offset.x < 0 || offset.x > SCREEN_WIDTH)
 		return ;
 	cur_y = 0;
-	scale = offset.y / SCREEN_HEIGHT * 0.5;
-	step_y = scale / height;
 	while (cur_y < height)
 	{
+		//scale = (height / (2.0 * cur_y - height)) / offset.z;
+		// scale = SCREEN_HEIGHT / ((cur_y + height) - SCREEN_HEIGHT) / offset.z;
+		// scale = 1.0f - scale;
 		if (cur_y + offset.y >= 0 && cur_y + offset.y < SCREEN_HEIGHT)
+			// put_pixel(frame->draw_surf, offset.x,
+			// 	cur_y + offset.y, colour_scale(colour, scale));
 			put_pixel(frame->draw_surf, offset.x,
-				cur_y + offset.y, colour_scale(colour, scale));
+				cur_y + offset.y, colour);
 		cur_y++;
-		scale += step_y;
 	}
 }
 

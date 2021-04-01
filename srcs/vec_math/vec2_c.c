@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:14:05 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 13:04:28 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/31 11:38:10 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_xy	vec2_normal(t_xy p0, t_xy p1)
 	return ((t_xy){(p1.y - p0.y), -(p1.x - p0.x)});
 }
 
-t_xy	vec2_halfway(t_xy p0, t_xy p1)
+float	vec2_cross(t_xy a, t_xy b)
 {
-	return ((t_xy){(p0.x + p1.x) * 0.5, (p0.y + p1.y) * 0.5});
+	return (a.x * b.y - a.y * b.x);
 }

@@ -6,19 +6,19 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:24 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 14:08:22 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/30 15:55:09 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROGRAM_H
 # define PROGRAM_H
 
-// typedef	struct		s_item
-// {
-// 	float			x;
-// 	float			y;
-// 	float			z;
-// }					t_item;
+typedef	struct		s_item
+{
+	float			x;
+	float			y;
+	float			z;
+}					t_item;
 
 typedef struct		s_window
 {

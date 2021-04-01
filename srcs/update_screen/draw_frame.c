@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 15:14:39 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/03/31 13:55:45 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,24 @@ void			draw_2d_fov(t_frame *frame, t_player *plr)
 	char	*dir_x;
 	char	*pos_x;
 	char	*pos_y;
+	char	*sector;
 
 	dir_x = ft_ftoa(plr->dir.x, 7);
 	pos_x = ft_ftoa(plr->pos.x, 5);
 	pos_y = ft_ftoa(plr->pos.y, 5);
+	sector = ft_itoa(plr->current_sector);
 	str_pxl(frame, (t_xy){0, 10}, "x: ");
 	str_pxl(frame, (t_xy){50, 10}, pos_x);
 	str_pxl(frame, (t_xy){0, 30}, "y: ");
 	str_pxl(frame, (t_xy){50, 30}, pos_y);
 	str_pxl(frame, (t_xy){0, 50}, "dir: ");
 	str_pxl(frame, (t_xy){50, 50}, dir_x);
+	str_pxl(frame, (t_xy){0, 70}, "sector:");
+	str_pxl(frame, (t_xy){0, 90}, sector);
 	free(dir_x);
 	free(pos_x);
 	free(pos_y);
+	free(sector);
 }
 
 void			draw_frame(t_home *home, t_frame *frame, t_player *plr)

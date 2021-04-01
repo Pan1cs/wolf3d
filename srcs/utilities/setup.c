@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 14:24:57 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/01 11:22:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void			init_player(t_player *plr)
 	plr->pitch = 240;
 	plr->dir.x = 0.0f;
 	plr->dir.y = 1.0f;
-	plr->move_dir.x = 0.0f;
-	plr->move_dir.y = 1.0f;
+	plr->move_dir.x = 0.785398163f;
+	plr->move_dir.y = 0.785398163f;
 	plr->input.down = 0;
 	plr->input.up = 0;
 	plr->input.right = 0;
