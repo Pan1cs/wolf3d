@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 14:05:54 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/01 21:48:22 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **	Non-standard includes
 */
 
-# include "../SDL2/include/SDL2/SDL.h"
+# include "/usr/local/include/SDL2/SDL.h"
 # include <time.h>
 # include <fcntl.h>
 # include <dirent.h>

@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/01 11:10:51 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/01 21:42:58 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ LIBFT_WIN = libft\libft.a
 LIBFT_LINUX = libft/libft.a
 
 WIN_INCLUDE_PATHS = -ISDL2\include\SDL2 -Ilibft
-LINUX_INCLUDE_PATHS = -I/SDL2/include/SDL2/ -I/usr/include/SDL2 -Ilibft
+LINUX_INCLUDE_PATHS = -I/usr/local/include/SDL2 -Ilibft
 
 WIN_LIBRARY_PATHS = -LSDL2\lib -Llibft
-LINUX_LIBRARY_PATHS = -L/lib/ -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
+LINUX_LIBRARY_PATHS = -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
 WIN_COMPILER_FLAGS = -Wall -Wextra -g
 LINUX_COMPILER_FLAGS = -Wall -Wextra -Werror -g
@@ -60,7 +60,7 @@ else
 	SLASH = /
 	MKDIR := mkdir -p
 	RM = /bin/rm -rf
-	SDL2_EXISTS := $(shell command -v sdl2-config 2> /dev/null)
+	WGET_EXISTS := $(shell command -v wget 2> /dev/null)
 endif
 
 SRC_LIST = \
@@ -137,14 +137,33 @@ $(LIBFT):
 	make -C libft
 
 dependencies:
-ifndef SDL2_EXISTS
-	@echo "Installing project dependencies."
-	@sudo apt-get install libsdl2-dev libsdl2-mixer-2.0-0 libsdl2-ttf-dev
-	@echo "Dependencies installed."
+ifndef WGET_EXISTS
+	sudo apt-get install wget
 endif
 ifeq ($(TARGET_SYSTEM), Linux)
-	@if [ ! -d "SDL2_mixer_linux/build" ]; then \
-	cd SDL2_mixer_linux && ./configure && make && sudo make install; \
+	@if [ ! -f "SDL2-2.0.14.tar.gz" ]; then \
+	wget https://www.libsdl.org/release/SDL2-2.0.14.tar.gz; \
+	fi
+	@if [ ! -d "SDL2-2.0.14" ]; then \
+	tar -xzf SDL2-2.0.14.tar.gz; \
+	fi
+	cd "SDL2-2.0.14" && \
+	$(MKDIR) build && \
+	cd build && \
+	../configure && \
+	make && \
+	sudo make install
+	@if [ ! -f "SDL2_mixer-2.0.4.tar.gz" ]; then \
+	wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz; \
+	fi
+	@if [ ! -d "SDL2_mixer-2.0.4" ]; then \
+	tar -xzf SDL2_mixer-2.0.4.tar.gz; \
+	fi
+	@if [ ! -d "SDL2_mixer-2.0.4/build" ]; then \
+	cd SDL2_mixer_linux && \
+	./configure && \
+	make && \
+	sudo make install; \
 	fi
 endif
 
