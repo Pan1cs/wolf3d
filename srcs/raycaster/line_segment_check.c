@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:03:40 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/01 09:59:20 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/01 11:40:41 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,42 +38,6 @@ int		point_is_not_in_the_wall(t_xy a, t_xy c, t_xy b)
 	else
 		return (0);
 }
-
-// int		are_points_colinear(t_xy p0, t_xy test_point, t_xy p1)
-// {
-// 	int		clockwise;
-
-// 	clockwise = (test_point.y - p0.y) * (p1.x - test_point.x) -
-// 				(test_point.x - p0.x) * (p1.y - test_point.y);
-// 	if (!clockwise)
-// 		return (0);
-// 	else
-// 	{
-// 		if (clockwise > 0)
-// 			return (1);
-// 		else
-// 			return (2);
-// 	}
-// }
-
-// int		check_if_lseg_intersects(t_point *p0, t_xy q1, t_xy q2)
-// {
-// 	int o1 = are_points_colinear(p0->x0, q1, p0->next->x0);
-// 	int o2 = are_points_colinear(p0->x0, q1, p0->next->x0);
-// 	int o3 = are_points_colinear(p0->next->x0, q2, p0->x0);
-// 	int o4 = are_points_colinear(p0->next->x0, q2, p0->x0);
-// 	if (o1 != o2 && o3 != o4)
-// 		return (1);
-// 	if (o1 == 0 && point_is_on_wall(p0->x0, p0->next->x0, q1))
-// 		return (1);
-// 	if (o2 == 0 && point_is_on_wall(p0->x0, q2, q1))
-// 		return (1);
-// 	if (o3 == 0 && point_is_on_wall(p0->next->x0, p0->x0, q2))
-// 		return (1);
-// 	if (o4 == 0 && point_is_on_wall(p0->next->x0, q1, q2))
-// 		return (1);
-// 	return (0);
-// }
 
 int		check_if_lseg_intersects(t_point *p0, t_xy pos, t_xy dir)
 {
