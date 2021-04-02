@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/01 21:42:58 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/02 12:11:37 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,7 +138,7 @@ $(LIBFT):
 
 dependencies:
 ifndef WGET_EXISTS
-	sudo apt-get install wget
+	sudo apt-get install wget -y
 endif
 ifeq ($(TARGET_SYSTEM), Linux)
 	@if [ ! -f "SDL2-2.0.14.tar.gz" ]; then \
@@ -147,12 +147,12 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	@if [ ! -d "SDL2-2.0.14" ]; then \
 	tar -xzf SDL2-2.0.14.tar.gz; \
 	fi
-	cd "SDL2-2.0.14" && \
-	$(MKDIR) build && \
-	cd build && \
-	../configure && \
+	@if [ ! -d "SDL2-2.0.14/build" ]; then \
+	cd "SDL2-2.0.14" && $(MKDIR) build && \
+	cd build && ../configure && \
 	make && \
-	sudo make install
+	sudo make install; \
+	fi
 	@if [ ! -f "SDL2_mixer-2.0.4.tar.gz" ]; then \
 	wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz; \
 	fi
@@ -160,7 +160,7 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	tar -xzf SDL2_mixer-2.0.4.tar.gz; \
 	fi
 	@if [ ! -d "SDL2_mixer-2.0.4/build" ]; then \
-	cd SDL2_mixer_linux && \
+	cd SDL2_mixer-2.0.4 && \
 	./configure && \
 	make && \
 	sudo make install; \
@@ -179,6 +179,10 @@ cleanobjdir: cleanobj
 clean: cleanobjdir
 ifeq ($(TARGET_SYSTEM), Linux)
 	make -C SDL2_mixer_linux/ clean
+	$(RM) SDL2_mixer-2.0.4.tar.gz
+	$(RM) SDL2-2.0.14.tar.gz
+	$(RM) SDL2-2.0.14
+	$(RM) SDL2_mixer-2.0.4
 endif
 	make -C libft clean
 
