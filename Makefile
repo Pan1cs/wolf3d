@@ -20,10 +20,10 @@ mkfile_dir := $(dir $(mkfile_path))
 LIBFT_WIN = libft\libft.a
 LIBFT_LINUX = libft/libft.a
 
-WIN_INCLUDE_PATHS = -ISDL2\include\SDL2 -Ilibft
+WIN_INCLUDE_PATHS = -ISDL2-2.0.14\i686-w64-mingw32\include\SDL2 -ISDL2_mixer-2.0.4\i686-w64-mingw32\include\SDL2 -Ilibft
 LINUX_INCLUDE_PATHS = -I/usr/local/include/SDL2 -Ilibft
 
-WIN_LIBRARY_PATHS = -LSDL2\lib -Llibft
+WIN_LIBRARY_PATHS = -LSDL2-2.0.14\i686-w64-mingw32\lib -LSDL2_mixer-2.0.4\i686-w64-mingw32\lib -Llibft
 LINUX_LIBRARY_PATHS = -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
 WIN_COMPILER_FLAGS = -Wall -Wextra -g
@@ -50,7 +50,7 @@ ifeq ($(TARGET_SYSTEM),Windows)
 	SLASH = \\
 	MKDIR = mkdir
 	RM = del /s/q
-	SDL2_EXISTS := SDL2_included
+	WGET_EXISTS := wget_not_needed
 else
 	INCLUDES = $(LINUX_INCLUDE_PATHS)
 	LIBS = $(LINUX_LIBRARY_PATHS)
@@ -165,6 +165,8 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	make && \
 	sudo make install; \
 	fi
+else
+	install.bat
 endif
 
 $(NAME): $(LIBFT) dependencies $(OBJ)
@@ -182,6 +184,13 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	$(RM) SDL2-2.0.14.tar.gz
 	$(RM) SDL2-2.0.14
 	$(RM) SDL2_mixer-2.0.4
+else
+	$(RM) SDL2-devel-2.0.14-mingw.tar.gz
+	$(RM) SDL2-2.0.14
+	rd /s /q SDL2-2.0.14
+	$(RM) SDL2_mixer-devel-2.0.4-mingw.tar.gz
+	$(RM) SDL2_mixer-2.0.4
+	rd /s /q SDL2_mixer-2.0.4
 endif
 	make -C libft clean
 
