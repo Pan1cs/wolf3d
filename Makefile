@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/02 12:11:37 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/02 12:26:35 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -178,7 +178,6 @@ cleanobjdir: cleanobj
 
 clean: cleanobjdir
 ifeq ($(TARGET_SYSTEM), Linux)
-	make -C SDL2_mixer_linux/ clean
 	$(RM) SDL2_mixer-2.0.4.tar.gz
 	$(RM) SDL2-2.0.14.tar.gz
 	$(RM) SDL2-2.0.14
