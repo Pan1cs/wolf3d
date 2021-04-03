@@ -6,11 +6,28 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/01 20:58:54 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/03 19:54:57 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
+
+int				check_if_crosses_wall(t_sector *sector, t_player *plr)
+{
+	unsigned int	i;
+	t_point			*temp;
+
+	i = 0;
+	temp = sector->points;
+	while (i < sector->nbr_of_walls)
+	{
+		if (check_if_lseg_intersects(temp, (t_xy){0.0f, 0.0f}, plr->move_dir))
+			return (temp->idx);
+		temp = temp->next;
+		i++;
+	}
+	return (-999);
+}
 
 int				check_if_inside(t_sector *sector, t_player *plr)
 {
@@ -32,10 +49,7 @@ int				check_if_inside(t_sector *sector, t_player *plr)
 		temp = temp->next;
 		i++;
 	}
-	if (walls_crossed % 2)
-		return (1);
-	else
-		return (0);
+	return (walls_crossed % 2);
 }
 
 static t_xy		check_player_dir(t_player *plr)
@@ -64,32 +78,40 @@ static t_xy		check_player_dir(t_player *plr)
 		return (vec2_rot(plr->move_dir, 90 * DEG_TO_RAD));
 	return (vec2(-1, -1));
 }
-
+/*
+** 1. iteration: Player movement unit vector is multiplied by delta_time, if that hits a wall then we are hitting a wall.
+** Problem: Sometimes the player current sector is not the one that the player movement vector is crossing.
+**
+*/
 void			player_move(t_player *plr, t_home *home, float delta_time)
 {
+	int				crossing;
 	unsigned int	i;
-	int				inside;
 
 	i = 0;
 	plr->move_dir = vec2(0.785398163f, 0.785398163f);
 	plr->move_dir = check_player_dir(plr);
-	translate_world_view(home, vec2_mul(plr->move_dir, delta_time * 0.15));
-	inside = check_if_inside(home->sectors[plr->current_sector], plr);
+	plr->move_dir = vec2_mul(plr->move_dir, delta_time * 0.05);
+	crossing = check_if_crosses_wall(home->sectors[plr->current_sector], plr);
 	play_footsteps(plr);
-	if (!inside)
+	if (crossing >= 0)
 	{
-		while (i < home->nbr_of_sectors
-			&& !(check_if_inside(home->sectors[i], plr)))
-			i++;
-		if (i >= home->nbr_of_sectors)
-			translate_world_view(home,
-				vec2_mul(vec2_reverse(plr->move_dir), delta_time * 0.15));
-		else
-			plr->current_sector = i;
+		translate_world_view(home, plr->move_dir);
+		plr->current_sector = crossing;
 	}
 	else
-		translate_world_view(home,
-			vec2_mul(vec2_reverse(plr->move_dir), delta_time * 0.1));
+	{
+		if (crossing == -999)
+		{
+			translate_world_view(home, plr->move_dir);
+			if (!(check_if_inside(home->sectors[plr->current_sector], plr)))
+			{
+				while (!(check_if_inside(home->sectors[i], plr)))
+					i++;
+				plr->current_sector = i;
+			}
+		}
+	}
 }
 
 void			movement(t_player *plr, t_home *home)
