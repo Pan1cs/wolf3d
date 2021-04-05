@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/03 20:40:07 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/05 14:20:59 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ static t_xy		check_player_dir(t_player *plr)
 void			player_move(t_player *plr, t_home *home, float delta_time)
 {
 	int				crossing;
+	unsigned int	i;
 
+	i = 0;
 	plr->move_dir = vec2(0.785398163f, 0.785398163f);
 	plr->move_dir = check_player_dir(plr);
 	plr->move_dir = vec2_mul(plr->move_dir, delta_time * 0.05);
@@ -96,7 +98,15 @@ void			player_move(t_player *plr, t_home *home, float delta_time)
 	else
 	{
 		if (crossing == -999)
+		{
 			translate_world_view(home, plr->move_dir);
+			if (!(check_if_inside(home->sectors[plr->current_sector], plr)))
+			{
+				while (!(check_if_inside(home->sectors[i], plr)))
+					i++;
+				plr->current_sector = i;
+			}
+		}
 	}
 }
 

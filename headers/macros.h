@@ -45,9 +45,6 @@
 # define AND (&&)
 # define OR (||)
 
-# define MAX(a, b) ((a) > (b) ? (a) : (b))
-# define MIN(a, b) ((a) < (b) ? (a) : (b))
-
 /*
 **
 *** Keyboard and Mouse macros
