@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/05 14:20:59 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/06 14:21:54 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int				check_if_inside(t_sector *sector, t_player *plr)
 	unsigned int	i;
 	t_ray			ray;
 	t_point			*temp;
-	t_intersection	isect;
 	int				walls_crossed;
 
 	i = 0;
@@ -42,10 +41,10 @@ int				check_if_inside(t_sector *sector, t_player *plr)
 	temp = sector->points;
 	ray.pos = (t_xy){0.0f, 0.0f};
 	ray.dir = plr->move_dir;
+	ray.dir = (t_xy){-400.0f, 0.0f};
 	while (i < sector->nbr_of_walls)
 	{
-		calc_intersection(temp, &ray, &isect);
-		walls_crossed += line_intersection_bool(&isect);
+		walls_crossed += check_if_lseg_intersects(temp, ray.pos, ray.dir);
 		temp = temp->next;
 		i++;
 	}
@@ -82,9 +81,7 @@ static t_xy		check_player_dir(t_player *plr)
 void			player_move(t_player *plr, t_home *home, float delta_time)
 {
 	int				crossing;
-	unsigned int	i;
-
-	i = 0;
+	
 	plr->move_dir = vec2(0.785398163f, 0.785398163f);
 	plr->move_dir = check_player_dir(plr);
 	plr->move_dir = vec2_mul(plr->move_dir, delta_time * 0.05);
@@ -93,21 +90,15 @@ void			player_move(t_player *plr, t_home *home, float delta_time)
 	if (crossing >= 0)
 	{
 		translate_world_view(home, plr->move_dir);
+		if (!(check_if_inside(home->sectors[crossing], plr)))
+		{
+			if (!(check_if_inside(home->sectors[plr->current_sector], plr)))
+				translate_world_view(home, vec2_reverse(plr->move_dir));
+		}
 		plr->current_sector = crossing;
 	}
-	else
-	{
-		if (crossing == -999)
-		{
-			translate_world_view(home, plr->move_dir);
-			if (!(check_if_inside(home->sectors[plr->current_sector], plr)))
-			{
-				while (!(check_if_inside(home->sectors[i], plr)))
-					i++;
-				plr->current_sector = i;
-			}
-		}
-	}
+	if (crossing == -999)
+		translate_world_view(home, plr->move_dir);
 }
 
 void			movement(t_player *plr, t_home *home)

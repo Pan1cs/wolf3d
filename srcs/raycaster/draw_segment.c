@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/31 15:59:32 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/06 11:48:23 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void			draw_vertically(t_frame *frame, t_home *home,
 	start = frame->top_left;
 	end = frame->top_right;
 	bottom = frame->bottom_left;
+	while (obj_x + start.x < 0)
+		step_one(&start, &bottom, &obj_x, frame);
 	tex_floor = get_floor(home->sectors[frame->idx]->tex_floor);
 	while (obj_x + start.x < end.x)
 	{
@@ -100,16 +102,43 @@ void			draw_vertically(t_frame *frame, t_home *home,
 	}
 }
 
+// void			draw_segment(t_frame *frame, t_home *home,
+// 	t_player *plr, int wall)
+// {
+// 	SDL_Surface	*wall_tex;
+
+// 	if (wall)
+// 		wall_tex = get_tex(frame->left.wall->idx, home->editor_tex);
+// 	else
+// 		wall_tex = get_tex(-1, home->editor_tex);
+// 	calc_distances(frame, plr);
+// 	calc_wall_texels(frame, wall_tex);
+// 	draw_vertically(frame, home, wall_tex, wall);
+// }
+
+/*
+**	Debuggin purposes
+*/
 void			draw_segment(t_frame *frame, t_home *home,
 	t_player *plr, int wall)
 {
-	SDL_Surface	*wall_tex;
+	t_xy top_l;
+	t_xy top_r;
+	t_xy bot_l;
+	t_xy bot_r;
+	int	colour; 
 
-	if (wall)
-		wall_tex = get_tex(frame->left.wall->idx, home->editor_tex);
-	else
-		wall_tex = get_tex(-1, home->editor_tex);
 	calc_distances(frame, plr);
-	calc_wall_texels(frame, wall_tex);
-	draw_vertically(frame, home, wall_tex, wall);
+	top_l = vec3_to_vec2(frame->top_left);
+	top_r = vec3_to_vec2(frame->top_right);
+	bot_l = vec3_to_vec2(frame->bottom_left);
+	bot_r = vec3_to_vec2(frame->bottom_right);
+	colour = wall;
+	colour = get_floor(home->sectors[frame->idx]->tex_floor);
+	draw_line(top_l, top_r, colour, frame->draw_surf);
+	draw_line(bot_l, bot_r, colour, frame->draw_surf);
+	draw_line(top_l, bot_l, colour, frame->draw_surf);
+	draw_line(top_r, bot_r, colour, frame->draw_surf);
 }
+
+
