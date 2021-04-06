@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/03 20:24:49 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/06 14:48:10 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void				get_wall_pts(t_frame *frame, int walls, int current_pxl);
 void				setup_frame(t_frame *frame, t_frame *new_frame, int current_pxl, int idx);
 int					check_connection(t_point *point, t_frame *frame);
 int					check_if_portal(t_point *point);
-int					check_if_same_pt(int current_pxl, t_ray_pt *fov);
+int					check_if_same_pt(int *current_pxl, t_ray_pt *fov);
 int					check_if_crosses_wall(t_sector *sector, t_player *plr);
 int					check_if_inside(t_sector *sector, t_player *plr);
 int					point_is_not_in_the_wall(t_xy p0, t_xy test_point, t_xy p1);

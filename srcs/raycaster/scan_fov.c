@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 12:37:06 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 11:14:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/06 14:48:24 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			scan_fov(t_home *home, t_frame *frame, t_player *plr,
 		cur_pxl = round_angle(vec2_ang(frame->left.l_pt, frame->left.r_pt),
 					&frame->pxl_offset);
 		if (check_if_portal(frame->left.wall) &&
-			!check_if_same_pt(cur_pxl, &frame->left))
+			!check_if_same_pt(&cur_pxl, &frame->left))
 		{
 			setup_frame(frame, &new_frame, cur_pxl, frame->left.wall->idx);
 			scan_fov(home, &new_frame, plr, 0);
