@@ -39,13 +39,26 @@ int		check_if_portal(t_point *p0)
 		return (FALSE);
 }
 
-int		check_if_same_pt(int current_pxl, t_ray_pt *fov)
+/*
+**
+**	Checking in the else statement if our angle is neglible compared to a pixel so that
+**	we will 100% enter the next sextor.
+**
+** 	(still needs fine tuning, we need to find a way to fix the 1 pixel black bars.)'
+**
+*/
+
+int		check_if_same_pt(int *current_pxl, t_ray_pt *fov)
 {
-	if (current_pxl == 0
+	if (*current_pxl < 1
 		&& get_distance(fov->l_pt, fov->r_pt) < 0.001)
 		return (TRUE);
 	else
-		return (FALSE);
+		{	
+			if (*current_pxl < 1)
+				*current_pxl = 1;
+			return (FALSE );
+		}
 }
 
 int		check_connection(t_point *point, t_frame *frame)
