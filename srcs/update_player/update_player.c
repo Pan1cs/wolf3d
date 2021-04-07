@@ -30,10 +30,13 @@ static void		check_player_dir(t_player *plr, t_xy *dir)
 		else
 			*dir = vec2_rot(*dir, 180 * DEG_TO_RAD);
 	}
-	if (plr->input.left == 1)
-		*dir = vec2_rot(*dir, -90 * DEG_TO_RAD);
-	if (plr->input.right == 1)
-		*dir = vec2_rot(*dir, 90 * DEG_TO_RAD);
+	else if (plr->input.up == 0)
+	{
+		if (plr->input.left == 1)
+			*dir = vec2_rot(*dir, -90 * DEG_TO_RAD);
+		if (plr->input.right == 1)
+			*dir = vec2_rot(*dir, 90 * DEG_TO_RAD);
+	}
 }
 
 static void		movement(t_player *plr, t_home *home)
@@ -47,7 +50,6 @@ static void		movement(t_player *plr, t_home *home)
 	if (delta_time < 1)
 		return ;
 	plr->time = current_time;
-
 	if (plr->input.up == 1 || plr->input.down == 1
 		|| plr->input.left == 1 || plr->input.right == 1)
 	{
