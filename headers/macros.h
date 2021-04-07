@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:21:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 13:24:41 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 13:35:13 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@
 **
 */
 
-# define k_esc SDLK_ESCAPE
-# define k_space SDLK_SPACE
-# define k_ctrl SDLK_LCTRL
-# define k_shift SDLK_LSHIFT
+# define K_ESC SDLK_ESCAPE
+# define K_SPACE SDLK_SPACE
+# define K_CTRL SDLK_LCTRL
+# define K_SHIFT SDLK_LSHIFT
 
-# define k_up SDLK_UP
-# define k_down SDLK_DOWN
-# define k_left SDLK_LEFT
-# define k_right SDLK_RIGHT
+# define K_UP SDLK_UP
+# define K_DOWN SDLK_DOWN
+# define K_LEFT SDLK_LEFT
+# define K_RIGHT SDLK_RIGHT
 
 # define K_W SDLK_w
 # define K_S SDLK_s

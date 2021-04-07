@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 11:36:52 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 13:36:43 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,27 @@ t_xy			center_to_screen(t_xy loc)
 	return (loc);
 }
 
-/*
-** 			if (i == 0)
-**			{
-**				str = ft_itoa((int)j);
-**				str_pxl(frame, center_to_screen(temp->x0), str);
-**				free(str);
-**				str = ft_ftoa(temp->wall_facing, 7);
-**				str_pxl(frame, center_to_screen(temp->normal), str);
-**				free(str);
-**			}
-**			draw_line(center_to_screen(vec2_halfway(temp->x0, temp->next->x0)),
-**			center_to_screen(temp->normal), red, frame->draw_surf);
-**
-*/
+static char		*compass_direction(t_xy *dir)
+{
+	if (dir->x <= N && dir->x > NW)
+		return (ft_strdup("N"));
+	else if (dir->x <= NW && dir->x > W)
+		return (ft_strdup("NW"));
+	else if (dir->x <= W && dir->x > SW)
+		return (ft_strdup("W"));
+	else if (dir->x <= SW && dir->x > S)
+		return (ft_strdup("SW"));
+	else if (dir->x <= S && dir->x > SE)
+		return (ft_strdup("S"));
+	else if (dir->x <= SE && dir->x > E)
+		return (ft_strdup("SE"));
+	else if (dir->x <= E && dir->x > NE)
+		return (ft_strdup("E"));
+	else if (dir->x <= NE && dir->x > N)
+		return (ft_strdup("NE"));
+	else
+		return (ft_strdup("NO DIR"));
+}
 
 void			draw_minimap(t_home *home, t_frame *frame)
 {
@@ -71,27 +78,17 @@ void			draw_minimap(t_home *home, t_frame *frame)
 
 void			draw_2d_fov(t_frame *frame, t_player *plr)
 {
-	char	*dir_x;
-	char	*pos_x;
-	char	*pos_y;
 	char	*sector;
+	char	*compass;
 
-	dir_x = ft_ftoa(plr->dir.x, 7);
-	pos_x = ft_ftoa(plr->pos.x, 5);
-	pos_y = ft_ftoa(plr->pos.y, 5);
+	compass = compass_direction(&plr->dir);
 	sector = ft_itoa(plr->current_sector);
-	str_pxl(frame, (t_xy){0, 10}, "x: ");
-	str_pxl(frame, (t_xy){50, 10}, pos_x);
-	str_pxl(frame, (t_xy){0, 30}, "y: ");
-	str_pxl(frame, (t_xy){50, 30}, pos_y);
 	str_pxl(frame, (t_xy){0, 50}, "dir: ");
-	str_pxl(frame, (t_xy){50, 50}, dir_x);
+	str_pxl(frame, (t_xy){50, 50}, compass);
 	str_pxl(frame, (t_xy){0, 70}, "sector:");
 	str_pxl(frame, (t_xy){0, 90}, sector);
-	free(dir_x);
-	free(pos_x);
-	free(pos_y);
 	free(sector);
+	free(compass);
 }
 
 void			draw_frame(t_home *home, t_frame *frame, t_player *plr)
