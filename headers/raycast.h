@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/06 16:18:49 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 10:44:59 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ enum				e_lines {
 	colinear = 0,
 	clockwise = 1,
 	c_clockwise = 2,
-	open_space = 9999
+	open_space = -9999
 };
 
 float				get_distance(t_xy p1, t_xy p2);
 void				calc_intersection(t_point *pgon, t_ray *ray, t_intersection *sect);
 t_xy				line_intersection(t_intersection *sect);
 void				calc_intersection_raw(t_point *pgon, t_ray *ray, t_intersection *sect);
-int					check_if_lseg_intersects(t_point *p0, t_xy pos, t_xy dir);
+int					check_if_lseg_intersects(t_point *p0, t_xy *pos, t_xy *dir);
 t_xy				line_intersection_raw(t_intersection *sect);
 int					line_intersection_bool(t_intersection *sect);
 void				get_wall_pts(t_frame *frame, int walls, int current_pxl);
@@ -95,5 +95,6 @@ void				draw_fov(t_home *home, t_player *plr);
 void				draw_2d_fov(t_frame *frame, t_player *plr);
 void				draw_frame(t_home *home, t_frame *frame, t_player *plr);
 int					orientation_of_three_points(t_xy a, t_xy b, t_xy c);
+int					point_is_on_the_lseg(t_xy a, t_xy c, t_xy b);
 
 #endif

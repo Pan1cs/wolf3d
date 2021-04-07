@@ -6,11 +6,28 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/06 16:54:28 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 10:55:52 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
+
+static int		check_if_corner(t_sector *sector, t_xy *pos)
+{
+	unsigned int	i;
+	t_point			*temp;
+
+	i = 0;
+	temp = sector->points;
+	while (i < sector->nbr_of_walls)
+	{
+		if (get_distance(temp->x0, *pos) < 10)
+			return (temp->idx);
+		temp = temp->next;
+		i++;
+	}
+	return (open_space);
+}
 
 int				check_if_crosses_wall(t_sector *sector, t_xy *dir, t_xy *pos)
 {
@@ -21,7 +38,7 @@ int				check_if_crosses_wall(t_sector *sector, t_xy *dir, t_xy *pos)
 	temp = sector->points;
 	while (i < sector->nbr_of_walls)
 	{
-		if (check_if_lseg_intersects(temp, *pos, *dir))
+		if (check_if_lseg_intersects(temp, pos, dir))
 			return (temp->idx);
 		temp = temp->next;
 		i++;
@@ -39,10 +56,10 @@ int				check_if_inside(t_sector *sector, t_xy *pos)
 	i = 0;
 	walls_crossed = 0;
 	temp = sector->points;
-	dir = (t_xy){-400.0f, 0.0f};
+	dir = (t_xy){-200000.0f, 0.0f};
 	while (i < sector->nbr_of_walls)
 	{
-		walls_crossed += check_if_lseg_intersects(temp, *pos, dir);
+		walls_crossed += check_if_lseg_intersects(temp, pos, &dir);
 		temp = temp->next;
 		i++;
 	}
@@ -76,31 +93,31 @@ static t_xy		check_player_dir(t_player *plr, t_xy *dir)
 	return (vec2(-1, -1));
 }
 
-static int			player_move(t_player *plr, t_home *home, float delta_time)
+static int		player_move(t_player *plr, t_home *home, float delta_time)
 {
-	int				crossing;
-	t_xy			pos;
+	int			crossing;
+	t_xy		pos;
 
 	pos = (t_xy){0.0f, 0.0f};
 	plr->move_dir = (t_xy){PLR_DIR, PLR_DIR};
 	plr->move_dir = check_player_dir(plr, &plr->move_dir);
 	plr->move_dir = vec2_mul(plr->move_dir, delta_time * 0.05);
 	crossing = check_if_crosses_wall(home->sectors[plr->current_sector], &plr->move_dir, &pos);
-	if (crossing != open_space && crossing >= 0 )
+	if (crossing >= 0)
 	{
+		if (check_if_corner(home->sectors[crossing], &pos) != open_space)
+			return (0);
 		translate_world_view(home, plr->move_dir);
 		if (check_if_inside(home->sectors[crossing], &pos))
 			plr->current_sector = crossing;
-		pos = vec2_mul(plr->move_dir, 100);
-		crossing = check_if_crosses_wall(home->sectors[plr->current_sector], &plr->move_dir, &pos);
-		if (crossing < 0 && crossing != open_space)
-			translate_world_view(home, vec2_reverse(plr->move_dir));
 	}
 	else if (crossing == open_space)
 	{
 		pos = vec2_mul(plr->move_dir, 100);
 		crossing = check_if_crosses_wall(home->sectors[plr->current_sector], &plr->move_dir, &pos);
 		if (crossing < 0 && crossing != open_space)
+			return (0);
+		if (check_if_corner(home->sectors[plr->current_sector], &pos) != open_space)
 			return (0);
 		if (check_if_inside(home->sectors[plr->current_sector], &(t_xy){0.0f, 0.0f}))
 			translate_world_view(home, plr->move_dir);
@@ -110,8 +127,8 @@ static int			player_move(t_player *plr, t_home *home, float delta_time)
 
 void			movement(t_player *plr, t_home *home)
 {
-	Uint32			current_time;
-	Uint32			delta_time;
+	Uint32		current_time;
+	Uint32		delta_time;
 
 	current_time = SDL_GetTicks();
 	delta_time = current_time - plr->time;
