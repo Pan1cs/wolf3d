@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:21:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:23:25 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 13:24:41 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,21 @@
 # define k_left SDLK_LEFT
 # define k_right SDLK_RIGHT
 
-# define k_w SDLK_w
-# define k_s SDLK_s
-# define k_a SDLK_a
-# define k_d SDLK_d
-# define k_q SDLK_q
-# define k_e SDLK_e
-# define k_z SDLK_z
-# define k_x SDLK_x
+# define K_W SDLK_w
+# define K_S SDLK_s
+# define K_A SDLK_a
+# define K_D SDLK_d
+# define K_Q SDLK_q
+# define K_E SDLK_e
+# define K_Z SDLK_z
+# define K_X SDLK_x
+# define N 6.28318530718f
+# define NW 5.49778714378f
+# define W 4.71238898038f
+# define SW 3.926990817f
+# define S 3.14159265359f
+# define SE 2.3561944902f
+# define E 1.5707963268f
+# define NE 0.7853981634f
 
 #endif
