@@ -14,27 +14,27 @@
 
 void		keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 {
-	if (sym == k_s)
+	if (sym == K_S)
 		plr->input.down = 1;
-	if (sym == k_w)
+	if (sym == K_W)
 		plr->input.up = 1;
-	if (sym == k_d)
+	if (sym == K_D)
 		plr->input.right = 1;
-	if (sym == k_a)
+	if (sym == K_A)
 		plr->input.left = 1;
-	if (sym == k_esc || e->type == SDL_QUIT)
+	if (sym == K_ESC || e->type == SDL_QUIT)
 		plr->input.quit = 1;
 }
 
 void		keys_up(t_player *plr, SDL_KeyCode sym)
 {
-	if (sym == k_s)
+	if (sym == K_S)
 		plr->input.down = 0;
-	if (sym == k_w)
+	if (sym == K_W)
 		plr->input.up = 0;
-	if (sym == k_d)
+	if (sym == K_D)
 		plr->input.right = 0;
-	if (sym == k_a)
+	if (sym == K_A)
 		plr->input.left = 0;
 }
 
