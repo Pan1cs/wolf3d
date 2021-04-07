@@ -71,7 +71,6 @@ SRC_LIST = \
 	$(SLASH)porting$(SLASH)textures.c \
 	$(SLASH)porting$(SLASH)open_files.c \
 	$(SLASH)raycaster$(SLASH)calc_distances.c \
-	$(SLASH)raycaster$(SLASH)calc_sector_texels.c \
 	$(SLASH)raycaster$(SLASH)calc_wall_texels.c \
 	$(SLASH)raycaster$(SLASH)colour_functions.c \
 	$(SLASH)raycaster$(SLASH)draw_segment.c \
