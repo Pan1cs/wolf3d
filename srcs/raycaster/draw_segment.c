@@ -6,16 +6,16 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 12:23:14 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 16:19:08 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-static void		draw_vertical_floor_strip(t_xyz offset, size_t height,
+static void			draw_vertical_floor_strip(t_xyz offset, Uint32 height,
 							int colour, t_frame *frame)
 {
-	size_t	cur_y;
+	Uint32		cur_y;
 	// float	scale;
 
 	if (offset.x < 0 || offset.x > SCREEN_WIDTH)
@@ -24,8 +24,8 @@ static void		draw_vertical_floor_strip(t_xyz offset, size_t height,
 	while (cur_y < height)
 	{
 		//scale = (height / (2.0 * cur_y - height)) / offset.z;
-		// scale = SCREEN_HEIGHT / ((cur_y + height) - SCREEN_HEIGHT) / offset.z;
-		// scale = 1.0f - scale;
+		//scale = SCREEN_HEIGHT / ((cur_y + height) - SCREEN_HEIGHT) / offset.z;
+		//scale = 1.0f - scale;
 		if (cur_y + offset.y >= 0 && cur_y + offset.y < SCREEN_HEIGHT)
 			// put_pixel(frame->draw_surf, offset.x,
 			// 	cur_y + offset.y, colour_scale(colour, scale));
@@ -35,7 +35,7 @@ static void		draw_vertical_floor_strip(t_xyz offset, size_t height,
 	}
 }
 
-static void		draw_vertical_wall_strip(t_xy offset, size_t height,
+static void			draw_vertical_wall_strip(t_xy offset, size_t height,
 							SDL_Surface *tex, t_frame *frame)
 {
 	size_t	cur_y;
@@ -45,10 +45,17 @@ static void		draw_vertical_wall_strip(t_xy offset, size_t height,
 
 	if (offset.x < 0 || offset.x > SCREEN_WIDTH)
 		return ;
-	cur_y = 0;
 	i = 0;
+	cur_y = 0;
 	texel = frame->uv_top_left;
 	corr_texel = texel;
+	if (offset.y < 0)
+	{
+		texel.y += frame->uv_step.y * -offset.y;
+		height = height + offset.y;
+		offset.y = 0;
+	}
+	height = height > SCREEN_HEIGHT ? SCREEN_HEIGHT : height;
 	while (cur_y < height)
 	{
 		if (i++ % 16)
@@ -61,7 +68,7 @@ static void		draw_vertical_wall_strip(t_xy offset, size_t height,
 	}
 }
 
-void			step_one(t_xyz *start, t_xyz *bottom,
+static void			step_one(t_xyz *start, t_xyz *bottom,
 	size_t *obj_x, t_frame *frame)
 {
 	start->y -= frame->step.y;
@@ -72,7 +79,7 @@ void			step_one(t_xyz *start, t_xyz *bottom,
 	*obj_x = *obj_x + 1;
 }
 
-void			draw_vertically(t_frame *frame, t_home *home,
+void				draw_vertically(t_frame *frame, t_home *home,
 	SDL_Surface *wall_tex, int wall)
 {
 	size_t		obj_x;
@@ -102,10 +109,11 @@ void			draw_vertically(t_frame *frame, t_home *home,
 	}
 }
 
-void			draw_segment(t_frame *frame, t_home *home,
+void				draw_segment(t_frame *frame, t_home *home,
 	t_player *plr, int wall)
 {
 	SDL_Surface	*wall_tex;
+	int			colour;
 
 	if (wall)
 		wall_tex = get_tex(frame->left.wall->idx, home->editor_tex);
@@ -113,30 +121,14 @@ void			draw_segment(t_frame *frame, t_home *home,
 		wall_tex = get_tex(-1, home->editor_tex);
 	calc_distances(frame, plr);
 	calc_wall_texels(frame, wall_tex);
-	draw_vertically(frame, home, wall_tex, wall);
+	if (plr->input.z == 1)
+		draw_vertically(frame, home, wall_tex, wall);
+	else
+	{
+		colour = get_floor(home->sectors[frame->idx]->tex_floor);
+		draw_line(vec3_to_vec2(frame->top_left), vec3_to_vec2(frame->top_right), colour, frame->draw_surf);
+		draw_line(vec3_to_vec2(frame->bottom_left), vec3_to_vec2(frame->bottom_right), colour, frame->draw_surf);
+		draw_line(vec3_to_vec2(frame->top_left), vec3_to_vec2(frame->bottom_left), colour, frame->draw_surf);
+		draw_line(vec3_to_vec2(frame->top_right), vec3_to_vec2(frame->bottom_right), colour, frame->draw_surf);
+	}
 }
-
-/*
-**	Debuggin' purposes
-*/
-// void			draw_segment(t_frame *frame, t_home *home,
-// 	t_player *plr, int wall)
-// {
-// 	t_xy top_l;
-// 	t_xy top_r;
-// 	t_xy bot_l;
-// 	t_xy bot_r;
-// 	int	colour;
-
-// 	calc_distances(frame, plr);
-// 	top_l = vec3_to_vec2(frame->top_left);
-// 	top_r = vec3_to_vec2(frame->top_right);
-// 	bot_l = vec3_to_vec2(frame->bottom_left);
-// 	bot_r = vec3_to_vec2(frame->bottom_right);
-// 	colour = wall;
-// 	colour = get_floor(home->sectors[frame->idx]->tex_floor);
-// 	draw_line(top_l, top_r, colour, frame->draw_surf);
-// 	draw_line(bot_l, bot_r, colour, frame->draw_surf);
-// 	draw_line(top_l, bot_l, colour, frame->draw_surf);
-// 	draw_line(top_r, bot_r, colour, frame->draw_surf);
-// }

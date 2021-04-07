@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:40:05 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 14:29:08 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ void		keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 		plr->input.right = 1;
 	if (sym == K_A)
 		plr->input.left = 1;
+	if (sym == K_Z && plr->input.z == 1)
+		plr->input.z = 0;
+	else if (sym == K_Z && plr->input.z == 0)
+		plr->input.z = 1;
 	if (sym == K_ESC || e->type == SDL_QUIT)
 		plr->input.quit = 1;
 }

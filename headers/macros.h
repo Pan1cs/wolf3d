@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:21:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 13:35:13 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 14:05:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@
 # define K_Z SDLK_z
 # define K_X SDLK_x
 # define N 6.28318530718f
-# define NW 5.49778714378f
-# define W 4.71238898038f
-# define SW 3.926990817f
+# define NW 0.7853981634f
+# define W 1.5707963268f
+# define SW 2.3561944902f
 # define S 3.14159265359f
-# define SE 2.3561944902f
-# define E 1.5707963268f
-# define NE 0.7853981634f
+# define SE 3.926990817f
+# define E 4.71238898039f
+# define NE 5.49778714378f
 
 #endif

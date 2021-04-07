@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 12:32:02 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 15:40:19 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void			init_player(t_player *plr)
 	plr->input.right = 0;
 	plr->input.left = 0;
 	plr->input.quit = 0;
+	plr->input.z = 1;
 	plr->time = 0;
 	plr->height = 0.5;
 	plr->angle = 0;
@@ -59,13 +60,21 @@ void			quit_subsystems(void)
 	SDL_Quit();
 }
 
+/*
+**	Free memory after setting frame_times.
+*/
 void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 {
 	load_map_file(home, map);
+	transform_world_view(home, -PLR_DIR);
 	home->win.width = SCREEN_WIDTH;
 	home->win.height = SCREEN_HEIGHT;
+	home->t.frame_times = (Uint32*)malloc(10 * sizeof(Uint32));
+	// if(!(home->t.frame_times = (Uint32)malloc(10 * sizeof(Uint32))))
+		// return (1);
+	home->t.frame_count = 0;
 	home->t.fps = 0;
-	home->t.frames = 0;
+	home->t.frame_time_last = SDL_GetTicks();
 	home->offset = vec2(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f);
 	home = init_sdl(home, frame);
 	load_audio(&plr->audio);

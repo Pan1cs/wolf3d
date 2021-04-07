@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 13:36:43 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 14:16:33 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,16 @@ t_xy			center_to_screen(t_xy loc)
 
 static char		*compass_direction(t_xy *dir)
 {
-	if (dir->x <= N && dir->x > NW)
-		return (ft_strdup("N"));
-	else if (dir->x <= NW && dir->x > W)
-		return (ft_strdup("NW"));
-	else if (dir->x <= W && dir->x > SW)
-		return (ft_strdup("W"));
-	else if (dir->x <= SW && dir->x > S)
-		return (ft_strdup("SW"));
-	else if (dir->x <= S && dir->x > SE)
-		return (ft_strdup("S"));
-	else if (dir->x <= SE && dir->x > E)
-		return (ft_strdup("SE"));
-	else if (dir->x <= E && dir->x > NE)
-		return (ft_strdup("E"));
-	else if (dir->x <= NE && dir->x > N)
-		return (ft_strdup("NE"));
+	if (dir->x <= NW && dir->x > 0)
+		return (ft_strdup("North"));
+	else if (dir->x <= N && dir->x > NE)
+		return (ft_strdup("North"));
+	else if (dir->x <= SW && dir->x > NW)
+		return (ft_strdup("West"));
+	else if (dir->x <= SE && dir->x > SW)
+		return (ft_strdup("South"));
+	else if (dir->x <= NE && dir->x > SE)
+		return (ft_strdup("East"));
 	else
 		return (ft_strdup("NO DIR"));
 }
@@ -87,6 +81,7 @@ void			draw_2d_fov(t_frame *frame, t_player *plr)
 	str_pxl(frame, (t_xy){50, 50}, compass);
 	str_pxl(frame, (t_xy){0, 70}, "sector:");
 	str_pxl(frame, (t_xy){0, 90}, sector);
+	str_pxl(frame, (t_xy){0, 400}, "Press z to switch to wireframe");
 	free(sector);
 	free(compass);
 }

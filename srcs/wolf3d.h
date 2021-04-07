@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/01 21:48:22 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 15:28:17 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void			load_audio(t_audio *audio);
 void			cleanup_audio(t_audio *audio);
 void			play_footsteps(t_player *plr);
 void			quit_subsystems();
+void			fps_timer(t_time *t);
 
 /*
 ** Minimap

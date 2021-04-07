@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/07 11:40:57 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/07 15:07:23 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ SRC_LIST = \
 	$(SLASH)utilities$(SLASH)str_pxl.c \
 	$(SLASH)utilities$(SLASH)pxl_alphabet.c \
 	$(SLASH)utilities$(SLASH)pxl_numbers.c \
+	$(SLASH)utilities$(SLASH)fps_timer.c \
 	$(SLASH)vec_math$(SLASH)vec2_a.c \
 	$(SLASH)vec_math$(SLASH)vec2_b.c \
 	$(SLASH)vec_math$(SLASH)vec2_c.c \

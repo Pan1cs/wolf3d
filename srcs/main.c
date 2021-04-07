@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:10:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/26 14:14:12 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 15:39:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int			main(int argc, char **argv)
 	setup(argv[1], &home, &plr, &frame);
 	while (!plr.input.quit)
 	{
+		fps_timer(&home.t);
 		update_player(&plr, &home, &e);
 		update_screen(&home, &frame, &plr);
+		str_pxl(&frame, (t_xy){0, 120}, ft_ftoa(home.t.fps, 7));
 		SDL_UpdateWindowSurface(home.win.window);
 		clear_surface(frame.draw_surf);
 		SDL_FreeSurface(frame.draw_surf);
