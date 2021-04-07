@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/06 15:12:24 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 12:32:02 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void			init_player(t_player *plr)
 
 void			quit_subsystems(void)
 {
-	SDL_QuitSubSystem(SDL_INIT_EVENTS);
-	SDL_QuitSubSystem(SDL_INIT_AUDIO);
-	SDL_QuitSubSystem(SDL_INIT_VIDEO);
+	// SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	// SDL_QuitSubSystem(SDL_INIT_AUDIO);
+	// SDL_QuitSubSystem(SDL_INIT_VIDEO);
 	SDL_Quit();
 }
 
