@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/03 20:54:27 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/07 11:40:57 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ SRC_LIST = \
 	$(SLASH)raycaster$(SLASH)setup_frame.c \
 	$(SLASH)update_player$(SLASH)key_input.c \
 	$(SLASH)update_player$(SLASH)mouse_handle.c \
-	$(SLASH)update_player$(SLASH)movement.c \
+	$(SLASH)update_player$(SLASH)player_move.c \
 	$(SLASH)update_player$(SLASH)update_player.c \
 	$(SLASH)update_screen$(SLASH)draw_frame.c \
 	$(SLASH)update_screen$(SLASH)draw_shapes.c \

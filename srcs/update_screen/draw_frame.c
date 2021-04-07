@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/06 11:10:50 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/07 11:36:52 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_xy			center_to_screen(t_xy loc)
 **
 */
 
-void			draw_minimap(t_home *home, t_frame *frame, t_player *plr)
+void			draw_minimap(t_home *home, t_frame *frame)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -58,17 +58,15 @@ void			draw_minimap(t_home *home, t_frame *frame, t_player *plr)
 		}
 		i++;
 	}
-	// draw_rect(center_to_screen((t_xy){0.0f, 0.0f}),
-	// 			(t_xy){3.0f, 3.0f}, frame, yellow);
-	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
-		center_to_screen(plr->move_dir), red, frame->draw_surf);
+	draw_rect(center_to_screen((t_xy){0.0f, 0.0f}),
+				(t_xy){3.0f, 3.0f}, frame, yellow);
 	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
 		center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
 	 	vec2_mul(fov_left, 400))), lightgreen, frame->draw_surf);
 	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
 		center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
 	 	vec2_mul(fov_right, 400))), lightgreen, frame->draw_surf);
-			
+
 }
 
 void			draw_2d_fov(t_frame *frame, t_player *plr)
@@ -108,5 +106,5 @@ void			draw_frame(t_home *home, t_frame *frame, t_player *plr)
 	frame->pxl_offset = 0.0f;
 	scan_fov(home, frame, plr, 0);
 	draw_2d_fov(frame, plr);
-	draw_minimap(home, frame, plr);
+	draw_minimap(home, frame);
 }
