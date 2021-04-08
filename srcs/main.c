@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:10:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 15:39:16 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:55:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int			main(int argc, char **argv)
 	t_player	plr;
 	t_frame		frame;
 	SDL_Event	e;
+	char		*fps;
 
 	if (argc == 1)
 		error_output("usage: .\\play [map file path]");
@@ -27,13 +28,16 @@ int			main(int argc, char **argv)
 		fps_timer(&home.t);
 		update_player(&plr, &home, &e);
 		update_screen(&home, &frame, &plr);
-		str_pxl(&frame, (t_xy){0, 120}, ft_ftoa(home.t.fps, 7));
+		fps = ft_itoa((int)home.t.fps);
+		str_pxl(&frame, (t_xy){0, 120}, fps);
 		SDL_UpdateWindowSurface(home.win.window);
 		clear_surface(frame.draw_surf);
 		SDL_FreeSurface(frame.draw_surf);
+		free(fps);
 	}
 	free_sectors(&home);
-	free_textures(&home.editor_tex, 7);
+	free_textures(&home.editor_tex, 5);
+	free(home.t.frame_times);
 	cleanup_audio(&plr.audio);
 	quit_subsystems();
 	ft_putendl("User closed the window");

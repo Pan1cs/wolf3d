@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 15:10:02 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 11:41:26 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 17:52:36 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ void		close_linkedlist(t_point **point);
 t_sector	*get_sector_data(unsigned char *buf, unsigned int *pos);
 void		calc_normal_vectors(t_home *home);
 int			parse_xpm_data(unsigned char *buf, t_texture **tex);
+int			parse_pixel_data(char *ptr, t_texture *tex);
+char		*parse_colour_data(char *ptr, t_texture *tex);
 #endif

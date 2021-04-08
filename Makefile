@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/08 08:49:27 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/08 18:04:59 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,10 @@ SRC_LIST = \
 	$(SLASH)parsing$(SLASH)parse_sector.c \
 	$(SLASH)parsing$(SLASH)parse_xpm.c \
 	$(SLASH)parsing$(SLASH)free_sector.c \
+	$(SLASH)parsing$(SLASH)mem_texture_data.c \
 	$(SLASH)parsing$(SLASH)calc_norm_vectors.c \
+	$(SLASH)parsing$(SLASH)parse_pixel_data.c \
+	$(SLASH)parsing$(SLASH)parse_colour_data.c \
 	$(SLASH)porting$(SLASH)textures.c \
 	$(SLASH)porting$(SLASH)open_files.c \
 	$(SLASH)raycaster$(SLASH)calc_distances.c \

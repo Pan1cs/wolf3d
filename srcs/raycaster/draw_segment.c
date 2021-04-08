@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 12:15:08 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:08:56 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ void				draw_segment(t_frame *frame, t_home *home,
 	int			colour;
 
 	if (wall)
-		wall_tex = get_tex(frame->left.wall->idx, home->editor_tex2);
+		wall_tex = get_tex(frame->left.wall->idx, home->editor_tex);
 	else
-		wall_tex = get_tex(-1, home->editor_tex2);
+		wall_tex = get_tex(-1, home->editor_tex);
 	calc_distances(frame, plr);
 	calc_wall_texels(frame, wall_tex);
 	if (plr->input.z == 1)

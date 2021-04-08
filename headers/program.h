@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:24 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 12:32:08 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 18:00:55 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct		s_colour_map
 {
 	char			*id;
+	int				colour_type;
 	int				colour;
 }					t_colour_map;
 
@@ -26,7 +27,6 @@ typedef	struct		s_texture
 	int				w;
 	int				h;
 	int				size;
-	int				color_type;
 	int				color_depth;
 	int				format;
 	int				bpp;
@@ -95,8 +95,7 @@ typedef struct		s_home
 {
 	t_window		win;
 	t_sector		**sectors;
-	SDL_Surface		**editor_tex;
-	t_texture		**editor_tex2;
+	t_texture		**editor_tex;
 	t_time			t;
 	t_xy			offset;
 	unsigned int	nbr_of_sectors;

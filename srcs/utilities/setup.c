@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 08:30:39 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 19:03:35 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,31 @@ void			quit_subsystems(void)
 */
 void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 {
+	int		ret;
 	load_map_file(home, map);
 	transform_world_view(home, -PLR_DIR);
 	home->win.width = SCREEN_WIDTH;
 	home->win.height = SCREEN_HEIGHT;
-	home->t.frame_times = (Uint32*)malloc(10 * sizeof(Uint32));
-	// if(!(home->t.frame_times = (Uint32)malloc(10 * sizeof(Uint32))))
-		// return (1);
+	home->t.frame_times = (Uint32*)malloc(sizeof(Uint32) * 11);
 	home->t.frame_count = 0;
 	home->t.fps = 0;
 	home->t.frame_time_last = SDL_GetTicks();
 	home->offset = vec2(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f);
+	if ((ret = load_textures(&home->editor_tex, 5)))
+		clean_up(home, ret);
 	home = init_sdl(home, frame);
 	load_audio(&plr->audio);
 	// if (Mix_PlayingMusic() == 0)
 	// 	Mix_PlayMusic(plr->audio.music, -1);
-	load_textures2(&home->editor_tex2, 7);
-	load_textures(&home->editor_tex, 7);
 	init_player(plr);
+}
+
+void			clean_up(t_home *home, int ret)
+{
+	free_textures(&home->editor_tex, ret);
+	free_sectors(home);
+	if (home->t.frame_times)
+		free(home->t.frame_times);
+	ft_putendl_fd("Shutting down.", 2);
+	exit(1);
 }
