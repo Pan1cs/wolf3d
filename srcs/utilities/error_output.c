@@ -16,6 +16,7 @@ void	error_output_sdl(char *msg, t_home *home)
 {
 	SDL_DestroyWindow(home->win.window);
 	ft_putendl_fd(msg, 2);
+	SDL_Quit();
 	exit(0);
 }
 

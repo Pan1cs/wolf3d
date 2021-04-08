@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 20:28:14 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 21:11:06 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static t_home	*init_sdl(t_home *home, t_frame *frame)
 		error_output_sdl("Fatal: SDL Initalization failed.", home);
 	home->win.window = SDL_CreateWindow("Wolf3d", 100, 100,
 		home->win.width, home->win.height, 0);
-	if (!home->win.window)
+	if (home->win.window == NULL)
 		error_output_sdl("Fatal: Failed to create a window.", home);
 	SDL_SetWindowPosition(home->win.window,
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 	frame->draw_surf = SDL_GetWindowSurface(home->win.window);
-	if (!frame->draw_surf)
+	if (frame->draw_surf == NULL)
 		error_output_sdl("Fatal: Failed to get window surface", home);
 	frame->min_step = 0.002454369f;
 	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) < 0)

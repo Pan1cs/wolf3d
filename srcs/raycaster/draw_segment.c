@@ -12,15 +12,15 @@
 
 #include "../wolf3d.h"
 
-static void			draw_vertical_floor_strip(t_xyz offset, Uint32 height,
+static void			draw_vertical_floor_strip(t_xyz offset, int height,
 							int colour, t_frame *frame)
 {
-	Uint32		cur_y;
+	int		cur_y;
 	// float	scale;
 
 	if (offset.x < 0 || offset.x > SCREEN_WIDTH)
 		return ;
-	cur_y = 0;
+	cur_y = -1;
 	while (cur_y < height)
 	{
 		//scale = (height / (2.0 * cur_y - height)) / offset.z;

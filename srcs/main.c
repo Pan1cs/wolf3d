@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:10:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 15:55:38 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 21:11:01 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			main(int argc, char **argv)
 	free_textures(&home.editor_tex, 5);
 	free(home.t.frame_times);
 	cleanup_audio(&plr.audio);
-	quit_subsystems();
+	SDL_Quit();
 	ft_putendl("User closed the window");
 	return (0);
 }
