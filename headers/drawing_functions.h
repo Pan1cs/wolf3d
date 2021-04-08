@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:58:56 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 11:36:36 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 12:26:15 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void			put_pixel(SDL_Surface *surf, int x, int y, int color);
 t_step			*steplen(t_step *ground, int current_y, t_ray_floor hor,
 	t_player *plr);
 Uint32			get_pixel(SDL_Surface *surface, int x, int y);
-void			draw_tex_pixel(SDL_Surface *tex, t_xyz texel,
+void			draw_tex_pixel(t_texture *tex, t_xyz texel,
 					t_xy pixel, t_frame *frame);
 #endif

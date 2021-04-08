@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:53:07 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 11:12:56 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 11:57:57 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ static int	load_texture(SDL_Surface **texture, char *path)
 	return (0);
 }
 
+static int	load_texture2(t_texture **texture, char *path)
+{
+	load_xpm_file(texture, path);
+	if (!(*texture))
+		error_output("ERROR: Texture not found.");
+	return (0);
+}
+
 int			load_textures(SDL_Surface ***textures, int nbr_of_textures)
 {
 	*textures = malloc(sizeof(SDL_Surface*) * (nbr_of_textures + 1));
@@ -60,6 +68,17 @@ int			load_textures(SDL_Surface ***textures, int nbr_of_textures)
 	load_texture(*(textures) + 4, "resources/paving1.bmp");
 	load_texture(*(textures) + 5, "resources/floor1.bmp");
 	load_texture(*(textures) + 6, "resources/tiles1.bmp");
+	return (0);
+}
+
+int			load_textures2(t_texture ***textures, int nbr_of_textures)
+{
+	*textures = malloc(sizeof(t_texture*) * (nbr_of_textures + 1));
+	load_texture2(*(textures) + 0, "resources/hull.xpm");
+	load_texture2(*(textures) + 1, "resources/hull2.xpm");
+	// load_texture2(*(textures) + 2, "resources/space.xpm");
+	load_texture2(*(textures) + 3, "resources/armory.xpm");
+	load_texture2(*(textures) + 4, "resources/door.xpm");
 	return (0);
 }
 

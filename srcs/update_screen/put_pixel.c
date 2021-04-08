@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:38:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 16:38:48 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 12:44:22 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ Uint32			get_pixel(SDL_Surface *surface, int x, int y)
 	p = (Uint32 *)((Uint8 *)surface->pixels +
 		y * surface->pitch + x * bpp);
 	return (*p);
+}
+
+Uint32			get_texel2(t_texture *tex, int x, int y)
+{
+	Uint32	*p;
+	Uint32	color;
+
+	p = tex->pixels + (x + tex->w * y);
+	color = *p;
+	return (color);
 }
 
 void			put_pixel(SDL_Surface *surf, int x, int y, int color)

@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/07 15:07:23 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/08 08:49:27 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ endif
 SRC_LIST = \
 	$(SLASH)main.c \
 	$(SLASH)parsing$(SLASH)parse_sector.c \
+	$(SLASH)parsing$(SLASH)parse_xpm.c \
 	$(SLASH)parsing$(SLASH)free_sector.c \
 	$(SLASH)parsing$(SLASH)calc_norm_vectors.c \
 	$(SLASH)porting$(SLASH)textures.c \

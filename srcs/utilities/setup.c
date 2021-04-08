@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 15:40:19 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 08:30:39 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 	load_audio(&plr->audio);
 	// if (Mix_PlayingMusic() == 0)
 	// 	Mix_PlayMusic(plr->audio.music, -1);
+	load_textures2(&home->editor_tex2, 7);
 	load_textures(&home->editor_tex, 7);
 	init_player(plr);
 }

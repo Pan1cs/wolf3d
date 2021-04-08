@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 10:29:36 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 12:18:04 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		calc_offsets(t_frame *frame)
 		set_offset_from_left_side(frame);
 }
 
-void			calc_wall_texels(t_frame *frame, SDL_Surface *tex)
+void			calc_wall_texels(t_frame *frame, t_texture *tex)
 {
 	frame->visible_wall_dist = get_distance(frame->left.l_pt, frame->left.r_pt);
 	frame->full_wall_dist = get_distance(frame->left.wall->x0,

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 16:19:08 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 12:15:08 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void			draw_vertical_floor_strip(t_xyz offset, Uint32 height,
 }
 
 static void			draw_vertical_wall_strip(t_xy offset, size_t height,
-							SDL_Surface *tex, t_frame *frame)
+							t_texture *tex, t_frame *frame)
 {
 	size_t	cur_y;
 	t_xyz	corr_texel;
@@ -80,7 +80,7 @@ static void			step_one(t_xyz *start, t_xyz *bottom,
 }
 
 void				draw_vertically(t_frame *frame, t_home *home,
-	SDL_Surface *wall_tex, int wall)
+	t_texture *wall_tex, int wall)
 {
 	size_t		obj_x;
 	t_xyz		start;
@@ -112,13 +112,13 @@ void				draw_vertically(t_frame *frame, t_home *home,
 void				draw_segment(t_frame *frame, t_home *home,
 	t_player *plr, int wall)
 {
-	SDL_Surface	*wall_tex;
+	t_texture	*wall_tex;
 	int			colour;
 
 	if (wall)
-		wall_tex = get_tex(frame->left.wall->idx, home->editor_tex);
+		wall_tex = get_tex(frame->left.wall->idx, home->editor_tex2);
 	else
-		wall_tex = get_tex(-1, home->editor_tex);
+		wall_tex = get_tex(-1, home->editor_tex2);
 	calc_distances(frame, plr);
 	calc_wall_texels(frame, wall_tex);
 	if (plr->input.z == 1)

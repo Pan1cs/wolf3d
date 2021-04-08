@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 12:37:06 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 12:12:24 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 12:25:46 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static float	round_angle(float angle, float *pxl_offset)
 		return ((float)trunc);
 }
 
-SDL_Surface		*get_tex(int idx, SDL_Surface **textures)
+t_texture		*get_tex(int idx, t_texture **textures)
 {
 	if (idx >= 0)
 		error_output("idx larger or equal to zero\n");

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 11:13:31 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 12:25:42 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ int					check_connection(t_point *point, t_frame *frame);
 int					check_if_portal(t_point *point);
 int					check_if_same_pt(int *current_pxl, t_ray_pt *fov);
 void				continue_from_last_sector(t_point *start, t_ray_pt *fov, t_frame *frame);
-void				draw_wall(t_frame *frame, SDL_Surface *tex, t_home *home, t_player *plr);
-SDL_Surface			*get_tex(int idx, SDL_Surface	**textures);
+void				draw_wall(t_frame *frame, t_texture *tex, t_home *home, t_player *plr);
+t_texture			*get_tex(int idx, t_texture **textures);
 void				scan_fov(t_home *home, t_frame *frame, t_player *plr, int current_pxl);
 void				calc_distances(t_frame *frame, t_player *plr);
-void				calc_wall_texels(t_frame *frame, SDL_Surface *tex);
+void				calc_wall_texels(t_frame *frame, t_texture *tex);
 void				draw_segment(t_frame *frame, t_home *home, t_player *plr, int wall);
 void				draw_2d_fov(t_frame *frame, t_player *plr);
 void				draw_frame(t_home *home, t_frame *frame, t_player *plr);
