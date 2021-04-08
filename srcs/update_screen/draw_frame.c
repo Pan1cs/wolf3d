@@ -77,11 +77,11 @@ void			draw_2d_fov(t_frame *frame, t_player *plr)
 
 	compass = compass_direction(&plr->dir);
 	sector = ft_itoa(plr->current_sector);
-	str_pxl(frame, (t_xy){0, 50}, "dir: ");
-	str_pxl(frame, (t_xy){50, 50}, compass);
-	str_pxl(frame, (t_xy){0, 70}, "sector:");
-	str_pxl(frame, (t_xy){0, 90}, sector);
-	str_pxl(frame, (t_xy){0, 400}, "Press z to switch to wireframe");
+	//str_pxl(frame, (t_xy){0, 50}, "dir: ",  5);
+	//str_pxl(frame, (t_xy){50, 50}, compass, ft_strlen(compass));
+	//str_pxl(frame, (t_xy){0, 70}, "sector:", 7);
+	//str_pxl(frame, (t_xy){0, 90}, sector, ft_strlen(sector));
+	//str_pxl(frame, (t_xy){0, 400}, "Press z to switch to wireframe", 30);
 	free(sector);
 	free(compass);
 }

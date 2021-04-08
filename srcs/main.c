@@ -27,7 +27,7 @@ int			main(int argc, char **argv)
 		fps_timer(&home.t);
 		update_player(&plr, &home, &e);
 		update_screen(&home, &frame, &plr);
-		str_pxl(&frame, (t_xy){0, 120}, ft_ftoa(home.t.fps, 7));
+		str_pxl(&frame, (t_xy){0, 120}, ft_ftoa(home.t.fps, 2));
 		SDL_UpdateWindowSurface(home.win.window);
 		clear_surface(frame.draw_surf);
 		SDL_FreeSurface(frame.draw_surf);
@@ -35,7 +35,7 @@ int			main(int argc, char **argv)
 	free_sectors(&home);
 	free_textures(&home.editor_tex, 7);
 	cleanup_audio(&plr.audio);
-	quit_subsystems();
+	SDL_Quit();
 	ft_putendl("User closed the window");
 	return (0);
 }
