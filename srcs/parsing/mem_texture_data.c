@@ -6,23 +6,22 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:37:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 19:28:26 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 20:53:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-void	free_pixels(t_texture *tex)
+void			free_pixels(t_texture *tex)
 {
 	if (tex != NULL)
 	{
 		free(tex->pixels);
 		tex->pixels = NULL;
-
 	}
 }
 
-int		free_full_colour_map(t_texture *tex)
+int				free_full_colour_map(t_texture *tex)
 {
 	int		i;
 
@@ -44,7 +43,6 @@ t_colour_map	*free_colour_id(t_texture *tex, int n)
 	return (NULL);
 }
 
-
 t_texture		*free_colour_map_n(t_texture *tex, int n)
 {
 	while (n--)
@@ -53,7 +51,7 @@ t_texture		*free_colour_map_n(t_texture *tex, int n)
 	return (NULL);
 }
 
-t_colour_map		**mem_alloc_colour_map(t_texture *tex)
+t_colour_map	**mem_alloc_colour_map(t_texture *tex)
 {
 	int		i;
 

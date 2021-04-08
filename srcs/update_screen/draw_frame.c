@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 14:16:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 20:56:49 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,8 @@ void			draw_minimap(t_home *home, t_frame *frame)
 	unsigned int	i;
 	unsigned int	j;
 	t_point			*temp;
-	t_xy			fov_left;
-	t_xy			fov_right;
 
 	i = 0;
-	fov_right = vec2(0.0f, 1.0f);
-	fov_left = vec2(1.0f, 0.0f);
 	while (i < home->nbr_of_sectors)
 	{
 		j = 0;
@@ -53,21 +49,13 @@ void			draw_minimap(t_home *home, t_frame *frame)
 		while (j < home->sectors[i]->nbr_of_walls)
 		{
 			draw_line(center_to_screen(temp->x0),
-				center_to_screen(temp->next->x0), greenyellow, frame->draw_surf);
+				center_to_screen(temp->next->x0),
+				greenyellow, frame->draw_surf);
 			temp = temp->next;
 			j++;
 		}
 		i++;
 	}
-	draw_rect(center_to_screen((t_xy){0.0f, 0.0f}),
-				(t_xy){3.0f, 3.0f}, frame, yellow);
-	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
-		center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
-	 	vec2_mul(fov_left, 400))), lightgreen, frame->draw_surf);
-	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
-		center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
-	 	vec2_mul(fov_right, 400))), lightgreen, frame->draw_surf);
-
 }
 
 void			draw_2d_fov(t_frame *frame, t_player *plr)
@@ -82,6 +70,14 @@ void			draw_2d_fov(t_frame *frame, t_player *plr)
 	str_pxl(frame, (t_xy){0, 70}, "sector:");
 	str_pxl(frame, (t_xy){0, 90}, sector);
 	str_pxl(frame, (t_xy){0, 400}, "Press z to switch to wireframe");
+	draw_rect(center_to_screen((t_xy){0.0f, 0.0f}),
+		(t_xy){3.0f, 3.0f}, frame, yellow);
+	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
+		center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
+		vec2_mul((t_xy){1.0f, 0.0f}, 400))), lightgreen, frame->draw_surf);
+	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
+		center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
+		vec2_mul((t_xy){0.0f, 1.0f}, 400))), lightgreen, frame->draw_surf);
 	free(sector);
 	free(compass);
 }
@@ -92,8 +88,8 @@ void			draw_frame(t_home *home, t_frame *frame, t_player *plr)
 	frame->old_idx = -1;
 	frame->max_fov = 0;
 	frame->offset = 640;
-	frame->left.l_pt = vec2(-1,-1);
-	frame->right.r_pt = vec2(-1,-1);
+	frame->left.l_pt = vec2(-1, -1);
+	frame->right.r_pt = vec2(-1, -1);
 	frame->plr_offset = vec2(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f);
 	frame->pxl_offset = 0.0f;
 	scan_fov(home, frame, plr, 0);

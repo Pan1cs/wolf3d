@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:21:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 14:05:16 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 20:47:27 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 
 # define PI (3.1415926535f)
 # define PI_BY_TWO (1.570796326f)
+# define INV_PI_BY_TWO (0.1591549367f)
 # define TWO_PI (6.283185307f)
 # define RAD_TO_DEG (57.29577951f)
 # define DEG_TO_RAD (0.0174532925f)

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 08:45:03 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 18:42:02 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 20:38:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,14 @@ int				parse_xpm_data(unsigned char *buf, t_texture **tex)
 		error_output("ERROR: Malformed data");
 	ptr = ptr + 7;
 	if ((ret = parse_header_data(ptr, *tex)))
-		error_handling(ret, *tex);
+		return (error_handling(ret, tex));
 	ptr = strchr((const char*)ptr, '\n') + 1;
 	ptr = parse_colour_data(ptr, *tex);
 	if (!ptr)
-	{
-		free(*tex);
-		*tex = NULL;
-		ft_putendl("ERROR: Malformed colour data.");
-		return (1);
-	}
+		return (error_handling(5, tex));
 	if ((ret = parse_pixel_data(ptr, *tex)))
-		error_handling(ret, *tex);
+		return (error_handling(ret, tex));
+	free_colour_id(*tex, (*tex)->nbr_of_colours);
 	free_full_colour_map(*tex);
 	return (0);
 }

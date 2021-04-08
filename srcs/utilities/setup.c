@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 19:03:35 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 20:28:14 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,13 @@ void			init_player(t_player *plr)
 
 void			quit_subsystems(void)
 {
-	// SDL_QuitSubSystem(SDL_INIT_EVENTS);
-	// SDL_QuitSubSystem(SDL_INIT_AUDIO);
-	// SDL_QuitSubSystem(SDL_INIT_VIDEO);
 	SDL_Quit();
 }
 
-/*
-**	Free memory after setting frame_times.
-*/
 void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 {
 	int		ret;
+
 	load_map_file(home, map);
 	transform_world_view(home, -PLR_DIR);
 	home->win.width = SCREEN_WIDTH;
@@ -79,8 +74,8 @@ void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 		clean_up(home, ret);
 	home = init_sdl(home, frame);
 	load_audio(&plr->audio);
-	// if (Mix_PlayingMusic() == 0)
-	// 	Mix_PlayMusic(plr->audio.music, -1);
+	if (Mix_PlayingMusic() == 0)
+		Mix_PlayMusic(plr->audio.music, -1);
 	init_player(plr);
 }
 

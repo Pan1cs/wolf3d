@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:41:32 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 17:42:24 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 20:20:40 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*check_eof_or_eol(int *h, int *pxl_idx, char *ptr, t_texture *tex)
 	if (!ft_strncmp(ptr, "\",\n", 3))
 	{
 		if (*pxl_idx % (tex->w - 1 + tex->h * *h) != 0)
-			error_handling(8, tex);
+			error_handling(8, &tex);
 		ptr += 3;
 		*h = *h + 1;
 	}
@@ -51,7 +51,7 @@ int			parse_pixel_data(char *ptr, t_texture *tex)
 	pxl_idx = 0;
 	if (!(tex->pixels = (Uint32*)malloc(sizeof(Uint32)
 		* (tex->w * tex->h + 1))))
-		return (6);
+		return (5);
 	while (*ptr)
 	{
 		i = 0;
