@@ -52,17 +52,10 @@ void			init_player(t_player *plr)
 	plr->current_sector = 0;
 }
 
-void			quit_subsystems(void)
-{
-	// SDL_QuitSubSystem(SDL_INIT_EVENTS);
-	// SDL_QuitSubSystem(SDL_INIT_AUDIO);
-	// SDL_QuitSubSystem(SDL_INIT_VIDEO);
-	SDL_Quit();
-}
-
 /*
 **	Free memory after setting frame_times.
 */
+
 void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 {
 	load_map_file(home, map);
