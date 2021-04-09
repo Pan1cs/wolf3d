@@ -96,7 +96,6 @@ void			draw_frame(t_home *home, t_frame *frame, t_player *plr)
 	frame->pxl_offset = 0.0f;
 	frame->left.l_pt = (t_xy){-1.0f, -1.0f};
 	frame->right.r_pt = (t_xy){-1.0f, -1.0f};
-	frame->plr_offset = (t_xy){SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f};
 	scan_fov(home, frame, plr, 0);
 	if (plr->input.minimap)
 	{
