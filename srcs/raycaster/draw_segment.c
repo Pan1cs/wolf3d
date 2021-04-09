@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 12:16:01 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 13:14:02 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,35 @@ static void			draw_vertical_floor_strip(t_xyz offset, int height,
 							int colour, t_frame *frame)
 {
 	int		cur_y;
-	// float	scale;
+	float	scale;
+	float	step_z;
 
 	if (offset.x < 0 || offset.x > SCREEN_WIDTH)
 		return ;
 	cur_y = -1;
+	scale = (SCREEN_HEIGHT - offset.y) / (SCREEN_HEIGHT - frame->pitch);
+	step_z = (1 - scale) / offset.y;
+	scale = 0.3f;
 	while (cur_y < height)
 	{
-		//scale = (height / (2.0 * cur_y - height)) / offset.z;
-		//scale = SCREEN_HEIGHT / ((cur_y + height) - SCREEN_HEIGHT) / offset.z;
-		//scale = 1.0f - scale;
 		if (cur_y + offset.y >= 0 && cur_y + offset.y < SCREEN_HEIGHT)
-			// put_pixel(frame->draw_surf, offset.x,
-			// 	cur_y + offset.y, colour_scale(colour, scale));
 			put_pixel(frame->draw_surf, offset.x,
-				cur_y + offset.y, colour);
+				cur_y + offset.y, colour_scale(colour, scale));
 		cur_y++;
+		scale += step_z;
 	}
+}
+
+static void			fit_to_screen_space(t_xy *offset, t_xyz *texel,
+	size_t *height, float *uv_step_y)
+{
+	if (offset->y < 0)
+	{
+		texel->y += *uv_step_y * -offset->y;
+		*height += offset->y;
+		offset->y = 0;
+	}
+	*height = *height > SCREEN_HEIGHT ? SCREEN_HEIGHT : *height;
 }
 
 static void			draw_vertical_wall_strip(t_xy offset, size_t height,
@@ -49,13 +61,7 @@ static void			draw_vertical_wall_strip(t_xy offset, size_t height,
 	cur_y = 0;
 	texel = frame->uv_top_left;
 	corr_texel = texel;
-	if (offset.y < 0)
-	{
-		texel.y += frame->uv_step.y * -offset.y;
-		height = height + offset.y;
-		offset.y = 0;
-	}
-	height = height > SCREEN_HEIGHT ? SCREEN_HEIGHT : height;
+	fit_to_screen_space(&offset, &texel, &height, &frame->uv_step.y);
 	while (cur_y < height)
 	{
 		if (i++ % 16)

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 12:19:46 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:58:10 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_frame
 	float			screen_wall_len;
 	float			tex_mult;
 	float			ratio;
+	int				pitch;
 }				t_frame;
 
 enum			e_lines {

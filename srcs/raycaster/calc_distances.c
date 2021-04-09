@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 09:54:19 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:59:13 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void	calc_distances(t_frame *frame, t_player *plr)
 		frame->top_left.x, frame->top_right.x);
 	frame->step.z = interpolate_points(frame->top_left.y, frame->top_right.y,
 		frame->top_left.x, frame->top_right.x);
+	frame->pitch = plr->pitch;
 }
