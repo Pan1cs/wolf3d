@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:06:59 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 19:09:28 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 19:47:27 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,25 +92,23 @@ static int	check_if_portals_connected(int i, t_home *home)
 static int	check_if_convex(t_sector *sector)
 {
 	unsigned int	i;
-	t_xy			delta_1;
-	t_xy			delta_2;
+	t_xy			dxy_1;
+	t_xy			dxy_2;
 	t_point			*temp;
 	float			z;
 
 	i = 0;
 	temp = sector->points;
-	if (sector->nbr_of_walls < 3)
-		return (0);
 	while (i < sector->nbr_of_walls)
 	{
-		delta_1 = vec2_sub(temp->next->x0, temp->x0);
-		delta_2 = vec2_sub(temp->next->next->x0, temp->next->x0);
+		dxy_1 = vec2_sub(temp->next->x0, temp->x0);
+		dxy_2 = vec2_sub(temp->next->next->x0, temp->next->x0);
 		if (i == 0)
-			z = vec2_cross(delta_1, delta_2);
+			z = vec2_cross(dxy_1, dxy_2);
 		else
 		{
-			if (!(vec2_cross(delta_1, delta_2) < 0 && z < 0)
-				|| !(vec2_cross(delta_1, delta_2) > 0 && z > 0))
+			if (!(vec2_cross(dxy_1, dxy_2) < 0 && z < 0)
+				|| !(vec2_cross(dxy_1, dxy_2) > 0 && z > 0))
 				return (0);
 		}
 		temp = temp->next;
@@ -128,6 +126,8 @@ int			validate_sectors_data(t_home *home)
 		map_error_output(1, home);
 	while (i < home->nbr_of_sectors)
 	{
+		if (home->sectors[i]->nbr_of_walls < 3)
+			map_error_output(4, home);
 		if (check_if_sector_has_same_points(home->sectors[i]))
 			map_error_output(2, home);
 		if (check_if_portals_connected((int)i, home))

@@ -6,11 +6,12 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 19:09:10 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 19:23:27 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 19:43:55 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
+
 int			check_if_lines_cut(t_sector *sector)
 {
 	unsigned int	i;

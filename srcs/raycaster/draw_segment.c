@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 13:14:02 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 19:43:20 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,13 @@ void				draw_segment(t_frame *frame, t_home *home,
 	else
 	{
 		colour = get_floor(home->sectors[frame->idx]->tex_floor);
-		draw_line(vec3_to_vec2(frame->top_left), vec3_to_vec2(frame->top_right), colour, frame->draw_surf);
-		draw_line(vec3_to_vec2(frame->bottom_left), vec3_to_vec2(frame->bottom_right), colour, frame->draw_surf);
-		draw_line(vec3_to_vec2(frame->top_left), vec3_to_vec2(frame->bottom_left), colour, frame->draw_surf);
-		draw_line(vec3_to_vec2(frame->top_right), vec3_to_vec2(frame->bottom_right), colour, frame->draw_surf);
+		draw_line(vec3_to_vec2(frame->top_left),
+			vec3_to_vec2(frame->top_right), colour, frame->draw_surf);
+		draw_line(vec3_to_vec2(frame->bottom_left),
+			vec3_to_vec2(frame->bottom_right), colour, frame->draw_surf);
+		draw_line(vec3_to_vec2(frame->top_left),
+			vec3_to_vec2(frame->bottom_left), colour, frame->draw_surf);
+		draw_line(vec3_to_vec2(frame->top_right),
+			vec3_to_vec2(frame->bottom_right), colour, frame->draw_surf);
 	}
 }
