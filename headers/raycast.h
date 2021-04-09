@@ -31,7 +31,6 @@ typedef struct	s_frame
 	int				old_idx;
 	SDL_Surface		*draw_surf;
 	SDL_Surface		*ground[4];
-	t_xy			plr_offset;
 	float			pxl_offset;
 	t_ray_pt		left;
 	t_ray_pt		right;
