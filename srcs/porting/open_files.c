@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 15:59:22 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:30:49 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ int		load_map_file(t_home *home, char *path)
 		buf[size] = '\0';
 		ft_putendl("Mapdata read to buffer, proceeding.");
 		parse_sector_data(buf, home);
+		if (validate_sectors_data(home))
+		{
+			free_sectors(home);
+			ft_putendl_fd("Mapdata read to buffer, proceeding.", 2);
+			exit(0);
+		}
 		calc_normal_vectors(home);
 	}
 	return (0);

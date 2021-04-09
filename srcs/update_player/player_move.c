@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:26:07 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:09:06 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int		check_if_wall(t_sector *sector, t_xy *dir, t_xy *pos)
 	return (open_space);
 }
 
-static int		plr_inside(t_sector *sector, t_xy *pos)
+int				plr_inside(t_sector *sector, t_xy *pos)
 {
 	unsigned int	i;
 	t_xy			dir;

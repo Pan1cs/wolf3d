@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:10 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:11:53 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 15:06:13 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int				load_map_file(t_home *home, char *path);
 int				load_textures(t_texture ***textures, int nbr_of_textures);
 int				load_xpm_file(t_texture **texture, char *path);
 t_colour_map	**mem_alloc_colour_map(t_texture *tex);
+int				validate_sectors_data(t_home *home);
 
 #endif
