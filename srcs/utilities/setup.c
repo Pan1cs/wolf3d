@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 15:40:19 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:05:44 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,43 @@ void			init_player(t_player *plr)
 	plr->input.right = 0;
 	plr->input.left = 0;
 	plr->input.quit = 0;
-	plr->input.z = 1;
+	plr->input.wireframe = 1;
+	plr->input.minimap = 1;
+	plr->input.info = 1;
 	plr->time = 0;
 	plr->height = 0.5;
 	plr->angle = 0;
 	plr->current_sector = 0;
 }
 
-/*
-**	Free memory after setting frame_times.
-*/
-
 void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 {
+	int		ret;
+
 	load_map_file(home, map);
 	transform_world_view(home, -PLR_DIR);
 	home->win.width = SCREEN_WIDTH;
 	home->win.height = SCREEN_HEIGHT;
-	home->t.frame_times = (Uint32*)malloc(10 * sizeof(Uint32));
-	// if(!(home->t.frame_times = (Uint32)malloc(10 * sizeof(Uint32))))
-		// return (1);
+	home->t.frame_times = (Uint32*)malloc(sizeof(Uint32) * 11);
 	home->t.frame_count = 0;
 	home->t.fps = 0;
 	home->t.frame_time_last = SDL_GetTicks();
 	home->offset = vec2(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f);
+	if ((ret = load_textures(&home->editor_tex, 5)))
+		clean_up(home, ret);
 	home = init_sdl(home, frame);
 	load_audio(&plr->audio);
-	// if (Mix_PlayingMusic() == 0)
-	// 	Mix_PlayMusic(plr->audio.music, -1);
-	load_textures(&home->editor_tex, 7);
+	if (Mix_PlayingMusic() == 0)
+		Mix_PlayMusic(plr->audio.music, -1);
 	init_player(plr);
+}
+
+void			clean_up(t_home *home, int ret)
+{
+	free_textures(&home->editor_tex, ret);
+	free_sectors(home);
+	if (home->t.frame_times)
+		free(home->t.frame_times);
+	ft_putendl_fd("Shutting down.", 2);
+	exit(1);
 }

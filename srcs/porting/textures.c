@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:53:07 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 11:12:56 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:52:46 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,46 +28,39 @@ int			get_floor(int floor_colour)
 		return (green);
 }
 
-int			get_texel(int x, int y, SDL_Surface *tex)
+static int	load_texture(t_texture **texture, char *path)
 {
-	int		offset_x;
-	int		offset_y;
-	int		bpp;
-	Uint32	*p;
-
-	offset_x = x % tex->w;
-	offset_y = y % tex->h;
-	bpp = tex->format->BytesPerPixel;
-	p = (Uint32*)((Uint8*)tex->pixels + offset_y * tex->pitch + offset_x * bpp);
-	return (*p);
-}
-
-static int	load_texture(SDL_Surface **texture, char *path)
-{
-	*texture = SDL_LoadBMP(path);
+	load_xpm_file(texture, path);
 	if (!(*texture))
-		error_output("ERROR: Texture not found.");
+	{
+		ft_putendl("ERROR: Texture loading failed.");
+		return (1);
+	}
 	return (0);
 }
 
-int			load_textures(SDL_Surface ***textures, int nbr_of_textures)
+int			load_textures(t_texture ***textures, int nbr_of_textures)
 {
-	*textures = malloc(sizeof(SDL_Surface*) * (nbr_of_textures + 1));
-	load_texture(*(textures) + 0, "resources/wall_bricks.bmp");
-	load_texture(*(textures) + 1, "resources/wall_dark.bmp");
-	load_texture(*(textures) + 2, "resources/wall_skulls.bmp");
-	load_texture(*(textures) + 3, "resources/tiles1.bmp");
-	load_texture(*(textures) + 4, "resources/paving1.bmp");
-	load_texture(*(textures) + 5, "resources/floor1.bmp");
-	load_texture(*(textures) + 6, "resources/tiles1.bmp");
+	*textures = malloc(sizeof(t_texture*) * (nbr_of_textures + 1));
+	if (load_texture(*(textures) + 0, "resources/hull.xpm"))
+		return (1);
+	if (load_texture(*(textures) + 1, "resources/hull2.xpm"))
+		return (2);
+	if (load_texture(*(textures) + 2, "resources/armory.xpm"))
+		return (3);
+	if (load_texture(*(textures) + 3, "resources/door.xpm"))
+		return (4);
+	if (load_texture(*(textures) + 4, "resources/loading_bay.xpm"))
+		return (5);
 	return (0);
 }
 
-int			free_textures(SDL_Surface ***textures, int nbr_of_textures)
+int			free_textures(t_texture ***textures, int nbr_of_textures)
 {
 	while (nbr_of_textures--)
 	{
-		SDL_FreeSurface(*(*(textures) + nbr_of_textures));
+		free_pixels(*(*(textures) + nbr_of_textures));
+		free(*(*(textures) + nbr_of_textures));
 	}
 	free(*textures);
 	return (0);

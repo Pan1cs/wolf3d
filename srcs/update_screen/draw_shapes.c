@@ -6,35 +6,31 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:38:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:50:34 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 08:54:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-int		draw_line(t_xy start, t_xy end, int color,
-	SDL_Surface *surf)
+int		draw_line(t_xy p0, t_xy p1, int colour, SDL_Surface *surf)
 {
-	t_xy	length;
-	t_xy	ratio;
-	int		pixels;
-	t_xy	pos;
+	t_xy		delta;
+	t_xy		pixel;
+	long int	pixels;
 
-	length = vec2(fabs(end.x - start.x), fabs(end.y - start.y));
-	pixels = (length.x > length.y) ? (length.x) : (length.y);
-	ratio.x = (start.y != end.y) ? (length.x / length.y) : 1;
-	ratio.y = (start.x != end.x) ? (length.y / length.x) : 1;
-	ratio.x = (ratio.x > ratio.y) ? 1 : (ratio.x);
-	ratio.y = (ratio.y > ratio.x) ? 1 : (ratio.y);
-	pos.x = start.x;
-	pos.y = start.y;
-	while (pixels-- > 0)
+	delta.x = p1.x - p0.x;
+	delta.y = p1.y - p0.y;
+	pixels = sqrt((delta.x * delta.x) + (delta.y * delta.y));
+	delta.x /= pixels;
+	delta.y /= pixels;
+	pixel.x = p0.x;
+	pixel.y = p0.y;
+	while (pixels)
 	{
-		if (pos.x >= 0 && pos.x < SCREEN_WIDTH
-			&& pos.y >= 0 && pos.y < SCREEN_HEIGHT)
-			put_pixel(surf, pos.x, pos.y, color);
-		pos.x += ratio.x * ((start.x < end.x) ? 1 : -1);
-		pos.y += ratio.y * ((start.y < end.y) ? 1 : -1);
+		put_pixel(surf, (int)pixel.x, (int)pixel.y, colour);
+		pixel.x += delta.x;
+		pixel.y += delta.y;
+		--pixels;
 	}
 	return (TRUE);
 }
@@ -68,28 +64,9 @@ void	draw_rect_center(t_xy xy, t_xy wh, t_frame *frame)
 	}
 }
 
-void	draw_grid(t_frame *frame)
+t_xy	center_to_screen(t_xy loc)
 {
-	int		i;
-	t_xy	dim;
-
-	dim = vec2(1, 1);
-	i = 0;
-	while (i < dim.y)
-	{
-		draw_line(
-			vec2(0, i * MINIMAP_SIZE),
-			vec2(dim.x * MINIMAP_SIZE,
-				i * MINIMAP_SIZE), 0xFFFFFF, frame->draw_surf);
-		++i;
-	}
-	i = 0;
-	while (i < dim.x)
-	{
-		draw_line(
-			vec2(i * MINIMAP_SIZE, 0),
-			vec2(i * MINIMAP_SIZE,
-				dim.y * MINIMAP_SIZE), 0xFFFFFF, frame->draw_surf);
-		++i;
-	}
+	loc.x += 0.5 * SCREEN_WIDTH;
+	loc.y += 0.5 * SCREEN_HEIGHT;
+	return (loc);
 }

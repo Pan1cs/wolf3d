@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 16:19:08 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:16:01 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void			draw_vertical_floor_strip(t_xyz offset, int height,
 }
 
 static void			draw_vertical_wall_strip(t_xy offset, size_t height,
-							SDL_Surface *tex, t_frame *frame)
+							t_texture *tex, t_frame *frame)
 {
 	size_t	cur_y;
 	t_xyz	corr_texel;
@@ -68,19 +68,8 @@ static void			draw_vertical_wall_strip(t_xy offset, size_t height,
 	}
 }
 
-static void			step_one(t_xyz *start, t_xyz *bottom,
-	size_t *obj_x, t_frame *frame)
-{
-	start->y -= frame->step.y;
-	bottom->y += frame->step.y;
-	start->z -= frame->step.z;
-	frame->uv_top_left.x += frame->uv_step.x;
-	frame->uv_top_left.z += frame->uv_step.z;
-	*obj_x = *obj_x + 1;
-}
-
 void				draw_vertically(t_frame *frame, t_home *home,
-	SDL_Surface *wall_tex, int wall)
+	t_texture *wall_tex, int wall)
 {
 	size_t		obj_x;
 	t_xyz		start;
@@ -112,7 +101,7 @@ void				draw_vertically(t_frame *frame, t_home *home,
 void				draw_segment(t_frame *frame, t_home *home,
 	t_player *plr, int wall)
 {
-	SDL_Surface	*wall_tex;
+	t_texture	*wall_tex;
 	int			colour;
 
 	if (wall)
@@ -121,7 +110,7 @@ void				draw_segment(t_frame *frame, t_home *home,
 		wall_tex = get_tex(-1, home->editor_tex);
 	calc_distances(frame, plr);
 	calc_wall_texels(frame, wall_tex);
-	if (plr->input.z == 1)
+	if (plr->input.wireframe == 1)
 		draw_vertically(frame, home, wall_tex, wall);
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 08:51:30 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/06 15:02:43 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:49:09 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,15 @@ int		check_if_portal(t_point *p0)
 }
 
 /*
-**
-**	Checking in the else statement if our angle is neglible compared to a pixel so that
-**	we will 100% enter the next sextor.
-**
-** 	(still needs fine tuning, we need to find a way to fix the 1 pixel black bars.)'
-**
+**	Checking in the else statement if our angle is neglible compared
+**	to a pixel so that we will 100% enter the next sextor.
+**	(still needs fine tuning, we need to find a way to
+**	fix the 1 pixel black bars.)'
 */
 
 int		check_if_same_pt(int *current_pxl, t_ray_pt *fov)
 {
-	if (*current_pxl < 1 && get_distance(fov->l_pt, fov->r_pt) < 0.001)
+	if (*current_pxl < 1 && vec2_eucl_dist(fov->l_pt, fov->r_pt) < 0.001)
 		return (TRUE);
 	else
 	{
@@ -61,28 +59,6 @@ int		check_if_same_pt(int *current_pxl, t_ray_pt *fov)
 		return (FALSE);
 	}
 }
-
-// int		check_if_same_pt(int current_pxl, t_ray_pt *fov)
-// {
-// 	float	left_z;
-// 	float	right_z;
-// 	float	left_x;
-// 	float	right_x;
-
-// 	if (current_pxl == 0)
-// 	{
-// 		left_z = vec2_perp_dist(fov->l_pt);
-// 		right_z = vec2_perp_dist(fov->r_pt);
-// 		left_x = SCREEN_WIDTH - ((SCREEN_HEIGHT / left_z) * fov->l_pt.x) + 15;
-// 		right_x = SCREEN_WIDTH - ((SCREEN_HEIGHT / right_z) * fov->r_pt.x) + 15;
-// 		if (right_x - left_x < 1.0f)
-// 			return (TRUE);
-// 		else
-// 			return (FALSE);
-// 	}
-// 	else
-// 		return (FALSE );
-// }
 
 int		check_connection(t_point *point, t_frame *frame)
 {

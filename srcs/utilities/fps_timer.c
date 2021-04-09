@@ -6,25 +6,24 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:00:37 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 15:45:21 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:21:34 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-
 void	fps_timer(t_time *t)
 {
 	Uint32			frametimes_index;
-	Uint32			getticks;
+	Uint32			current_time;
 	Uint32			count;
 	Uint32			i;
 
 	i = 0;
 	frametimes_index = t->frame_count % 10;
-	getticks = SDL_GetTicks();
-	t->frame_times[frametimes_index] = getticks - t->frame_time_last;
-	t->frame_time_last = getticks;
+	current_time = SDL_GetTicks();
+	t->frame_times[frametimes_index] = current_time - t->frame_time_last;
+	t->frame_time_last = current_time;
 	t->frame_count = t->frame_count + 1;
 	if (t->frame_count < 10)
 		count = t->frame_count;

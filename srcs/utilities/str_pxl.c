@@ -6,29 +6,43 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 08:38:48 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 14:41:42 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:33:25 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-static void	draw_letter(t_frame *frame, int x, int y, int *letter)
+static t_pxl_c	letter_logic(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (pxl_alphabet(c, black, white));
+	if (c >= '0' && c <= '9')
+		return (pxl_numbers(c, black, white));
+	if (c == ':' || c == '\'' || c == '!' || c == '?' || c == ' '
+		|| c == '.' || c == ',' || c == '(' || c == ')' || c == '%')
+		return (pxl_numbers(c, black, white));
+	return (pxl_numbers(' ', black, white));
+}
+
+static void		handle_letter(t_frame *frame, t_xy coord, int c)
 {
 	t_xy	cur;
-	int		c;
-	int		m;
+	t_pxl_c	letter;
 	t_xy	mod;
+	int		m;
 
 	cur.y = 0;
 	m = TEXT_SIZE;
+	letter = letter_logic(c);
+	c = 0;
 	while (cur.y < 7)
 	{
 		cur.x = 0;
 		while (cur.x < 5)
 		{
-			c = letter[(int)(cur.x + cur.y * 5)];
-			mod.x = cur.x * m + x;
-			mod.y = cur.y * m + y;
+			c = letter.c[(int)(cur.x + cur.y * 5)];
+			mod.x = cur.x * m + coord.x;
+			mod.y = cur.y * m + coord.y;
 			draw_rect(mod, vec2(TEXT_SIZE, TEXT_SIZE), frame, c);
 			cur.x++;
 		}
@@ -36,39 +50,15 @@ static void	draw_letter(t_frame *frame, int x, int y, int *letter)
 	}
 }
 
-static void	handle_letter(t_frame *frame, int **tab, t_xy coord, int c)
-{
-	t_pxl_c	letter;
-	int		i;
-
-	i = 0;
-	if (c >= 'A' && c <= 'Z')
-		letter = pxl_alphabet(c, black, white);
-	if (c >= '0' && c <= '9')
-		letter = pxl_numbers(c, black, white);
-	if (c == ':' || c == '\'' || c == '!' || c == '?' || c == ' '
-		|| c == '.' || c == ',' || c == '(' || c == ')' || c == '%')
-		letter = pxl_numbers(c, black, white);
-	while (i < 36)
-	{
-		*(*(tab) + i) = letter.c[i];
-		i++;
-	}
-	draw_letter(frame, coord.x, coord.y, *tab);
-}
-
-void		str_pxl(t_frame *frame, t_xy coord, char *str)
+void			str_pxl(t_frame *frame, t_xy coord, char *str)
 {
 	int		c;
-	int		*letter;
 
-	letter = (int*)malloc(sizeof(*letter) * 36);
 	while (*str != '\0')
 	{
 		c = ft_toupper(*str);
-		handle_letter(frame, &letter, coord, c);
+		handle_letter(frame, coord, c);
 		coord.x += 5 * TEXT_SIZE;
 		str++;
 	}
-	ft_memdel((void*)&letter);
 }

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 12:08:13 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/08 15:59:22 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,38 @@ int		load_map_file(t_home *home, char *path)
 			error_output("ERROR: Map is too large.");
 		if (CLOSE_FILE(fd) == -1)
 			error_output("ERROR: Could not close the file.");
-		buf[BUF_SIZE] = '\0';
+		buf[size] = '\0';
 		ft_putendl("Mapdata read to buffer, proceeding.");
 		parse_sector_data(buf, home);
 		calc_normal_vectors(home);
+	}
+	return (0);
+}
+
+int		load_xpm_file(t_texture **tex, char *path)
+{
+	int				fd;
+	unsigned char	buf[XPM_BUF_SIZE + 1];
+	unsigned int	size;
+	char			*ptr;
+
+	ptr = ft_strstr(path, ".xpm");
+	if (!ptr || *(ptr + 4) != '\0')
+		error_output("ERROR: Not a correct extension");
+	if ((fd = OPEN_FILE(path, READ_ONLY)) < 0)
+		error_output("ERROR: Failed to open map");
+	else
+	{
+		size = READ_FILE(fd, buf, XPM_BUF_SIZE);
+		if (size <= 0)
+			error_output("ERROR: Failed to read bitmap.");
+		else if (size >= XPM_BUF_SIZE)
+			error_output("ERROR: Bitmap is too large.");
+		if (CLOSE_FILE(fd) == -1)
+			error_output("ERROR: Could not close the file.");
+		buf[size] = '\0';
+		ft_putendl("Bitmap read to the buffer, proceeding.");
+		parse_xpm_data(buf, tex);
 	}
 	return (0);
 }

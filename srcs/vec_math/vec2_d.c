@@ -6,13 +6,14 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 11:09:03 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/01 11:11:44 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:30:34 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-t_xy	vec2_reverse(t_xy a)
+float	vec2_eucl_dist(t_xy p1, t_xy p2)
 {
-	return ((t_xy){-a.x, -a.y});
+	return (sqrtf((p2.x - p1.x) * (p2.x - p1.x)
+		+ (p2.y - p1.y) * (p2.y - p1.y)));
 }

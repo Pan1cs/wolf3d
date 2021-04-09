@@ -6,12 +6,35 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:24 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/30 15:55:09 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:24:23 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROGRAM_H
 # define PROGRAM_H
+
+typedef struct		s_colour_map
+{
+	char			id[7];
+	int				colour_type;
+	int				colour;
+}					t_colour_map;
+
+typedef	struct		s_texture
+{
+	Uint32			*pixels;
+	unsigned char	*map_pixels;
+	int				w;
+	int				h;
+	int				size;
+	int				color_depth;
+	int				format;
+	int				bpp;
+	int				pitch;
+	int				nbr_of_colours;
+	int				cpp;
+	t_colour_map	**colour_map;
+}					t_texture;
 
 typedef	struct		s_item
 {
@@ -23,19 +46,10 @@ typedef	struct		s_item
 typedef struct		s_window
 {
 	SDL_Window		*window;
-	SDL_Surface		*ScreenSurface;
+	SDL_Surface		*screen_surface;
 	int				width;
 	int				height;
 }					t_window;
-
-typedef struct		s_raycast
-{
-	t_xy			sideDist;
-	t_xy			deltaDist;
-	t_xy			step;
-	int				side;
-	float			perpWallDist;
-}					t_raycast;
 
 typedef struct		s_ray_floor
 {
@@ -72,8 +86,7 @@ typedef struct		s_home
 {
 	t_window		win;
 	t_sector		**sectors;
-	SDL_Surface		*text_surf;
-	SDL_Surface		**editor_tex;
+	t_texture		**editor_tex;
 	t_time			t;
 	t_xy			offset;
 	unsigned int	nbr_of_sectors;

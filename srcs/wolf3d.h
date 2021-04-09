@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 15:28:17 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:07:19 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,9 @@ void			update_screen(t_home *home, t_frame *frame, t_player *plr);
 void			setup(char *map, t_home *home, t_player *plr, t_frame *frame);
 void			error_output_sdl(char *msg, t_home *home);
 void			error_output(char *msg);
-void			load_audio(t_audio *audio);
-void			cleanup_audio(t_audio *audio);
-void			play_footsteps(t_player *plr);
-void			quit_subsystems();
+int				error_handling(int error_code, t_texture **tex);
 void			fps_timer(t_time *t);
+void			clean_up(t_home *home, int ret);
 
 /*
 ** Minimap

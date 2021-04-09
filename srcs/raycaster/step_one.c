@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linkedlist.c                                       :+:      :+:    :+:   */
+/*   step_one.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 08:49:54 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 14:38:16 by jnivala          ###   ########.fr       */
+/*   Created: 2021/04/09 12:14:36 by jnivala           #+#    #+#             */
+/*   Updated: 2021/04/09 12:15:57 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-t_point	*loop_list(t_point *head, t_point *current)
+void	step_one(t_xyz *start, t_xyz *bottom, size_t *obj_x, t_frame *frame)
 {
-	return ((current == NULL) ? head : current);
+	start->y -= frame->step.y;
+	bottom->y += frame->step.y;
+	start->z -= frame->step.z;
+	frame->uv_top_left.x += frame->uv_step.x;
+	frame->uv_top_left.z += frame->uv_step.z;
+	*obj_x = *obj_x + 1;
 }

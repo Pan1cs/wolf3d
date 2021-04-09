@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_matrix_2d.c                              :+:      :+:    :+:   */
+/*   matrix_2d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:10:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 11:39:09 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:23:50 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			translate_world_view(t_home *home, t_xy step)
 		current_point = home->sectors[i]->points;
 		while (walls)
 		{
-			current_point->x0 = vec2_dec(current_point->x0, step);
+			current_point->x0 = vec2_sub(current_point->x0, step);
 			current_point = current_point->next;
 			walls--;
 		}

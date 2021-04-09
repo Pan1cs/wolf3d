@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:36 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 11:43:06 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:26:07 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void		movement(t_player *plr, t_home *home)
 	{
 		plr_dir = (t_xy){PLR_DIR, PLR_DIR};
 		check_player_dir(plr, &plr_dir);
-		plr_dir = vec2_mul(plr_dir, delta_time * 0.05);
+		plr_dir = vec2_mult(plr_dir, delta_time * 0.05);
 		if (player_move(plr, home, &plr_dir))
 			play_footsteps(plr);
 	}

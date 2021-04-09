@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:39:14 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:55:23 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:21:24 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 t_xyz	vec3(float x, float y, float z)
 {
 	return ((t_xyz){x, y, z});
-}
-
-t_xyz	vec3_add(t_xyz a, t_xyz b)
-{
-	return ((t_xyz){a.x + b.x, a.y + b.y, a.z + b.z});
 }
 
 t_xy	vec3_to_vec2(t_xyz a)
