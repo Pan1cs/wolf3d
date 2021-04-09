@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:03:40 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 09:27:15 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:32:03 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		point_is_on_the_lseg(t_xy a, t_xy c, t_xy b)
 	float	dot_ab_ab;
 	float	dot_ab_ac;
 
-	vec_ab = vec2_dec(b, a);
-	vec_ac = vec2_dec(c, a);
+	vec_ab = vec2_sub(b, a);
+	vec_ac = vec2_sub(c, a);
 	if (vec2_cross(vec_ab, vec_ac) != 0)
 		return (0);
 	dot_ab_ab = vec2_dot(vec_ab, vec_ab);
@@ -65,9 +65,11 @@ int		check_if_lseg_intersects(t_point *p0, t_xy *pos, t_xy *dir)
 	p1_orientation = orientation_of_three_points(*pos, *dir, p0->next->x0);
 	if (pos_orientation != dir_orientation && p0_orientation != p1_orientation)
 		return (1);
-	if (pos_orientation == 0 && point_is_on_the_lseg(p0->x0, *pos, p0->next->x0))
+	if (pos_orientation == 0
+		&& point_is_on_the_lseg(p0->x0, *pos, p0->next->x0))
 		return (1);
-	if (dir_orientation == 0 && point_is_on_the_lseg(p0->x0, *dir, p0->next->x0))
+	if (dir_orientation == 0
+		&& point_is_on_the_lseg(p0->x0, *dir, p0->next->x0))
 		return (1);
 	if (p0_orientation == 0 && point_is_on_the_lseg(*pos, p0->x0, *dir))
 		return (1);

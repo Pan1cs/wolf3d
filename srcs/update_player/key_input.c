@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 09:08:46 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:41:18 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ void		keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 		plr->input.right = 1;
 	if (sym == K_A)
 		plr->input.left = 1;
+	if (sym == K_Q)
+		plr->input.rot_left = 1;
+	if (sym == K_E)
+		plr->input.rot_right = 1;
 	if (sym == K_Z && plr->input.wireframe == 1)
 		plr->input.wireframe = 0;
 	else if (sym == K_Z && plr->input.wireframe == 0)
@@ -48,6 +52,10 @@ void		keys_up(t_player *plr, SDL_KeyCode sym)
 		plr->input.right = 0;
 	if (sym == K_A)
 		plr->input.left = 0;
+	if (sym == K_Q)
+		plr->input.rot_left = 0;
+	if (sym == K_E)
+		plr->input.rot_right = 0;
 }
 
 void		key_input(t_player *plr, SDL_Event *e)

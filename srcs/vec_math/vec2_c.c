@@ -6,16 +6,11 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:14:05 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/31 11:38:10 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:14:42 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
-
-float	ft_map(float in, t_range from, t_range to)
-{
-	return (to.x + ((in - from.x) * (to.y - to.x)) / (from.y - from.x));
-}
 
 float	vec2_to_screen_space(float x, float z)
 {

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 09:17:54 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:48:29 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,26 @@ static void		draw_info(t_frame *frame, t_player *plr, int nb_fps)
 	str_pxl(frame, (t_xy){50, 50}, compass);
 	str_pxl(frame, (t_xy){0, 70}, "sector:");
 	str_pxl(frame, (t_xy){0, 90}, sector);
-	str_pxl(frame, (t_xy){0, 400}, "Press z to switch to wireframe");
+	str_pxl(frame, (t_xy){0, 380}, "Press z to switch to wireframe");
+	str_pxl(frame, (t_xy){0, 400}, "Press x to close minimap");
+	str_pxl(frame, (t_xy){0, 420}, "Press c to close info");
+	str_pxl(frame, (t_xy){0, 440}, "Move with wasd, rotate with q and e.");
+	str_pxl(frame, (t_xy){0, 460}, "Look with mouse.");
 	free(fps);
 	free(sector);
 	free(compass);
 }
 
-void			draw_player(t_frame *frame)
+static void		draw_player(t_frame *frame)
 {
 	draw_rect(center_to_screen((t_xy){0.0f, 0.0f}),
 		(t_xy){3.0f, 3.0f}, frame, yellow);
 	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
-		center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
-		vec2_mul((t_xy){1.0f, 0.0f}, 400))), lightgreen, frame->draw_surf);
+		center_to_screen(vec2_sum((t_xy){0.0f, 0.0f},
+		vec2_mult((t_xy){1.0f, 0.0f}, 400))), lightgreen, frame->draw_surf);
 	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
-		center_to_screen(vec2_add((t_xy){0.0f, 0.0f},
-		vec2_mul((t_xy){0.0f, 1.0f}, 400))), lightgreen, frame->draw_surf);
+		center_to_screen(vec2_sum((t_xy){0.0f, 0.0f},
+		vec2_mult((t_xy){0.0f, 1.0f}, 400))), lightgreen, frame->draw_surf);
 }
 
 void			draw_frame(t_home *home, t_frame *frame, t_player *plr)

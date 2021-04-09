@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 09:49:25 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:26:07 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int				player_move(t_player *plr, t_home *home, t_xy *dir)
 	}
 	else if (crossing == open_space)
 	{
-		pos = vec2_mul(*dir, 8);
+		pos = vec2_mult(*dir, 8);
 		crossing = check_if_wall(home->sectors[plr->current_sector], dir, &pos);
 		if (crossing < 0 && crossing != open_space)
 			return (0);

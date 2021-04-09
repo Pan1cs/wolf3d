@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:38:16 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/25 11:57:36 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:14:00 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,6 @@ t_xy			vec2_rot(t_xy v, float angle)
 	return ((t_xy){
 		v.x * cosf(angle) - v.y * sinf(angle),
 		v.x * sinf(angle) + v.y * cosf(angle)
-	});
-}
-
-t_xy			vec2_norm(t_xy v)
-{
-	float mag;
-
-	mag = sqrtf((v.x * v.x) + (v.y * v.y));
-	return ((t_xy){
-		v.x / mag,
-		v.y / mag
 	});
 }
 
