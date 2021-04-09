@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:07:19 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 19:05:59 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,14 @@
 ** Miscellanious
 */
 
-void			update_screen(t_home *home, t_frame *frame, t_player *plr);
-void			setup(char *map, t_home *home, t_player *plr, t_frame *frame);
+void			clean_up(t_home *home, int ret);
+void			fps_timer(t_time *t);
 void			error_output_sdl(char *msg, t_home *home);
 void			error_output(char *msg);
 int				error_handling(int error_code, t_texture **tex);
-void			fps_timer(t_time *t);
-void			clean_up(t_home *home, int ret);
+void			map_error_output(int i, t_home *home);
+void			setup(char *map, t_home *home, t_player *plr, t_frame *frame);
+void			update_screen(t_home *home, t_frame *frame, t_player *plr);
 
 /*
 ** Minimap
