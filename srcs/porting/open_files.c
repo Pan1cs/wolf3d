@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 15:44:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 20:12:18 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,19 @@ int		get_next_breaker(unsigned char *buf)
 	return (-1);
 }
 
-void	parse_sector_data(unsigned char *buf, t_home *home)
+static void	free_sectors_and_exit(int error_code, t_home *home)
+{
+	free_sectors(home);
+	if (error_code == 1)
+		ft_putendl_fd("ERROR: Memory allocation for individual sector failed.",
+			 2);
+	else if (error_code == 2)
+		ft_putendl_fd("ERROR: Still data in buffer after reading.",
+			 2);
+	exit(0);
+}
+
+void		parse_sector_data(unsigned char *buf, t_home *home)
 {
 	unsigned int	pos;
 	unsigned int	i;
@@ -45,12 +57,11 @@ void	parse_sector_data(unsigned char *buf, t_home *home)
 	{
 		home->sectors[i] = get_sector_data(buf, &pos);
 		if (home->sectors[i] == NULL)
-		{
-			free_sectors(home);
-			exit(0);
-		}
+			free_sectors_and_exit(1, home);
 		i++;
 	}
+	if (*(buf + pos) != '\0')
+		free_sectors_and_exit(2, home);
 	home->sectors[i] = NULL;
 }
 
