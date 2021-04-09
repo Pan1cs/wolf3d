@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 08:51:30 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 20:26:13 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:49:09 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		check_if_portal(t_point *p0)
 
 int		check_if_same_pt(int *current_pxl, t_ray_pt *fov)
 {
-	if (*current_pxl < 1 && get_distance(fov->l_pt, fov->r_pt) < 0.001)
+	if (*current_pxl < 1 && vec2_eucl_dist(fov->l_pt, fov->r_pt) < 0.001)
 		return (TRUE);
 	else
 	{

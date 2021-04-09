@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:37:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 20:53:38 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 10:14:28 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ int				free_full_colour_map(t_texture *tex)
 	}
 	free(tex->colour_map);
 	return (0);
-}
-
-t_colour_map	*free_colour_id(t_texture *tex, int n)
-{
-	while (n--)
-		ft_strdel(&(tex->colour_map[n]->id));
-	return (NULL);
 }
 
 t_texture		*free_colour_map_n(t_texture *tex, int n)

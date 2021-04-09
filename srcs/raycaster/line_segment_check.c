@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:03:40 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 09:55:31 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:27:15 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,24 @@ int		orientation_of_three_points(t_xy a, t_xy b, t_xy c)
 
 int		check_if_lseg_intersects(t_point *p0, t_xy *pos, t_xy *dir)
 {
-	int		o1;
-	int		o2;
-	int		o3;
-	int		o4;
+	int		pos_orientation;
+	int		dir_orientation;
+	int		p0_orientation;
+	int		p1_orientation;
 
-	o1 = orientation_of_three_points(p0->x0, p0->next->x0, *pos);
-	o2 = orientation_of_three_points(p0->x0, p0->next->x0, *dir);
-	o3 = orientation_of_three_points(*pos, *dir, p0->x0);
-	o4 = orientation_of_three_points(*pos, *dir, p0->next->x0);
-	if (o1 != o2 && o3 != o4)
+	pos_orientation = orientation_of_three_points(p0->x0, p0->next->x0, *pos);
+	dir_orientation = orientation_of_three_points(p0->x0, p0->next->x0, *dir);
+	p0_orientation = orientation_of_three_points(*pos, *dir, p0->x0);
+	p1_orientation = orientation_of_three_points(*pos, *dir, p0->next->x0);
+	if (pos_orientation != dir_orientation && p0_orientation != p1_orientation)
 		return (1);
-	if (o1 == 0 && point_is_on_the_lseg(p0->x0, *pos, p0->next->x0))
+	if (pos_orientation == 0 && point_is_on_the_lseg(p0->x0, *pos, p0->next->x0))
 		return (1);
-	if (o2 == 0 && point_is_on_the_lseg(p0->x0, *dir, p0->next->x0))
+	if (dir_orientation == 0 && point_is_on_the_lseg(p0->x0, *dir, p0->next->x0))
 		return (1);
-	if (o3 == 0 && point_is_on_the_lseg(*pos, p0->x0, *dir))
+	if (p0_orientation == 0 && point_is_on_the_lseg(*pos, p0->x0, *dir))
 		return (1);
-	if (o4 == 0 && point_is_on_the_lseg(*pos, p0->next->x0, *dir))
+	if (p1_orientation == 0 && point_is_on_the_lseg(*pos, p0->next->x0, *dir))
 		return (1);
 	return (0);
 }

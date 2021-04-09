@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 08:31:21 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:04:22 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ typedef struct		s_input
 	int				left;
 	int				up;
 	int				down;
-	int				z;
-	int				x;
+	int				wireframe;
+	int				minimap;
+	int				info;
 	int				quit;
 }					t_input;
 

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:53:07 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 19:01:21 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:52:46 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,6 @@ int			get_floor(int floor_colour)
 		return (dimgray);
 	else
 		return (green);
-}
-
-int			get_texel(int x, int y, SDL_Surface *tex)
-{
-	int		offset_x;
-	int		offset_y;
-	int		bpp;
-	Uint32	*p;
-
-	offset_x = x % tex->w;
-	offset_y = y % tex->h;
-	bpp = tex->format->BytesPerPixel;
-	p = (Uint32*)((Uint8*)tex->pixels + offset_y * tex->pitch + offset_x * bpp);
-	return (*p);
 }
 
 static int	load_texture(t_texture **texture, char *path)
@@ -64,7 +50,7 @@ int			load_textures(t_texture ***textures, int nbr_of_textures)
 		return (3);
 	if (load_texture(*(textures) + 3, "resources/door.xpm"))
 		return (4);
-	if (load_texture(*(textures) + 4, "resources/door.xpm"))
+	if (load_texture(*(textures) + 4, "resources/loading_bay.xpm"))
 		return (5);
 	return (0);
 }

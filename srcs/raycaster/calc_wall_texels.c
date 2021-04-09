@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 12:18:04 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:31:08 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ static void		calc_offsets(t_frame *frame)
 
 void			calc_wall_texels(t_frame *frame, t_texture *tex)
 {
-	frame->visible_wall_dist = get_distance(frame->left.l_pt, frame->left.r_pt);
-	frame->full_wall_dist = get_distance(frame->left.wall->x0,
+	frame->visible_wall_dist = vec2_eucl_dist(frame->left.l_pt, frame->left.r_pt);
+	frame->full_wall_dist = vec2_eucl_dist(frame->left.wall->x0,
 		frame->left.wall->next->x0);
 	frame->screen_wall_len = frame->top_right.x - frame->top_left.x;
 	frame->ratio = frame->visible_wall_dist / frame->full_wall_dist;
 	frame->tex_mult = frame->full_wall_dist / tex->w;
-	frame->unvisible_l_side = get_distance(frame->left.wall->x0,
+	frame->unvisible_l_side = vec2_eucl_dist(frame->left.wall->x0,
 		frame->left.l_pt) / frame->full_wall_dist;
 	calc_offsets(frame);
 	frame->uv_step.x = interpolate_points(frame->uv_top_left.x,

@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:11 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/05 14:08:43 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 08:47:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	mouse_handle(t_player *plr, t_home *home, SDL_Event *e)
 	{
 		plr->dir.x += -e->motion.xrel * DEG_TO_RAD * 0.1;
 		plr->dir.y += -e->motion.xrel * DEG_TO_RAD * 0.1;
-		if (plr->dir.x > 2 * PI)
+		if (plr->dir.x > TWO_PI)
 		{
 			plr->dir.x = 0.0f;
 			plr->dir.y = 0.0f;
 		}
 		if (plr->dir.x < 0)
 		{
-			plr->dir.x = 2 * PI;
-			plr->dir.y = 2 * PI;
+			plr->dir.x = TWO_PI;
+			plr->dir.y = TWO_PI;
 		}
 		transform_world_view(home, -e->motion.xrel * DEG_TO_RAD * 0.1);
 		plr->pitch = ft_fmin(ft_fmax((plr->pitch - e->motion.yrel), 0), 480);

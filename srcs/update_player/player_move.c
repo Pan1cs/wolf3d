@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:26 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 21:00:50 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:49:25 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		plr_in_corner(t_sector *sector, t_xy *pos)
 	temp = sector->points;
 	while (i < sector->nbr_of_walls)
 	{
-		if (get_distance(temp->x0, *pos) < 8)
+		if (vec2_eucl_dist(temp->x0, *pos) < 8)
 			return (temp->idx);
 		temp = temp->next;
 		i++;

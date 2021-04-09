@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 12:25:42 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:30:54 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ enum				e_lines {
 	open_space = -9999
 };
 
-float				get_distance(t_xy p1, t_xy p2);
+float				vec2_eucl_dist(t_xy p1, t_xy p2);
 void				calc_intersection(t_point *pgon, t_ray *ray, t_intersection *sect);
 t_xy				line_intersection(t_intersection *sect);
 int					check_if_lseg_intersects(t_point *p0, t_xy *pos, t_xy *dir);

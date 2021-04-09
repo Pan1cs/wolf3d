@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 14:29:08 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 09:08:46 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,18 @@ void		keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 		plr->input.right = 1;
 	if (sym == K_A)
 		plr->input.left = 1;
-	if (sym == K_Z && plr->input.z == 1)
-		plr->input.z = 0;
-	else if (sym == K_Z && plr->input.z == 0)
-		plr->input.z = 1;
+	if (sym == K_Z && plr->input.wireframe == 1)
+		plr->input.wireframe = 0;
+	else if (sym == K_Z && plr->input.wireframe == 0)
+		plr->input.wireframe = 1;
+	if (sym == K_X && plr->input.minimap == 1)
+		plr->input.minimap = 0;
+	else if (sym == K_X && plr->input.minimap == 0)
+		plr->input.minimap = 1;
+	if (sym == K_C && plr->input.info == 1)
+		plr->input.info = 0;
+	else if (sym == K_C && plr->input.info == 0)
+		plr->input.info = 1;
 	if (sym == K_ESC || e->type == SDL_QUIT)
 		plr->input.quit = 1;
 }

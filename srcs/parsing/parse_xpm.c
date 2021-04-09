@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 08:45:03 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 20:38:16 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 10:34:39 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ int				parse_xpm_data(unsigned char *buf, t_texture **tex)
 	ptr = strchr((const char*)ptr, '\n') + 1;
 	ptr = parse_colour_data(ptr, *tex);
 	if (!ptr)
-		return (error_handling(5, tex));
+		return (error_handling(10, tex));
 	if ((ret = parse_pixel_data(ptr, *tex)))
 		return (error_handling(ret, tex));
-	free_colour_id(*tex, (*tex)->nbr_of_colours);
 	free_full_colour_map(*tex);
 	return (0);
 }
