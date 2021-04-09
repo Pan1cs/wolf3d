@@ -80,6 +80,11 @@ void				add_points(t_sector *sector,
 		coord.y = ft_atoi((const char*)buf + **pos);
 		**pos += ft_nb_len(coord.y, 10) + 1;
 		tex_id = ft_atoi((const char*)buf + **pos);
+		if (tex_id < -4)
+		{
+			sector = NULL;
+			return ;
+		}
 		**pos += ft_nb_len(tex_id, 10) + 1;
 		add_point(&sector->points, new_point(coord, tex_id));
 		add_point(&sector->orig_points, new_point(coord, tex_id));
