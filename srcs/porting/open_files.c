@@ -44,6 +44,11 @@ void	parse_sector_data(unsigned char *buf, t_home *home)
 	while (i < home->nbr_of_sectors)
 	{
 		home->sectors[i] = get_sector_data(buf, &pos);
+		if (home->sectors[i] == NULL)
+		{
+			free_sectors(home);
+			exit(0);
+		}
 		i++;
 	}
 	home->sectors[i] = NULL;
