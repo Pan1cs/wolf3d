@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculations.h                                     :+:      :+:    :+:   */
+/*   step_one.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 14:58:32 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 12:24:51 by jnivala          ###   ########.fr       */
+/*   Created: 2021/04/09 12:14:36 by jnivala           #+#    #+#             */
+/*   Updated: 2021/04/09 12:15:57 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CALCULATIONS_H
-# define CALCULATIONS_H
+#include "../wolf3d.h"
 
-typedef struct		s_time
+void	step_one(t_xyz *start, t_xyz *bottom, size_t *obj_x, t_frame *frame)
 {
-	Uint32	*frame_times;
-	Uint32	frame_time_last;
-	Uint32	frame_count;
-	float	fps;
-}					t_time;
-
-typedef	struct		s_intersection
-{
-	float	x1;
-	float	x2;
-	float	y1;
-	float	y2;
-	float	den;
-	float	neg;
-	float	pos;
-}					t_intersection;
-
-#endif
+	start->y -= frame->step.y;
+	bottom->y += frame->step.y;
+	start->z -= frame->step.z;
+	frame->uv_top_left.x += frame->uv_step.x;
+	frame->uv_top_left.z += frame->uv_step.z;
+	*obj_x = *obj_x + 1;
+}

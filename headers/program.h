@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:24 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 10:12:32 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:24:23 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,10 @@ typedef	struct		s_item
 typedef struct		s_window
 {
 	SDL_Window		*window;
-	SDL_Surface		*ScreenSurface;
+	SDL_Surface		*screen_surface;
 	int				width;
 	int				height;
 }					t_window;
-
-typedef struct		s_raycast
-{
-	t_xy			sideDist;
-	t_xy			deltaDist;
-	t_xy			step;
-	int				side;
-	float			perpWallDist;
-}					t_raycast;
 
 typedef struct		s_ray_floor
 {

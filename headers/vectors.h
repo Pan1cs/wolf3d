@@ -6,40 +6,40 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:39 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:26:07 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:26:09 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-# define VECTOR_H
+#ifndef VECTORS_H
+# define VECTORS_H
 
-typedef struct		s_xy
+typedef struct	s_xy
 {
-	float			x;
-	float			y;
-}					t_xy;
+	float		x;
+	float		y;
+}				t_xy;
 
-typedef t_xy		t_range;
+typedef t_xy	t_range;
 
-typedef struct		s_xyz
+typedef struct	s_xyz
 {
-	float			x;
-	float			y;
-	float			z;
-}					t_xyz;
+	float		x;
+	float		y;
+	float		z;
+}				t_xyz;
 
-typedef struct		s_ray
+typedef struct	s_ray
 {
-	t_xy			pos;
-	t_xy			dir;
-	t_xy			cutpoint;
-}					t_ray;
+	t_xy		pos;
+	t_xy		dir;
+	t_xy		cutpoint;
+}				t_ray;
 
-typedef struct		s_maxpoints
+typedef struct	s_maxpoints
 {
-	t_xy			left;
-	t_xy			right;
-}					t_maxpoints;
+	t_xy		left;
+	t_xy		right;
+}				t_maxpoints;
 
 float			interpolate_points(float x0, float x1, float y0, float y1);
 t_xyz			inv_z(t_xyz a);

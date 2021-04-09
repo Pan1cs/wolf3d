@@ -6,13 +6,29 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:41:18 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 11:56:06 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-void		keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
+static void		action_keys(t_player *plr, SDL_KeyCode *sym)
+{
+	if (*sym == K_Z && plr->input.wireframe == 1)
+		plr->input.wireframe = 0;
+	else if (*sym == K_Z && plr->input.wireframe == 0)
+		plr->input.wireframe = 1;
+	if (*sym == K_X && plr->input.minimap == 1)
+		plr->input.minimap = 0;
+	else if (*sym == K_X && plr->input.minimap == 0)
+		plr->input.minimap = 1;
+	if (*sym == K_C && plr->input.info == 1)
+		plr->input.info = 0;
+	else if (*sym == K_C && plr->input.info == 0)
+		plr->input.info = 1;
+}
+
+void			keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 {
 	if (sym == K_S)
 		plr->input.down = 1;
@@ -26,23 +42,12 @@ void		keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 		plr->input.rot_left = 1;
 	if (sym == K_E)
 		plr->input.rot_right = 1;
-	if (sym == K_Z && plr->input.wireframe == 1)
-		plr->input.wireframe = 0;
-	else if (sym == K_Z && plr->input.wireframe == 0)
-		plr->input.wireframe = 1;
-	if (sym == K_X && plr->input.minimap == 1)
-		plr->input.minimap = 0;
-	else if (sym == K_X && plr->input.minimap == 0)
-		plr->input.minimap = 1;
-	if (sym == K_C && plr->input.info == 1)
-		plr->input.info = 0;
-	else if (sym == K_C && plr->input.info == 0)
-		plr->input.info = 1;
+	action_keys(plr, &sym);
 	if (sym == K_ESC || e->type == SDL_QUIT)
 		plr->input.quit = 1;
 }
 
-void		keys_up(t_player *plr, SDL_KeyCode sym)
+void			keys_up(t_player *plr, SDL_KeyCode sym)
 {
 	if (sym == K_S)
 		plr->input.down = 0;
@@ -58,7 +63,7 @@ void		keys_up(t_player *plr, SDL_KeyCode sym)
 		plr->input.rot_right = 0;
 }
 
-void		key_input(t_player *plr, SDL_Event *e)
+void			key_input(t_player *plr, SDL_Event *e)
 {
 	if (e->type == SDL_KEYDOWN)
 		keys_down(plr, e->key.keysym.sym, e);

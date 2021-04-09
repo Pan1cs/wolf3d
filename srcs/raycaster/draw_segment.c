@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 09:06:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:16:01 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,6 @@ static void			draw_vertical_wall_strip(t_xy offset, size_t height,
 		cur_y++;
 		texel.y += frame->uv_step.y;
 	}
-}
-
-static void			step_one(t_xyz *start, t_xyz *bottom,
-	size_t *obj_x, t_frame *frame)
-{
-	start->y -= frame->step.y;
-	bottom->y += frame->step.y;
-	start->z -= frame->step.z;
-	frame->uv_top_left.x += frame->uv_step.x;
-	frame->uv_top_left.z += frame->uv_step.z;
-	*obj_x = *obj_x + 1;
 }
 
 void				draw_vertically(t_frame *frame, t_home *home,

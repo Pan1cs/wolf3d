@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 09:46:39 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/07 15:10:23 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:25:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ typedef struct	s_pxl_c
 {
 	int			c[36];
 }				t_pxl_c;
-
 
 t_pxl_c			pxl_alphabet(int l, int b, int c);
 t_pxl_c			pxl_numbers(int l, int b, int c);

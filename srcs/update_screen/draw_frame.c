@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/25 11:47:19 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:48:29 by jnivala          ###   ########.fr       */
+/*   Created: 2021/04/09 11:59:17 by jnivala           #+#    #+#             */
+/*   Updated: 2021/04/09 12:08:37 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,18 @@ static void		draw_minimap(t_home *home, t_frame *frame)
 	}
 }
 
+static void		draw_player(t_frame *frame)
+{
+	draw_rect(center_to_screen((t_xy){0.0f, 0.0f}),
+		(t_xy){3.0f, 3.0f}, frame, yellow);
+	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
+		center_to_screen(vec2_sum((t_xy){0.0f, 0.0f},
+		vec2_mult((t_xy){1.0f, 0.0f}, 400))), lightgreen, frame->draw_surf);
+	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
+		center_to_screen(vec2_sum((t_xy){0.0f, 0.0f},
+		vec2_mult((t_xy){0.0f, 1.0f}, 400))), lightgreen, frame->draw_surf);
+}
+
 static void		draw_info(t_frame *frame, t_player *plr, int nb_fps)
 {
 	char	*sector;
@@ -75,28 +87,16 @@ static void		draw_info(t_frame *frame, t_player *plr, int nb_fps)
 	free(compass);
 }
 
-static void		draw_player(t_frame *frame)
-{
-	draw_rect(center_to_screen((t_xy){0.0f, 0.0f}),
-		(t_xy){3.0f, 3.0f}, frame, yellow);
-	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
-		center_to_screen(vec2_sum((t_xy){0.0f, 0.0f},
-		vec2_mult((t_xy){1.0f, 0.0f}, 400))), lightgreen, frame->draw_surf);
-	draw_line(center_to_screen((t_xy){0.0f, 0.0f}),
-		center_to_screen(vec2_sum((t_xy){0.0f, 0.0f},
-		vec2_mult((t_xy){0.0f, 1.0f}, 400))), lightgreen, frame->draw_surf);
-}
-
 void			draw_frame(t_home *home, t_frame *frame, t_player *plr)
 {
 	frame->idx = plr->current_sector;
 	frame->old_idx = -1;
 	frame->max_fov = 0;
 	frame->offset = 640;
-	frame->left.l_pt = vec2(-1, -1);
-	frame->right.r_pt = vec2(-1, -1);
-	frame->plr_offset = vec2(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f);
 	frame->pxl_offset = 0.0f;
+	frame->left.l_pt = (t_xy){-1.0f, -1.0f};
+	frame->right.r_pt = (t_xy){-1.0f, -1.0f};
+	frame->plr_offset = (t_xy){SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f};
 	scan_fov(home, frame, plr, 0);
 	if (plr->input.minimap)
 	{
@@ -105,4 +105,5 @@ void			draw_frame(t_home *home, t_frame *frame, t_player *plr)
 	}
 	if (plr->input.info)
 		draw_info(frame, plr, (int)home->t.fps);
+	return ;
 }

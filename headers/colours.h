@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 09:37:29 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 15:11:36 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 12:17:10 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ enum				e_colour {
 	black = 0x000000
 };
 
-Uint32			argb_to_hex(t_argb argb);
-t_argb			hex_to_argb(Uint32 rgb);
-Uint32			colour_scale(Uint32 hex, float scale);
+Uint32				argb_to_hex(t_argb argb);
+t_argb				hex_to_argb(Uint32 rgb);
+Uint32				colour_scale(Uint32 hex, float scale);
 #endif
