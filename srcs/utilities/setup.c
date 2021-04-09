@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 21:11:06 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 08:22:49 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ void			init_player(t_player *plr)
 	plr->height = 0.5;
 	plr->angle = 0;
 	plr->current_sector = 0;
-}
-
-void			quit_subsystems(void)
-{
-	SDL_Quit();
 }
 
 void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)

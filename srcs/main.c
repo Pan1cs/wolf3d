@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:10:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/08 21:11:01 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 08:17:51 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			main(int argc, char **argv)
 	char		*fps;
 
 	if (argc == 1)
-		error_output("usage: .\\play [map file path]");
+		error_output("usage: .\\wolf3d [map file path]");
 	setup(argv[1], &home, &plr, &frame);
 	while (!plr.input.quit)
 	{

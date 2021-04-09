@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/08 18:04:59 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/09 08:31:07 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,12 +94,10 @@ SRC_LIST = \
 	$(SLASH)update_screen$(SLASH)draw_tex_pixel.c \
 	$(SLASH)update_screen$(SLASH)put_pixel.c \
 	$(SLASH)update_screen$(SLASH)steplen.c \
-	$(SLASH)update_screen$(SLASH)transform_matrix_2d.c \
+	$(SLASH)update_screen$(SLASH)matrix_2d.c \
 	$(SLASH)update_screen$(SLASH)update_screen.c \
 	$(SLASH)utilities$(SLASH)audio.c \
-	$(SLASH)utilities$(SLASH)debugging.c \
 	$(SLASH)utilities$(SLASH)error_output.c \
-	$(SLASH)utilities$(SLASH)linkedlist.c \
 	$(SLASH)utilities$(SLASH)setup.c \
 	$(SLASH)utilities$(SLASH)str_pxl.c \
 	$(SLASH)utilities$(SLASH)pxl_alphabet.c \
@@ -111,9 +109,24 @@ SRC_LIST = \
 	$(SLASH)vec_math$(SLASH)vec2_d.c \
 	$(SLASH)vec_math$(SLASH)vec3.c \
 
-HEADERS = $(addprefix $S,\
-		$(SLASH)wolf3d.h\
-	)
+HEADERS = \
+		srcs$(SLASH)wolf3d.h \
+		headers$(SLASH)audio.h \
+		headers$(SLASH)calculations.h \
+		headers$(SLASH)colours.h \
+		headers$(SLASH)drawing_functions.h \
+		headers$(SLASH)events.h \
+		headers$(SLASH)macros.h \
+		headers$(SLASH)parsing.h \
+		headers$(SLASH)player_functions.h \
+		headers$(SLASH)player.h \
+		headers$(SLASH)porting.h \
+		headers$(SLASH)program.h \
+		headers$(SLASH)raycast.h \
+		headers$(SLASH)sector.h \
+		headers$(SLASH)typewriter.h \
+		headers$(SLASH)vectors.h \
+
 SRC = $(addprefix $S, $(SRC_LIST))
 OBJ = $(SRC:$S%=$O%.o)
 CC = gcc

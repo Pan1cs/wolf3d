@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:41:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/24 17:08:44 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/09 08:16:26 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void		cleanup_audio(t_audio *audio)
 	audio->footstep2 = NULL;
 	Mix_FreeMusic(audio->music);
 	audio->music = NULL;
-	SDL_QuitSubSystem(SDL_INIT_AUDIO);
 	Mix_CloseAudio();
 }
 
