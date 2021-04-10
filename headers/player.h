@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:40:26 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 15:55:33 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_input
 	int				minimap;
 	int				info;
 	int				quit;
+	int				mouse;
 }					t_input;
 
 typedef struct		s_player

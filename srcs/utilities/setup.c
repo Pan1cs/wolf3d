@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 14:30:54 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:00:09 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void			init_player(t_player *plr)
 	plr->input.wireframe = 1;
 	plr->input.minimap = 1;
 	plr->input.info = 1;
+	plr->input.mouse = 1;
 	plr->time = 0;
 	plr->height = 0.5;
 	plr->angle = 0;
@@ -76,6 +77,7 @@ void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 	if (Mix_PlayingMusic() == 0)
 		Mix_PlayMusic(plr->audio.music, -1);
 	init_player(plr);
+	SDL_SetRelativeMouseMode(SDL_TRUE);
 }
 
 void			clean_up(t_home *home, int ret)

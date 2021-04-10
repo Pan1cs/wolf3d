@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:21:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 12:22:31 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 15:54:12 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@
 # define K_Z SDLK_z
 # define K_X SDLK_x
 # define K_C SDLK_c
+# define K_M SDLK_m
 
 /*
 ** Compass directions

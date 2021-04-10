@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:59:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 12:08:37 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 15:57:58 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void		draw_info(t_frame *frame, t_player *plr, int nb_fps)
 	str_pxl(frame, (t_xy){0, 400}, "Press x to close minimap");
 	str_pxl(frame, (t_xy){0, 420}, "Press c to close info");
 	str_pxl(frame, (t_xy){0, 440}, "Move with wasd, rotate with q and e.");
-	str_pxl(frame, (t_xy){0, 460}, "Look with mouse.");
+	str_pxl(frame, (t_xy){0, 460}, "Capture and free mouse with m");
 	free(fps);
 	free(sector);
 	free(compass);

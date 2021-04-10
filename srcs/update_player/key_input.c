@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:56:06 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:13:58 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ static void		action_keys(t_player *plr, SDL_KeyCode *sym)
 		plr->input.info = 0;
 	else if (*sym == K_C && plr->input.info == 0)
 		plr->input.info = 1;
+	if (*sym == K_M && plr->input.mouse == 0)
+	{
+		SDL_SetRelativeMouseMode(SDL_TRUE);
+		plr->input.mouse = 1;
+	}
+	else if (*sym == K_M && plr->input.mouse == 1)
+	{
+		SDL_SetRelativeMouseMode(SDL_FALSE);
+		plr->input.mouse = 0;
+	}
 }
 
 void			keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
@@ -45,6 +55,8 @@ void			keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 	action_keys(plr, &sym);
 	if (sym == K_ESC || e->type == SDL_QUIT)
 		plr->input.quit = 1;
+	if (e->type == SDL_WINDOWEVENT && e->window.event == SDL_WINDOWEVENT_CLOSE)
+		ft_putendl_fd("OHNONONO!", 2);
 }
 
 void			keys_up(t_player *plr, SDL_KeyCode sym)

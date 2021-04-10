@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:11 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:46:31 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 15:55:41 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	mouse_handle(t_player *plr, t_home *home, SDL_Event *e)
 {
-	SDL_SetRelativeMouseMode(SDL_TRUE);
 	if (e->type == SDL_MOUSEMOTION)
 	{
 		plr->dir.x += -e->motion.xrel * DEG_TO_RAD * 0.1;
