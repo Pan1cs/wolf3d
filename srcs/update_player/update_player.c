@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:24:36 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:26:07 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:46:09 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,9 @@ void			update_player(t_player *plr, t_home *home, SDL_Event *e)
 		key_input(plr, e);
 		mouse_handle(plr, home, e);
 	}
+	if (plr->input.rot_left == 1)
+		transform_world_view(home, DEG_TO_RAD * 0.5);
+	if (plr->input.rot_right == 1)
+		transform_world_view(home, DEG_TO_RAD * -0.5);
 	movement(plr, home);
 }

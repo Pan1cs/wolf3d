@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:23:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/10 16:13:58 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:22:39 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void			keys_down(t_player *plr, SDL_KeyCode sym, SDL_Event *e)
 	action_keys(plr, &sym);
 	if (sym == K_ESC || e->type == SDL_QUIT)
 		plr->input.quit = 1;
-	if (e->type == SDL_WINDOWEVENT && e->window.event == SDL_WINDOWEVENT_CLOSE)
-		ft_putendl_fd("OHNONONO!", 2);
 }
 
 void			keys_up(t_player *plr, SDL_KeyCode sym)
