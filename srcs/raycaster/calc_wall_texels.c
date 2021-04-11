@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 11:32:35 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 16:59:26 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void			calc_wall_texels(t_frame *frame, t_texture *tex)
 		frame->left.r_pt);
 	frame->full_wall_dist = vec2_eucl_dist(frame->left.wall->x0,
 		frame->left.wall->next->x0);
-	frame->screen_wall_len = frame->top_right.x - frame->top_left.x;
 	frame->ratio = frame->visible_wall_dist / frame->full_wall_dist;
 	frame->tex_mult = frame->full_wall_dist / tex->w;
 	frame->unvisible_l_side = vec2_eucl_dist(frame->left.wall->x0,

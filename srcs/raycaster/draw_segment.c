@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 19:43:20 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 19:15:09 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void			draw_vertical_floor_strip(t_xyz offset, int height,
 	{
 		if (cur_y + offset.y >= 0 && cur_y + offset.y < SCREEN_HEIGHT)
 			put_pixel(frame->draw_surf, offset.x,
-				cur_y + offset.y, colour_scale(colour, scale));
+				cur_y + offset.y,
+				colour_scale(colour, scale > 1 ? 1 : scale));
 		cur_y++;
 		scale += step_z;
 	}
@@ -110,10 +111,9 @@ void				draw_segment(t_frame *frame, t_home *home,
 	t_texture	*wall_tex;
 	int			colour;
 
+	wall_tex = get_tex(-1, home->editor_tex);
 	if (wall)
 		wall_tex = get_tex(frame->left.wall->idx, home->editor_tex);
-	else
-		wall_tex = get_tex(-1, home->editor_tex);
 	calc_distances(frame, plr);
 	calc_wall_texels(frame, wall_tex);
 	if (plr->input.wireframe == 1)

@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/26 13:08:18 by jnivala           #+#    #+#              #
-#    Updated: 2021/03/29 09:20:03 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/10 17:24:22 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,7 @@ ft_fmax.c\
 ft_fmin.c\
 ft_ftoa.c\
 ft_roundf.c\
+ft_ineg.c\
 
 INC = ./libft.h ./get_next_line.h
 

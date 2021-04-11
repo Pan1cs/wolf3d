@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 14:35:57 by jnivala           #+#    #+#             */
-/*   Updated: 2021/03/29 09:22:08 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 17:24:07 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ double				ft_dabs(double i);
 float				ft_fmax(float a, float b);
 float				ft_fmin(float a, float b);
 char				*ft_ftoa(float nb, int precision);
+int					ft_ineg(int nb);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);

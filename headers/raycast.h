@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 12:58:10 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/10 17:00:26 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 typedef struct	s_ray_pt
 {
-	t_ray			ray_l;
-	t_ray			ray_r;
 	t_xy			l_pt;
 	t_xy			r_pt;
 	t_point			*wall;
@@ -30,7 +28,6 @@ typedef struct	s_frame
 	float			min_step;
 	int				old_idx;
 	SDL_Surface		*draw_surf;
-	SDL_Surface		*ground[4];
 	float			pxl_offset;
 	t_ray_pt		left;
 	t_ray_pt		right;
@@ -47,7 +44,6 @@ typedef struct	s_frame
 	float			full_wall_dist;
 	float			visible_wall_dist;
 	float			unvisible_l_side;
-	float			screen_wall_len;
 	float			tex_mult;
 	float			ratio;
 	int				pitch;
