@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 08:51:30 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 09:49:09 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 15:00:44 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,6 @@ int		check_if_portal(t_point *p0)
 	else
 		return (FALSE);
 }
-
-/*
-**	Checking in the else statement if our angle is neglible compared
-**	to a pixel so that we will 100% enter the next sextor.
-**	(still needs fine tuning, we need to find a way to
-**	fix the 1 pixel black bars.)'
-*/
 
 int		check_if_same_pt(int *current_pxl, t_ray_pt *fov)
 {
