@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:50:43 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/10 19:15:09 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 12:07:31 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ static void			draw_vertical_wall_strip(t_xy offset, size_t height,
 	t_xyz	texel;
 	int		i;
 
-	if (offset.x < 0 || offset.x > SCREEN_WIDTH)
-		return ;
 	i = 0;
 	cur_y = 0;
 	texel = frame->uv_top_left;

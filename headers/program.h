@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:24 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 12:24:23 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 12:59:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,9 @@ typedef struct		s_colour_map
 typedef	struct		s_texture
 {
 	Uint32			*pixels;
-	unsigned char	*map_pixels;
 	int				w;
 	int				h;
-	int				size;
-	int				color_depth;
 	int				format;
-	int				bpp;
-	int				pitch;
 	int				nbr_of_colours;
 	int				cpp;
 	t_colour_map	**colour_map;
