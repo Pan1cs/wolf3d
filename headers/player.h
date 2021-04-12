@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 14:49:41 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 15:17:19 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct		s_player
 	t_audio			audio;
 	int				current_sector;
 }					t_player;
-
 
 enum				e_movement {
 	open_space = -9999
