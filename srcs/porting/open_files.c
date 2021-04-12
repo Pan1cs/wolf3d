@@ -6,13 +6,13 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 20:12:18 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 10:58:19 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-int		get_next_breaker(unsigned char *buf)
+int			get_next_breaker(unsigned char *buf)
 {
 	int i;
 
@@ -26,15 +26,19 @@ int		get_next_breaker(unsigned char *buf)
 	return (-1);
 }
 
-static void	free_sectors_and_exit(int error_code, t_home *home)
+void		free_sectors_and_exit(int error_code, t_home *home, size_t n)
 {
-	free_sectors(home);
+	free_sectors_n(home, n);
 	if (error_code == 1)
-		ft_putendl_fd("ERROR: Memory allocation for individual sector failed.",
-			 2);
+		ft_putendl_fd("ERROR: Memory allocation for a sector failed.", 2);
 	else if (error_code == 2)
-		ft_putendl_fd("ERROR: Still data in buffer after reading.",
-			 2);
+		ft_putendl_fd("ERROR: Still data in buffer after reading.", 2);
+	else if (error_code == 3)
+		ft_putendl_fd("ERROR: Uncorrect number of sectors given", 2);
+	else if (error_code == 4)
+		ft_putendl_fd("ERROR: Incorrect texture code.", 2);
+	else if (error_code == 5)
+		ft_putendl_fd("ERROR: Memory allocation for a wall point failed.", 2);
 	exit(0);
 }
 
@@ -57,15 +61,15 @@ void		parse_sector_data(unsigned char *buf, t_home *home)
 	{
 		home->sectors[i] = get_sector_data(buf, &pos);
 		if (home->sectors[i] == NULL)
-			free_sectors_and_exit(1, home);
+			free_sectors_and_exit(1, home, i + 1);
 		i++;
 	}
 	if (*(buf + pos) != '\0')
-		free_sectors_and_exit(2, home);
+		free_sectors_and_exit(2, home, home->nbr_of_sectors);
 	home->sectors[i] = NULL;
 }
 
-int		load_map_file(t_home *home, char *path)
+int			load_map_file(t_home *home, char *path)
 {
 	int				fd;
 	unsigned char	buf[BUF_SIZE + 1];
@@ -91,7 +95,7 @@ int		load_map_file(t_home *home, char *path)
 	return (0);
 }
 
-int		load_xpm_file(t_texture **tex, char *path)
+int			load_xpm_file(t_texture **tex, char *path)
 {
 	int				fd;
 	unsigned char	buf[XPM_BUF_SIZE + 1];

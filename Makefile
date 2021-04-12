@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/09 19:21:18 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/12 10:28:33 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRC_LIST = \
 	$(SLASH)parsing$(SLASH)calc_norm_vectors.c \
 	$(SLASH)parsing$(SLASH)parse_pixel_data.c \
 	$(SLASH)parsing$(SLASH)parse_colour_data.c \
+	$(SLASH)parsing$(SLASH)parse_number_data.c \
 	$(SLASH)porting$(SLASH)textures.c \
 	$(SLASH)porting$(SLASH)open_files.c \
 	$(SLASH)porting$(SLASH)validate_sectors_data.c \

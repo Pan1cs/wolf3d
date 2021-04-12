@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 15:10:02 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 19:22:35 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 10:49:10 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 # define PARSING_H
 
 void		add_point(t_point **point, t_point *new);
-void		add_points(t_sector *sector, unsigned char *buf,
+int			add_points(t_sector *sector, unsigned char *buf,
 	unsigned int **pos);
 void		calc_normal_vectors(t_home *home);
 int			check_if_lines_cut(t_sector *sector);
 void		close_linkedlist(t_point **point);
-void		free_points(t_point **head, unsigned int nbr_of_walls);
+int			free_points(t_point **head, unsigned int nbr_of_walls);
 void		free_sectors(t_home *home);
+void		free_sectors_and_exit(int error_code, t_home *home, size_t n);
+void		free_sectors_n(t_home *home, size_t	n);
 t_sector	*get_sector_data(unsigned char *buf, unsigned int *pos);
 t_point		*new_point(t_xy x0, int idx);
 char		*parse_colour_data(char *ptr, t_texture *tex);
+int			parse_coordinates(t_xy	*coord, int *tex_id,
+	unsigned int ***pos, unsigned char **buf);
+int			parse_number_data(t_sector *new_sector, unsigned char *buf,
+	unsigned int *pos);
 int			parse_pixel_data(char *ptr, t_texture *tex);
 int			parse_xpm_data(unsigned char *buf, t_texture **tex);
 #endif

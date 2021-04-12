@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:31:08 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 14:57:15 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 11:11:38 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,59 +61,53 @@ void				close_linkedlist(t_point **head)
 	temp->next = *head;
 }
 
-void				add_points(t_sector *sector,
+int					add_points(t_sector *sector,
 	unsigned char *buf, unsigned int **pos)
 {
-	size_t		walls;
-	t_xy		coord;
-	int			tex_id;
+	unsigned int	i;
+	t_xy			coord;
+	int				tex_id;
+	t_point			*point;
 
-	walls = sector->nbr_of_walls;
+	i = 0;
 	if (sector == NULL)
-		return ;
+		return (1);
 	sector->points = NULL;
-	while (walls--)
+	while (i < sector->nbr_of_walls)
 	{
-		coord.x = ft_atoi((const char*)buf + **pos);
-		**pos += ft_nb_len(coord.x, 10) + 1;
-		coord.y = ft_atoi((const char*)buf + **pos);
-		**pos += ft_nb_len(coord.y, 10) + 1;
-		tex_id = ft_atoi((const char*)buf + **pos);
+		parse_coordinates(&coord, &tex_id, &pos, &buf);
 		if (tex_id < -4)
-		{
-			sector = NULL;
-			return ;
-		}
+			return (free_points(&sector->points, i + 1));
 		**pos += ft_nb_len(tex_id, 10) + 1;
-		add_point(&sector->points, new_point(coord, tex_id));
+		point = new_point(coord, tex_id);
+		if (point)
+			add_point(&sector->points, point);
+		else
+			return (free_points(&sector->points, i + 1));
+		i++;
 	}
 	close_linkedlist(&sector->points);
+	return (0);
 }
 
 t_sector			*get_sector_data(unsigned char *buf, unsigned int *pos)
 {
 	t_sector		*new_sector;
+	int				ret;
 
 	if (!buf)
 		return (NULL);
 	if (!(new_sector = (t_sector*)malloc(sizeof(t_sector))))
-		error_output("ERROR: Memory allocation for a sector failed.");
+		return (NULL);
 	*pos += get_next_breaker(buf + *pos) + 1;
 	if (!ft_strstr((const char*)(buf + *pos), "sector"))
-		error_output("ERROR: Uncorrect number of sectors given");
+		return (NULL);
 	*pos += 6;
-	new_sector->idx_sector = ft_atoi((const char*)buf + *pos);
-	*pos += ft_nb_len(new_sector->idx_sector, 10) + 1;
-	new_sector->nbr_of_walls = ft_atoi((const char*)buf + *pos);
-	*pos += ft_nb_len(new_sector->nbr_of_walls, 10) + 1;
-	new_sector->ground = ft_atoi((const char*)buf + *pos);
-	*pos += ft_nb_len(new_sector->ground, 10) + 1;
-	new_sector->ceiling = ft_atoi((const char*)buf + *pos);
-	*pos += ft_nb_len(new_sector->ceiling, 10) + 1;
-	new_sector->tex_floor = ft_atoi((const char*)buf + *pos);
-	*pos += ft_nb_len(new_sector->tex_floor, 10) + 1;
-	new_sector->tex_ceil = ft_atoi((const char*)buf + *pos);
-	*pos += ft_nb_len(new_sector->tex_ceil, 10) + 1;
-	add_points(new_sector, buf, &pos);
+	parse_number_data(new_sector, buf, pos);
+	if ((ret = add_points(new_sector, buf, &pos)))
+	{
+		free(new_sector);
+		return (NULL);
+	}
 	return (new_sector);
 }
