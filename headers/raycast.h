@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:58:35 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/10 17:00:26 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 14:49:21 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ enum			e_lines {
 	colinear = 0,
 	clockwise = 1,
 	c_clockwise = 2,
-};
-
-enum			e_movement {
-	open_space = -9999
 };
 
 void			calc_distances(t_frame *frame, t_player *plr);

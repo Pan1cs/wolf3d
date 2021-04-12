@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:24 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 12:59:38 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 14:48:58 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,6 @@ typedef	struct		s_texture
 	t_colour_map	**colour_map;
 }					t_texture;
 
-typedef	struct		s_item
-{
-	float			x;
-	float			y;
-	float			z;
-}					t_item;
-
 typedef struct		s_window
 {
 	SDL_Window		*window;
@@ -45,37 +38,6 @@ typedef struct		s_window
 	int				width;
 	int				height;
 }					t_window;
-
-typedef struct		s_ray_floor
-{
-	t_xy			plane;
-	t_xy			left;
-	t_xy			right;
-}					t_ray_floor;
-
-typedef struct		s_step
-{
-	t_xy			cur_step;
-	t_xy			step_len;
-}					t_step;
-
-typedef struct		s_tex_col
-{
-	int				scr_col;
-	int				tex_col;
-	int				top;
-	int				bot;
-	int				line_height;
-	float			step;
-	SDL_Surface		*tex;
-}					t_tex_col;
-
-typedef struct		s_wall
-{
-	t_xy			hit;
-	float			distance;
-	int				side;
-}					t_wall;
 
 typedef struct		s_home
 {

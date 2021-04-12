@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/10 16:00:09 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 14:47:16 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,9 @@ static t_home	*init_sdl(t_home *home, t_frame *frame)
 void			init_player(t_player *plr)
 {
 	plr->pos = vec2(0, 0);
-	plr->z = 0;
 	plr->pitch = 240;
 	plr->dir.x = 0.0f;
 	plr->dir.y = 1.0f;
-	plr->move_dir.x = 0.785398163f;
-	plr->move_dir.y = 0.785398163f;
 	plr->input.down = 0;
 	plr->input.up = 0;
 	plr->input.right = 0;
@@ -52,8 +49,6 @@ void			init_player(t_player *plr)
 	plr->input.info = 1;
 	plr->input.mouse = 1;
 	plr->time = 0;
-	plr->height = 0.5;
-	plr->angle = 0;
 	plr->current_sector = 0;
 }
 

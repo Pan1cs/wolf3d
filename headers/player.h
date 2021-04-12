@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:22:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/10 15:55:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 14:49:41 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@ typedef struct		s_player
 {
 	t_xy			pos;
 	t_xy			dir;
-	t_xy			move_dir;
 	float			pitch;
-	float			z;
-	float			height;
 	t_input			input;
 	Uint32			time;
 	t_audio			audio;
-	float			angle;
 	int				current_sector;
 }					t_player;
+
+
+enum				e_movement {
+	open_space = -9999
+};
 
 #endif
