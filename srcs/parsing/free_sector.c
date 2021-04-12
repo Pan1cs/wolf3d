@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:05:23 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 10:57:52 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 14:35:33 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void	free_sectors_n(t_home *home, size_t n)
 		return ;
 	while (i < n)
 	{
+		if (i + 1 < n)
+		{
+			free_points(&home->sectors[i]->points,
+				home->sectors[i]->nbr_of_walls);
+		}
 		free(home->sectors[i]);
 		home->sectors[i] = NULL;
 		i++;

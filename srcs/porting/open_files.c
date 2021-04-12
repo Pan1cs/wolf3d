@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 13:49:29 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 14:35:01 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,16 @@ int			get_next_breaker(unsigned char *buf)
 
 void		free_sectors_and_exit(int error_code, t_home *home, size_t n)
 {
-	free_sectors_n(home, n);
 	if (error_code == 1)
+	{
+		free_sectors_n(home, n);
 		ft_putendl_fd("ERROR: Memory allocation for a sector failed.", 2);
+	}
 	else if (error_code == 2)
+	{
+		free_sectors(home);
 		ft_putendl_fd("ERROR: Still data in buffer after reading.", 2);
-	else if (error_code == 3)
-		ft_putendl_fd("ERROR: Uncorrect number of sectors given", 2);
-	else if (error_code == 4)
-		ft_putendl_fd("ERROR: Incorrect texture code.", 2);
-	else if (error_code == 5)
-		ft_putendl_fd("ERROR: Memory allocation for a wall point failed.", 2);
+	}
 	exit(0);
 }
 

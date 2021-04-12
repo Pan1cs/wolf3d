@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:31:08 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 11:11:38 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 14:17:17 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,12 @@ t_sector			*get_sector_data(unsigned char *buf, unsigned int *pos)
 
 	if (!buf)
 		return (NULL);
-	if (!(new_sector = (t_sector*)malloc(sizeof(t_sector))))
-		return (NULL);
 	*pos += get_next_breaker(buf + *pos) + 1;
 	if (!ft_strstr((const char*)(buf + *pos), "sector"))
 		return (NULL);
 	*pos += 6;
+	if (!(new_sector = (t_sector*)malloc(sizeof(t_sector))))
+		return (NULL);
 	parse_number_data(new_sector, buf, pos);
 	if ((ret = add_points(new_sector, buf, &pos)))
 	{
