@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 10:58:19 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 13:49:29 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int			load_xpm_file(t_texture **tex, char *path)
 		if (CLOSE_FILE(fd) == -1)
 			error_output("ERROR: Could not close the file.");
 		buf[size] = '\0';
-		ft_putendl("Bitmap read to the buffer, proceeding.");
+		ft_putstr(path);
+		ft_putendl(" read to the buffer, proceeding.");
 		parse_xpm_data(buf, tex);
 	}
 	return (0);

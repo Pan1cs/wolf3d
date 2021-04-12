@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:38:16 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 11:55:20 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/12 13:51:22 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ float			vec2_mag(t_xy a)
 float			vec2_ang(t_xy a, t_xy b)
 {
 	float	ret;
+
 	ret = vec2_dot(a, b) / (vec2_mag(a) * vec2_mag(b));
 	ret = acosf(ft_fmin(ft_fmax(ret, -1.0f), 1.0f));
 	return (ret);
