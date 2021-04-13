@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:39:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/13 16:45:59 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 18:08:04 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,22 @@
 
 void	error_output_sdl(char *msg, t_home *home)
 {
-	SDL_DestroyWindow(home->win.window);
+	if (ft_strequ(msg, "Fatal: Failed to create a window."))
+	{
+		SDL_Quit();
+	}
+	if (ft_strequ(msg, "Fatal: Failed to get window surface"))
+	{
+		SDL_DestroyWindow(home->win.window);
+		SDL_Quit();
+	}
+	if (ft_strequ(msg, "Fatal: SDL_mixer could not initialize!"))
+	{
+		SDL_DestroyWindow(home->win.window);
+		SDL_Quit();
+	}
 	ft_putendl_fd(msg, 2);
-	SDL_Quit();
-	exit(EXIT_FAILURE);
+	clean_up(home, 5);
 }
 
 void	error_output(char *msg)
