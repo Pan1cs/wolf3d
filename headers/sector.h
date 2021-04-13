@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:08:38 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 14:51:55 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 16:23:37 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ typedef struct		s_sector
 	float			ceiling;
 	float			ground;
 }					t_sector;
+
+enum				e_sector_info {
+	old_sector = -6666
+};
 
 #endif

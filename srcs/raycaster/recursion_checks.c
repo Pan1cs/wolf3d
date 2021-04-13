@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 08:51:30 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 15:00:44 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 16:24:07 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	continue_from_last_sector(t_point *start, t_ray_pt *fov, t_frame *frame)
 	t_point *p0;
 
 	p0 = start;
-	if (frame->old_idx != -1)
+	if (frame->old_idx != old_sector)
 	{
 		while (p0)
 		{

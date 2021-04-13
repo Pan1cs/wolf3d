@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:59:17 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/10 15:57:58 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 16:23:50 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void		draw_info(t_frame *frame, t_player *plr, int nb_fps)
 void			draw_frame(t_home *home, t_frame *frame, t_player *plr)
 {
 	frame->idx = plr->current_sector;
-	frame->old_idx = -1;
+	frame->old_idx = old_sector;
 	frame->max_fov = 0;
 	frame->offset = 640;
 	frame->pxl_offset = 0.0f;
