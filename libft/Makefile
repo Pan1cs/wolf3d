@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/26 13:08:18 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/13 11:28:40 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/13 11:55:29 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -156,7 +156,7 @@ cleanobjdir: cleanobj
 clean: cleanobjdir
 	@echo Removed object files.
 
-fclean:
+fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
