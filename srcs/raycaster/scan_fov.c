@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 12:37:06 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 16:24:50 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 16:13:39 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static float	round_angle(float angle, float *pxl_offset)
 
 t_texture		*get_tex(int idx, t_texture **textures)
 {
-	if (abs(idx) > 4)
+	if (ft_abs(idx) > 4)
 		idx = 4;
-	return (textures[abs(idx)]);
+	return (textures[ft_abs(idx)]);
 }
 
 void			scan_fov(t_home *home, t_frame *frame, t_player *plr,
