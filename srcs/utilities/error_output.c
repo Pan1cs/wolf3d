@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:39:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 19:24:31 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 16:45:59 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	error_output_sdl(char *msg, t_home *home)
 	SDL_DestroyWindow(home->win.window);
 	ft_putendl_fd(msg, 2);
 	SDL_Quit();
-	exit(0);
+	exit(EXIT_FAILURE);
 }
 
 void	error_output(char *msg)
 {
 	ft_putendl_fd(msg, 2);
-	exit(0);
+	exit(EXIT_FAILURE);
 }
 
 void	map_error_output(int i, t_home *home)
@@ -39,7 +39,7 @@ void	map_error_output(int i, t_home *home)
 	else if (i == 5)
 		ft_putendl_fd("ERROR: Sectors line segments are cutting.", 2);
 	free_sectors(home);
-	exit(0);
+	exit(EXIT_FAILURE);
 }
 
 int		error_handling(int error_code, t_texture **tex)

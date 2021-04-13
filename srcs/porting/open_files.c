@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 14:35:01 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 16:47:51 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		free_sectors_and_exit(int error_code, t_home *home, size_t n)
 		free_sectors(home);
 		ft_putendl_fd("ERROR: Still data in buffer after reading.", 2);
 	}
-	exit(0);
+	exit(EXIT_FAILURE);
 }
 
 void		parse_sector_data(unsigned char *buf, t_home *home)

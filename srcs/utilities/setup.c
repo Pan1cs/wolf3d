@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 14:47:16 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 16:45:17 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,5 @@ void			clean_up(t_home *home, int ret)
 	if (home->t.frame_times)
 		free(home->t.frame_times);
 	ft_putendl_fd("Shutting down.", 2);
-	exit(1);
+	exit(EXIT_FAILURE);
 }

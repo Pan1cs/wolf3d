@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:10:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 09:18:30 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 16:44:33 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int			main(int argc, char **argv)
 	cleanup_audio(&plr.audio);
 	SDL_Quit();
 	ft_putendl("User closed the window");
-	return (0);
+	return (EXIT_SUCCESS);
 }

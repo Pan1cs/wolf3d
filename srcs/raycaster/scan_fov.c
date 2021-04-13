@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 12:37:06 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/13 16:20:17 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 17:12:15 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,22 @@ t_texture		*get_tex(int idx, t_texture **textures)
 	return (textures[ft_abs(idx)]);
 }
 
-void			scan_fov(t_home *home, t_frame *frame, t_player *plr,
-	int cur_pxl)
+static void		handle_portal(t_home *home, t_frame *frame, t_player *plr,
+	int *cur_pxl)
 {
 	t_frame		new_frame;
 
+	*cur_pxl = *cur_pxl + 1;
+	setup_frame(frame, &new_frame, *cur_pxl, frame->left.wall->idx);
+	scan_fov(home, &new_frame, plr, 0);
+	draw_segment(frame, home, plr, 0);
+	frame->offset = new_frame.offset;
+	frame->pxl_offset = new_frame.pxl_offset;
+}
+
+void			scan_fov(t_home *home, t_frame *frame, t_player *plr,
+	int cur_pxl)
+{
 	frame->left.wall = home->sectors[frame->idx]->points;
 	frame->right.wall = home->sectors[frame->idx]->points;
 	continue_from_last_sector(frame->left.wall, &frame->left, frame);
@@ -53,13 +64,7 @@ void			scan_fov(t_home *home, t_frame *frame, t_player *plr,
 			break ;
 		if (check_if_portal(frame->left.wall) &&
 			!check_if_same_pt(&cur_pxl, &frame->left))
-		{
-			setup_frame(frame, &new_frame, ++cur_pxl, frame->left.wall->idx);
-			scan_fov(home, &new_frame, plr, 0);
-			draw_segment(frame, home, plr, 0);
-			frame->offset = new_frame.offset;
-			frame->pxl_offset = new_frame.pxl_offset;
-		}
+			handle_portal(home, frame, plr, &cur_pxl);
 		else
 		{
 			draw_segment(frame, home, plr, 1);

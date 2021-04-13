@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:38:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 08:35:50 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/13 17:16:15 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ Uint32			get_texel(t_texture *tex, int x, int y)
 	Uint32	*p;
 	Uint32	color;
 
+	x = x % tex->w;
+	y = y % tex->h;
 	p = tex->pixels + (x + tex->w * y);
 	color = *p;
 	return (color);
