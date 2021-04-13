@@ -6,132 +6,156 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/26 13:08:18 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/10 17:24:22 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/13 11:28:40 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = \
-ft_strlen.c \
-ft_strdup.c \
-ft_strcmp.c \
-ft_strncmp.c\
-ft_atoi.c \
-ft_strcpy.c \
-ft_strncpy.c \
-ft_strcat.c \
-ft_strncat.c \
-ft_strlcat.c \
-ft_strchr.c \
-ft_strrchr.c \
-ft_strstr.c \
-ft_strnstr.c \
-ft_isalpha.c \
-ft_isdigit.c \
-ft_isalnum.c \
-ft_isascii.c \
-ft_isprint.c \
-ft_toupper.c \
-ft_tolower.c \
-ft_memset.c \
-ft_memcpy.c \
-ft_memccpy.c \
-ft_memchr.c \
-ft_bzero.c \
-ft_memmove.c \
-ft_memcmp.c \
-ft_memalloc.c \
-ft_memdel.c \
-ft_strnew.c \
-ft_strdel.c \
-ft_strclr.c \
-ft_putchar_fd.c \
-ft_putstr_fd.c \
-ft_putendl_fd.c \
-ft_striter.c \
-ft_striteri.c \
-ft_strmap.c \
-ft_strmapi.c \
-ft_strequ.c \
-ft_strnequ.c \
-ft_strsub.c \
-ft_strtrim.c \
-ft_strjoin.c \
-ft_strsplit.c \
-ft_itoa.c \
-ft_putchar.c \
-ft_putstr.c \
-ft_putendl.c \
-ft_putnbr.c \
-ft_putnbr_fd.c \
-ft_lstadd.c \
-ft_lstiter.c \
-ft_lstmap.c \
-ft_lstnew.c \
-ft_lstdelone.c \
-ft_lstdel.c \
-ft_lstlen.c \
-ft_lst_addback.c \
-ft_isspace.c \
-ft_strarrnew.c \
-ft_strarrdel.c \
-ft_strndup.c \
-ft_itoa_base.c \
-get_next_line.c \
-ft_str3darrdel.c \
-ft_strlcpy.c\
-ft_abs.c\
-ft_atoi_base.c\
-ft_count_wrds.c\
-ft_nb_len.c\
-ft_replace_char.c\
-ft_pow_of_2.c\
-ft_sqrt.c\
-ft_dabs.c\
-ft_cdivision.c\
-ft_cmultiply.c\
-ft_cpow3.c\
-ft_csub.c\
-ft_cabs.c\
-ft_cadd.c\
-ft_fmax.c\
-ft_fmin.c\
-ft_ftoa.c\
-ft_roundf.c\
-ft_ineg.c\
-
-INC = ./libft.h ./get_next_line.h
-
-OBJ  = $(SRC:.c=.o)
+S = src
+O = obj
 
 ifeq ($(OS),Windows_NT)
 	TARGET_SYSTEM := Windows
 else
 	TARGET_SYSTEM := $(shell uname -s)
 	TARGET_SYSTEM := $(patsubst CYGWIN%,Cygwin,$(TARGET_SYSTEM))
-    TARGET_SYSTEM := $(patsubst MSYS%,MSYS,$(TARGET_SYSTEM))
-    TARGET_SYSTEM := $(patsubst MINGW%,MSYS,$(TARGET_SYSTEM))
+	TARGET_SYSTEM := $(patsubst MSYS%,MSYS,$(TARGET_SYSTEM))
+	TARGET_SYSTEM := $(patsubst MINGW%,MSYS,$(TARGET_SYSTEM))
 endif
 
 ifeq ($(TARGET_SYSTEM),Windows)
-	RM = del
+	RM = del /s/q
+	SLASH = \\
+	MKDIR = mkdir
 else
-	RM = rm -f
+	RM = /bin/rm -rf
+	SLASH = /
+	MKDIR = mkdir -p
 endif
 
-.PHONY: clean fclean all
+SRC_LIST = \
+	$(SLASH)ft_strlen.c \
+	$(SLASH)ft_strdup.c \
+	$(SLASH)ft_strcmp.c \
+	$(SLASH)ft_strncmp.c\
+	$(SLASH)ft_atoi.c \
+	$(SLASH)ft_strcpy.c \
+	$(SLASH)ft_strncpy.c \
+	$(SLASH)ft_strcat.c \
+	$(SLASH)ft_strncat.c \
+	$(SLASH)ft_strlcat.c \
+	$(SLASH)ft_strchr.c \
+	$(SLASH)ft_strrchr.c \
+	$(SLASH)ft_strstr.c \
+	$(SLASH)ft_strnstr.c \
+	$(SLASH)ft_isalpha.c \
+	$(SLASH)ft_isdigit.c \
+	$(SLASH)ft_isalnum.c \
+	$(SLASH)ft_isascii.c \
+	$(SLASH)ft_isprint.c \
+	$(SLASH)ft_toupper.c \
+	$(SLASH)ft_tolower.c \
+	$(SLASH)ft_memset.c \
+	$(SLASH)ft_memcpy.c \
+	$(SLASH)ft_memccpy.c \
+	$(SLASH)ft_memchr.c \
+	$(SLASH)ft_bzero.c \
+	$(SLASH)ft_memmove.c \
+	$(SLASH)ft_memcmp.c \
+	$(SLASH)ft_memalloc.c \
+	$(SLASH)ft_memdel.c \
+	$(SLASH)ft_strnew.c \
+	$(SLASH)ft_strdel.c \
+	$(SLASH)ft_strclr.c \
+	$(SLASH)ft_putchar_fd.c \
+	$(SLASH)ft_putstr_fd.c \
+	$(SLASH)ft_putendl_fd.c \
+	$(SLASH)ft_striter.c \
+	$(SLASH)ft_striteri.c \
+	$(SLASH)ft_strmap.c \
+	$(SLASH)ft_strmapi.c \
+	$(SLASH)ft_strequ.c \
+	$(SLASH)ft_strnequ.c \
+	$(SLASH)ft_strsub.c \
+	$(SLASH)ft_strtrim.c \
+	$(SLASH)ft_strjoin.c \
+	$(SLASH)ft_strsplit.c \
+	$(SLASH)ft_itoa.c \
+	$(SLASH)ft_putchar.c \
+	$(SLASH)ft_putstr.c \
+	$(SLASH)ft_putendl.c \
+	$(SLASH)ft_putnbr.c \
+	$(SLASH)ft_putnbr_fd.c \
+	$(SLASH)ft_lstadd.c \
+	$(SLASH)ft_lstiter.c \
+	$(SLASH)ft_lstmap.c \
+	$(SLASH)ft_lstnew.c \
+	$(SLASH)ft_lstdelone.c \
+	$(SLASH)ft_lstdel.c \
+	$(SLASH)ft_lstlen.c \
+	$(SLASH)ft_lst_addback.c \
+	$(SLASH)ft_isspace.c \
+	$(SLASH)ft_strarrnew.c \
+	$(SLASH)ft_strarrdel.c \
+	$(SLASH)ft_strndup.c \
+	$(SLASH)ft_itoa_base.c \
+	$(SLASH)get_next_line.c \
+	$(SLASH)ft_str3darrdel.c \
+	$(SLASH)ft_strlcpy.c\
+	$(SLASH)ft_abs.c\
+	$(SLASH)ft_atoi_base.c\
+	$(SLASH)ft_count_wrds.c\
+	$(SLASH)ft_nb_len.c\
+	$(SLASH)ft_replace_char.c\
+	$(SLASH)ft_pow_of_2.c\
+	$(SLASH)ft_sqrt.c\
+	$(SLASH)ft_dabs.c\
+	$(SLASH)ft_cdivision.c\
+	$(SLASH)ft_cmultiply.c\
+	$(SLASH)ft_cpow3.c\
+	$(SLASH)ft_csub.c\
+	$(SLASH)ft_cabs.c\
+	$(SLASH)ft_cadd.c\
+	$(SLASH)ft_fmax.c\
+	$(SLASH)ft_fmin.c\
+	$(SLASH)ft_ftoa.c\
+	$(SLASH)ft_roundf.c\
+	$(SLASH)ft_ineg.c\
+
+HEADERS = ./libft.h ./get_next_line.h
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+SRC = $(addprefix $S, $(SRC_LIST))
+OBJ = $(SRC:$S%=$O%.o)
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
-$(NAME): $(SRC) $(INC)
-	gcc -Wall -Werror -Wextra -c $(SRC) -I.
+$O:
+	$(MKDIR) $@
+
+$(OBJ): | $O
+
+$(OBJ): $O%.o: $S% $(HEADERS)
+	$(CC) -c -o $@ $(CFLAGS) -I. $<
+
+$(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 	@echo Successfully created $(NAME)
 
-clean:
+cleanobj:
 	@$(RM) $(OBJ)
+
+cleanobjdir: cleanobj
+	@$(RM) $O
+
+clean: cleanobjdir
+	@echo Removed object files.
+
 fclean:
 	@$(RM) $(NAME)
 
@@ -141,4 +165,4 @@ debug:
 	@gcc -Wall -Werror -Wextra -g -c $(SRC) -I.
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo Debuggable library uccessfully created $(NAME)
+	@echo Debuggable library successfully created $(NAME)
