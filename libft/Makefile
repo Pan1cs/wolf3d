@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/26 13:08:18 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/13 11:55:29 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/13 11:59:37 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -160,9 +160,3 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
-
-debug:
-	@gcc -Wall -Werror -Wextra -g -c $(SRC) -I.
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo Debuggable library successfully created $(NAME)

@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/12 10:28:33 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/13 12:01:21 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -199,15 +199,11 @@ cleanobjdir: cleanobj
 
 clean: cleanobjdir
 ifeq ($(TARGET_SYSTEM), Linux)
-#	$(RM) SDL2_mixer-2.0.4.tar.gz
-#	$(RM) SDL2-2.0.14.tar.gz
 	$(RM) SDL2-2.0.14
 	$(RM) SDL2_mixer-2.0.4
 else
-#	$(RM) SDL2-devel-2.0.14-mingw.tar.gz
 	$(RM) SDL2-2.0.14
 	rd /s /q SDL2-2.0.14
-#	$(RM) SDL2_mixer-devel-2.0.4-mingw.tar.gz
 	$(RM) SDL2_mixer-2.0.4
 	rd /s /q SDL2_mixer-2.0.4
 endif
@@ -219,6 +215,6 @@ ifeq ($(TARGET_SYSTEM), Windows)
 else
 	$(RM) $(NAME)
 endif
-	$(RM) $(LIBFT)
+	make -C libft fclean
 
 re: fclean all
