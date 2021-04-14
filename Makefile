@@ -53,6 +53,14 @@ ifeq ($(TARGET_SYSTEM),Windows)
 	MKDIR = mkdir
 	RM = del /s/q
 	WGET_EXISTS := wget_not_needed
+	RESET := [0m
+	RED := [31m
+	GREEN := [32m
+	YELLOW := [33m
+	BLUE := [34m
+	MAGENTA := [35m
+	CYAN := [36m
+	WHITE := [37m
 else
 	INCLUDES = $(LINUX_INCLUDE_PATHS)
 	LIBS = $(LINUX_LIBRARY_PATHS)
@@ -188,42 +196,47 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	sudo make install; \
 	fi
 else
-	IF NOT EXIST "SDL2-2.0.14\x86_64-w64-mingw32" install.bat
+	@IF NOT EXIST "SDL2-2.0.14\x86_64-w64-mingw32" ( install.bat ) ELSE ECHO $(GREEN)"Hello World"$(RESET)
 endif
 
 $(NAME): $(LIBFT) $(SDL2_DIR) $(OBJ)
 	$(CC) -o $@ $(INCLUDES) $(LIBS) $(CFLAGS) $(OBJ) $(LDFLAGS)
+	@echo $(GREEN)Compiled executable $(NAME).
+	@echo Run the map files $(NAME) map_files/map.TEST.
+	@echo Running tests.sh tests executable with invalid maps.$(RESET)
 
 cleanobj:
 ifneq ($(wildcard $(OBJ)),)
-	$(RM) $(wildcard $(OBJ))
+	@$(RM) $(wildcard $(OBJ))
 endif
 
 cleanobjdir: cleanobj
 ifeq ($(TARGET_SYSTEM), Linux)
-	$(RM) $O
+	@$(RM) $O
 else
-	IF EXIST $O ( rd /s /q "$O" )
+	@IF EXIST $O ( rd /s /q "$O" )
 endif
 
 clean: cleanobjdir
 ifeq ($(TARGET_SYSTEM), Linux)
-	$(RM) SDL2-2.0.14
-	$(RM) SDL2_mixer-2.0.4
+	@$(RM) SDL2-2.0.14
+	@$(RM) SDL2_mixer-2.0.4
 else
-	IF EXIST SDL2-2.0.14 ( $(RM) "SDL2-2.0.14" )
-	IF EXIST SDL2-2.0.14 ( rd /s /q "SDL2-2.0.14" )
-	IF EXIST SDL2_mixer-2.0.4 ( $(RM) "SDL2_mixer-2.0.4" )
-	IF EXIST SDL2_mixer-2.0.4 ( rd /s /q "SDL2_mixer-2.0.4" )
+	@IF EXIST SDL2-2.0.14 ( $(RM) "SDL2-2.0.14" )
+	@IF EXIST SDL2-2.0.14 ( rd /s /q "SDL2-2.0.14" )
+	@IF EXIST SDL2_mixer-2.0.4 ( $(RM) "SDL2_mixer-2.0.4" )
+	@IF EXIST SDL2_mixer-2.0.4 ( rd /s /q "SDL2_mixer-2.0.4" )
 endif
-	make -C libft clean
+	@make -C libft clean
+	@echo $(GREEN)Cleaned folder from object files and SDL2 folder.$(RESET) 
 
 fclean: clean
 ifeq ($(TARGET_SYSTEM), Windows)
-	IF EXIST $(NAME) ( $(RM) "$(NAME)")
+	@IF EXIST $(NAME) ( $(RM) "$(NAME)") ELSE ( ECHO $(CYAN)No binary to remove. $(RESET) )
 else
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 endif
-	make -C libft fclean
+	@make -C libft fclean
+	@echo $(GREEN)Removed binaries and libraries.$(RESET)
 
 re: fclean all
