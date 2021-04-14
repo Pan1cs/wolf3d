@@ -6,13 +6,13 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:41:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/14 18:07:02 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 18:11:57 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-int		load_audio(t_audio *audio)
+int			load_audio(t_audio *audio)
 {
 	audio->music = Mix_LoadMUS("resources/eerie_by_eparviai.wav");
 	if (!audio->music)
