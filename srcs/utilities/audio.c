@@ -6,23 +6,36 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:41:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 08:16:26 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 18:07:02 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../wolf3d.h"
 
-void		load_audio(t_audio *audio)
+int		load_audio(t_audio *audio)
 {
-	audio->music = Mix_LoadMUS("resources/menacing.wav");
+	audio->music = Mix_LoadMUS("resources/eerie_by_eparviai.wav");
 	if (!audio->music)
-		error_output("Failed to load beat music! SDL_mixer Error");
+	{
+		ft_putendl_fd("Failed to load beat music! SDL_mixer Error", 2);
+		audio->footstep1 = NULL;
+		audio->footstep2 = NULL;
+		return (771);
+	}
 	audio->footstep1 = Mix_LoadWAV("resources/footstep1.wav");
 	if (!audio->footstep1)
-		error_output("Failed to load scratch sound effect!");
+	{
+		ft_putendl_fd("Failed to load scratch sound effect!", 2);
+		audio->footstep2 = NULL;
+		return (772);
+	}
 	audio->footstep2 = Mix_LoadWAV("resources/footstep2.wav");
 	if (!audio->footstep2)
-		error_output("Failed to load scratch sound effect!");
+	{
+		ft_putendl_fd("Failed to load scratch sound effect!", 2);
+		return (773);
+	}
+	return (0);
 }
 
 void		cleanup_audio(t_audio *audio)

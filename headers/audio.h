@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 13:35:03 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 14:41:49 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 18:02:13 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ typedef struct	s_audio
 }				t_audio;
 
 void			cleanup_audio(t_audio *audio);
-void			load_audio(t_audio *audio);
+int				load_audio(t_audio *audio);
 #endif

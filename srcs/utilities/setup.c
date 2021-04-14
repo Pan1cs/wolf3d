@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 15:17:33 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/13 18:10:44 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 17:58:24 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,12 @@ void			setup(char *map, t_home *home, t_player *plr, t_frame *frame)
 	if ((ret = load_textures(&home->editor_tex, 5)))
 		clean_up(home, ret);
 	home = init_sdl(home, frame);
-	load_audio(&plr->audio);
+	if ((ret = load_audio(&plr->audio)))
+	{
+		cleanup_audio(&plr->audio);
+		SDL_Quit();
+		clean_up(home, 5);
+	}
 	if (Mix_PlayingMusic() == 0)
 		Mix_PlayMusic(plr->audio.music, -1);
 	init_player(plr);
