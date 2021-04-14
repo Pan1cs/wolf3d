@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/14 15:15:16 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/14 17:27:01 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,16 +14,32 @@ NAME = wolf3d
 S = srcs
 O = objs
 
+LOGO = "\
+\t\t                                       88    ad88\n\
+\t                                               88   d87\n\
+\t                                               88   88\n\
+\t                8b      db      d8   adPPYba.  88 MM88MMM\n\
+\t                 8b    d88b    d8  a8       8a 88   88\n\
+\t                  8b  d8  8b  d8   8b       d8 88   88\n\
+\t                   8bd8    8bd8    78a.   .a87 88   88\n\
+\t                    YP      YP       7YbbdP7   88   88\n"\
+
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 mkfile_dir := $(dir $(mkfile_path))
 
 LIBFT_WIN = libft\libft.a
 LIBFT_LINUX = libft/libft.a
 
-WIN_INCLUDE_PATHS = -ISDL2-2.0.14\i686-w64-mingw32\include\SDL2 -ISDL2_mixer-2.0.4\i686-w64-mingw32\include\SDL2 -Ilibft
+WIN_INCLUDE_PATHS = \
+	-ISDL2-2.0.14\i686-w64-mingw32\include\SDL2 \
+	-ISDL2_mixer-2.0.4\i686-w64-mingw32\include\SDL2 \
+	-Ilibft
 LINUX_INCLUDE_PATHS = -I/usr/local/include/SDL2 -Ilibft
 
-WIN_LIBRARY_PATHS = -LSDL2-2.0.14\i686-w64-mingw32\lib -LSDL2_mixer-2.0.4\i686-w64-mingw32\lib -Llibft
+WIN_LIBRARY_PATHS = \
+	-LSDL2-2.0.14\i686-w64-mingw32\lib \
+	-LSDL2_mixer-2.0.4\i686-w64-mingw32\lib \
+	-Llibft
 LINUX_LIBRARY_PATHS = -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
 WIN_COMPILER_FLAGS = -Wall -Wextra -Werror
@@ -72,6 +88,14 @@ else
 	MKDIR := mkdir -p
 	RM = /bin/rm -rf
 	WGET_EXISTS := $(shell command -v wget 2> /dev/null)
+	RESET = "\033[0m"
+	RED = "\033[0;31m"
+	GREEN = "\033[0;32m"
+	YELLOW = "\033[0;33m"
+	BLUE = "\033[0;34m"
+	MAGENTA = "\033[0;35m"
+	CYAN = "\033[0;36m"
+	WHITE = "\033[0;37m"
 endif
 
 SRC_LIST = \
@@ -164,6 +188,7 @@ $(OBJ): $O%.o: $S% $(HEADERS)
 	$(CC) -c -o $@ $(CFLAGS) $(INCLUDES) $<
 
 $(LIBFT):
+	@echo $(RED)$(LOGO)$(RESET)
 	make -C libft
 
 $(SDL2_DIR):
@@ -196,7 +221,8 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	sudo make install; \
 	fi
 else
-	@IF NOT EXIST "SDL2-2.0.14\x86_64-w64-mingw32" ( install.bat ) ELSE ECHO $(GREEN)"Hello World"$(RESET)
+	@IF NOT EXIST "SDL2-2.0.14\x86_64-w64-mingw32" ( install.bat )\
+	ELSE ECHO $(GREEN)"Folder exists."$(RESET)
 endif
 
 $(NAME): $(LIBFT) $(SDL2_DIR) $(OBJ)
@@ -228,11 +254,12 @@ else
 	@IF EXIST SDL2_mixer-2.0.4 ( rd /s /q "SDL2_mixer-2.0.4" )
 endif
 	@make -C libft clean
-	@echo $(GREEN)Cleaned folder from object files and SDL2 folder.$(RESET) 
+	@echo $(GREEN)Cleaned folder from object files and SDL2 folder.$(RESET)
 
 fclean: clean
 ifeq ($(TARGET_SYSTEM), Windows)
-	@IF EXIST $(NAME) ( $(RM) "$(NAME)") ELSE ( ECHO $(CYAN)No binary to remove. $(RESET) )
+	@IF EXIST $(NAME) ( $(RM) "$(NAME)") \
+	ELSE ( ECHO $(CYAN)No binary to remove. $(RESET) )
 else
 	@$(RM) $(NAME)
 endif
