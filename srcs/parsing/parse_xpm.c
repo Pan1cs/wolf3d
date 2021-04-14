@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 08:45:03 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 12:59:30 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 13:41:37 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static int		parse_header_data(char *ptr, t_texture *tex)
 static char		*validate_header(char *ptr)
 {
 	if (ft_strncmp((const char*)ptr, "/* XPM */", 9))
-		error_output("ERROR: Malformed xpm header");
+		return (NULL);
 	if (!(ptr = ft_strstr((const char*)ptr, "static char * ")))
-		error_output("ERROR: Malformed static char array header");
+		return (NULL);
 	return (ptr);
 }
 
@@ -54,12 +54,15 @@ int				parse_xpm_data(unsigned char *buf, t_texture **tex)
 
 	*tex = (t_texture*)malloc(sizeof(t_texture));
 	if (!*tex || !buf)
-		error_output("ERROR: Invalid pointer");
-	ptr = validate_header((char*)buf);
+		return error_handling(5, tex);
+	(*tex)->colour_map = NULL;
+	(*tex)->nbr_of_colours = 0;
+	if (!(ptr = validate_header((char*)buf)))
+		return error_handling(1, tex);
 	while (*ptr != '[')
 		ptr++;
 	if (!(ptr = ft_strstr((const char*)buf, "[] = {\n")))
-		error_output("ERROR: Malformed data");
+		return error_handling(1, tex);
 	ptr = ptr + 7;
 	if ((ret = parse_header_data(ptr, *tex)))
 		return (error_handling(ret, tex));

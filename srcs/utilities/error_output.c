@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:39:00 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/13 18:08:04 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 13:06:42 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	map_error_output(int i, t_home *home)
 		ft_putendl_fd("ERROR: Sector not convex.", 2);
 	else if (i == 5)
 		ft_putendl_fd("ERROR: Sectors line segments are cutting.", 2);
+	else if (i == 6)
+		ft_putendl_fd("ERROR: Player out of bounds.", 2);
 	free_sectors(home);
 	exit(EXIT_FAILURE);
 }

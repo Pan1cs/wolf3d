@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 15:10:02 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 10:49:10 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:30:39 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int			check_if_lines_cut(t_sector *sector);
 void		close_linkedlist(t_point **point);
 int			free_points(t_point **head, unsigned int nbr_of_walls);
 void		free_sectors(t_home *home);
+int			set_to_null(t_texture **tex, int error);
 void		free_sectors_and_exit(int error_code, t_home *home, size_t n);
 void		free_sectors_n(t_home *home, size_t	n);
 t_sector	*get_sector_data(unsigned char *buf, unsigned int *pos);

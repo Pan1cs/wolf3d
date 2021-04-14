@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:31:08 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/12 14:17:17 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:57:15 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ int					add_points(t_sector *sector,
 	{
 		parse_coordinates(&coord, &tex_id, &pos, &buf);
 		if (tex_id < -4)
-			return (free_points(&sector->points, i + 1));
+			return (free_points(&sector->points, i));
 		**pos += ft_nb_len(tex_id, 10) + 1;
 		point = new_point(coord, tex_id);
 		if (point)
 			add_point(&sector->points, point);
 		else
-			return (free_points(&sector->points, i + 1));
+			return (free_points(&sector->points, i));
 		i++;
 	}
 	close_linkedlist(&sector->points);

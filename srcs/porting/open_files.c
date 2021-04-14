@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 17:28:46 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/13 16:47:51 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:43:18 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			load_map_file(t_home *home, char *path)
 {
 	int				fd;
 	unsigned char	buf[BUF_SIZE + 1];
-	unsigned int	size;
+	int				size;
 
 	if ((fd = OPEN_FILE(path, READ_ONLY)) < 0)
 		error_output("ERROR: Failed to open map");
@@ -98,23 +98,23 @@ int			load_xpm_file(t_texture **tex, char *path)
 {
 	int				fd;
 	unsigned char	buf[XPM_BUF_SIZE + 1];
-	unsigned int	size;
+	int				size;
 	char			*ptr;
 
 	ptr = ft_strstr(path, ".xpm");
 	if (!ptr || *(ptr + 4) != '\0')
-		error_output("ERROR: Not a correct extension");
+		return (set_to_null(tex, 121));
 	if ((fd = OPEN_FILE(path, READ_ONLY)) < 0)
-		error_output("ERROR: Failed to open map");
+		return (set_to_null(tex, 122));
 	else
 	{
 		size = READ_FILE(fd, buf, XPM_BUF_SIZE);
 		if (size <= 0)
-			error_output("ERROR: Failed to read bitmap.");
+			return (set_to_null(tex, 123));
 		else if (size >= XPM_BUF_SIZE)
-			error_output("ERROR: Bitmap is too large.");
+			return (set_to_null(tex, 124));
 		if (CLOSE_FILE(fd) == -1)
-			error_output("ERROR: Could not close the file.");
+			return (set_to_null(tex, 125));
 		buf[size] = '\0';
 		ft_putstr(path);
 		ft_putendl(" read to the buffer, proceeding.");

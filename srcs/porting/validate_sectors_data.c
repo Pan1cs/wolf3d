@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 15:06:59 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 19:47:27 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 13:06:11 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int			validate_sectors_data(t_home *home)
 
 	i = 0;
 	if (!(plr_inside(home->sectors[i], &(t_xy){0.0f, 0.0f})))
-		map_error_output(1, home);
+		map_error_output(6, home);
 	while (i < home->nbr_of_sectors)
 	{
 		if (home->sectors[i]->nbr_of_walls < 3)

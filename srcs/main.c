@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:10:50 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/13 16:44:33 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:47:04 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int			main(int argc, char **argv)
 	t_frame		frame;
 	SDL_Event	e;
 
-	if (argc == 1)
-		error_output("usage: .\\wolf3d [map file path]");
+	if (argc != 2)
+		error_output("usage: ./wolf3d [map file path]");
 	setup(argv[1], &home, &plr, &frame);
 	while (!plr.input.quit)
 	{

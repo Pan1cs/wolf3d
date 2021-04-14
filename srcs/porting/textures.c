@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:53:07 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 09:52:46 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/14 12:38:23 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int			get_floor(int floor_colour)
 
 static int	load_texture(t_texture **texture, char *path)
 {
-	load_xpm_file(texture, path);
-	if (!(*texture))
+	if (load_xpm_file(texture, path) || !(*texture))
 	{
 		ft_putendl("ERROR: Texture loading failed.");
 		return (1);
@@ -64,4 +63,22 @@ int			free_textures(t_texture ***textures, int nbr_of_textures)
 	}
 	free(*textures);
 	return (0);
+}
+
+int			set_to_null(t_texture **tex, int error)
+{
+	*tex = NULL;
+	if (error == 121)
+		ft_putendl_fd("ERROR: Wrong extension", 2);
+	else if (error == 122)
+		ft_putendl_fd("ERROR: Failed to open map", 2);
+	else if (error == 123)
+		ft_putendl_fd("ERROR: Failed to read bitmap.", 2);
+	else if (error == 124)
+		ft_putendl_fd("ERROR: File is too large.", 2);
+	else if (error == 125)
+		ft_putendl_fd("ERROR: Could not close the file.", 2);
+	else
+		ft_putendl_fd("ERROR: Undefined", 2);
+	return (error);
 }
