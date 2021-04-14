@@ -130,7 +130,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = $(addprefix $S, $(SRC_LIST))
 OBJ = $(SRC:$S%=$O%.o)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re cleanobj cleanobjdir
 
 all: $(NAME)
 
@@ -148,10 +148,16 @@ $(NAME): $(OBJ)
 	@echo Successfully created $(NAME)
 
 cleanobj:
-	@$(RM) $(OBJ)
+ifneq ($(wildcard $(OBJ)),)
+	$(RM) $(wildcard $(OBJ))
+endif
 
 cleanobjdir: cleanobj
-	@$(RM) $O
+ifeq ($(TARGET_SYSTEM), Linux)
+	$(RM) $O
+else
+	IF EXIST $O ( rd /s /q "$O" )
+endif
 
 clean: cleanobjdir
 	@echo Removed object files.

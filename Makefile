@@ -185,27 +185,33 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	sudo make install; \
 	fi
 else
-	install.bat
+	IF NOT EXIST "SDL2-2.0.14/x86_64-w64-mingw32" install.bat
 endif
 
 $(NAME): $(LIBFT) dependencies $(OBJ)
 	$(CC) -o $@ $(INCLUDES) $(LIBS) $(CFLAGS) $(OBJ) $(LDFLAGS)
 
 cleanobj:
+ifneq ($(wildcard $(OBJ)),)
 	$(RM) $(wildcard $(OBJ))
+endif
 
 cleanobjdir: cleanobj
+ifeq ($(TARGET_SYSTEM), Linux)
 	$(RM) $O
+else
+	IF EXIST $O ( rd /s /q "$O" )
+endif
 
 clean: cleanobjdir
 ifeq ($(TARGET_SYSTEM), Linux)
 	$(RM) SDL2-2.0.14
 	$(RM) SDL2_mixer-2.0.4
 else
-	$(RM) SDL2-2.0.14
-	rd /s /q SDL2-2.0.14
-	$(RM) SDL2_mixer-2.0.4
-	rd /s /q SDL2_mixer-2.0.4
+	IF EXIST SDL2-2.0.14 ( $(RM) "SDL2-2.0.14" )
+	IF EXIST SDL2-2.0.14 ( rd /s /q "SDL2-2.0.14" )
+	IF EXIST SDL2_mixer-2.0.4 ( $(RM) "SDL2_mixer-2.0.4" )
+	IF EXIST SDL2_mixer-2.0.4 ( rd /s /q "SDL2_mixer-2.0.4" )
 endif
 	make -C libft clean
 
@@ -215,6 +221,6 @@ ifeq ($(TARGET_SYSTEM), Windows)
 else
 	$(RM) $(NAME)
 endif
-	make -C libft fclean
+	$(RM) $(LIBFT)
 
 re: fclean all
