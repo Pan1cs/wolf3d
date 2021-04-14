@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/13 12:01:21 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/14 14:20:48 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,11 @@ LINUX_INCLUDE_PATHS = -I/usr/local/include/SDL2 -Ilibft
 WIN_LIBRARY_PATHS = -LSDL2-2.0.14\i686-w64-mingw32\lib -LSDL2_mixer-2.0.4\i686-w64-mingw32\lib -Llibft
 LINUX_LIBRARY_PATHS = -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
 
-WIN_COMPILER_FLAGS = -Wall -Wextra -g
-LINUX_COMPILER_FLAGS = -Wall -Wextra -Werror -g
+WIN_COMPILER_FLAGS = -Wall -Wextra -Werror
+LINUX_COMPILER_FLAGS = -Wall -Wextra -Werror
 
-WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lft
-LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lft -lm -g
+WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lft -lm
+LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lft -lm
 
 ifeq ($(OS),Windows_NT)
 	TARGET_SYSTEM := Windows
