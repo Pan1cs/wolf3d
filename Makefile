@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/14 14:20:48 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/14 15:15:16 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ ifeq ($(TARGET_SYSTEM),Windows)
 	CFLAGS = $(WIN_COMPILER_FLAGS)
 	LDFLAGS = $(WIN_LINK_FLAGS)
 	LIBFT = $(LIBFT_WIN)
+	SDL2_DIR = SDL2-2.0.14\i686-w64-mingw32
 	SLASH = \\
 	MKDIR = mkdir
 	RM = del /s/q
@@ -57,6 +58,7 @@ else
 	CFLAGS = $(LINUX_COMPILER_FLAGS)
 	LDFLAGS = $(LINUX_LINK_FLAGS)
 	LIBFT = $(LIBFT_LINUX)
+	SDL2_DIR = SDL2-2.0.14/build
 	SLASH = /
 	MKDIR := mkdir -p
 	RM = /bin/rm -rf
@@ -133,7 +135,7 @@ SRC = $(addprefix $S, $(SRC_LIST))
 OBJ = $(SRC:$S%=$O%.o)
 CC = gcc
 
-.PHONY: all clean fclean re dependencies cleanobj cleanobjdir
+.PHONY: all clean fclean re cleanobj cleanobjdir
 
 all: $(NAME)
 
@@ -155,7 +157,7 @@ $(OBJ): $O%.o: $S% $(HEADERS)
 $(LIBFT):
 	make -C libft
 
-dependencies:
+$(SDL2_DIR):
 ifndef WGET_EXISTS
 	sudo apt-get install wget -y
 endif
@@ -188,7 +190,7 @@ else
 	IF NOT EXIST "SDL2-2.0.14/x86_64-w64-mingw32" install.bat
 endif
 
-$(NAME): $(LIBFT) dependencies $(OBJ)
+$(NAME): $(LIBFT) $(SDL2_DIR) $(OBJ)
 	$(CC) -o $@ $(INCLUDES) $(LIBS) $(CFLAGS) $(OBJ) $(LDFLAGS)
 
 cleanobj:
