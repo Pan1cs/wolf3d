@@ -5,3 +5,6 @@ valgrind --leak-check=full ./wolf3d map_files/map_error_uncorrect_nb_of_sectors.
 valgrind --leak-check=full ./wolf3d map_files/map_error_uncorrect_whitespace.TEST
 valgrind --leak-check=full ./wolf3d map_files/map_error_unlinked_map.TEST
 valgrind --leak-check=full ./wolf3d map_files/map_error_portal_not_connected.TEST
+valgrind --leak-check=full ./wolf3d map_files/map_error_less_than_three_points.TEST
+valgrind --leak-check=full ./wolf3d map_files/map_error_player_out_of_bounds.TEST
+valgrind --leak-check=full ./wolf3d map_files/map_error_lines_cut.TEST
