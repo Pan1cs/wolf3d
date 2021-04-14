@@ -42,12 +42,13 @@ else
 endif
 
 ifeq ($(TARGET_SYSTEM),Windows)
+	NAME = wolf3d.exe
 	INCLUDES = $(WIN_INCLUDE_PATHS)
 	LIBS = $(WIN_LIBRARY_PATHS)
 	CFLAGS = $(WIN_COMPILER_FLAGS)
 	LDFLAGS = $(WIN_LINK_FLAGS)
 	LIBFT = $(LIBFT_WIN)
-	SDL2_DIR = SDL2-2.0.14\i686-w64-mingw32
+	SDL2_DIR := .\SDL2-2.0.14\i686-w64-mingw32
 	SLASH = \\
 	MKDIR = mkdir
 	RM = del /s/q
@@ -58,7 +59,7 @@ else
 	CFLAGS = $(LINUX_COMPILER_FLAGS)
 	LDFLAGS = $(LINUX_LINK_FLAGS)
 	LIBFT = $(LIBFT_LINUX)
-	SDL2_DIR = SDL2-2.0.14/build
+	SDL2_DIR := SDL2-2.0.14/build
 	SLASH = /
 	MKDIR := mkdir -p
 	RM = /bin/rm -rf
@@ -187,7 +188,7 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	sudo make install; \
 	fi
 else
-	IF NOT EXIST "SDL2-2.0.14/x86_64-w64-mingw32" install.bat
+	IF NOT EXIST "SDL2-2.0.14\x86_64-w64-mingw32" install.bat
 endif
 
 $(NAME): $(LIBFT) $(SDL2_DIR) $(OBJ)
@@ -219,7 +220,7 @@ endif
 
 fclean: clean
 ifeq ($(TARGET_SYSTEM), Windows)
-	IF EXIST $(NAME).exe ( $(RM) "$(NAME).exe")
+	IF EXIST $(NAME) ( $(RM) "$(NAME)")
 else
 	$(RM) $(NAME)
 endif
