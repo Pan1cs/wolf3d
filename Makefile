@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/14 17:31:31 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/14 17:37:35 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,6 @@ ifeq ($(TARGET_SYSTEM),Windows)
 	MAGENTA := [35m
 	CYAN := [36m
 	WHITE := [37m
-	NL = \r\n
 else
 	INCLUDES = $(LINUX_INCLUDE_PATHS)
 	LIBS = $(LINUX_LIBRARY_PATHS)
@@ -87,18 +86,17 @@ else
 	MAGENTA = "\033[0;35m"
 	CYAN = "\033[0;36m"
 	WHITE = "\033[0;37m"
-	NL = \n
 endif
 
 LOGO = "\
-\t\t                                       88    ad88$(NL)\
-\t                                               88   d87$(NL)\
-\t                                               88   88$(NL)\
-\t                8b      db      d8   adPPYba.  88 MM88MMM$(NL)\
-\t                 8b    d88b    d8  a8       8a 88   88$(NL)\
-\t                  8b  d8  8b  d8   8b       d8 88   88$(NL)\
-\t                   8bd8    8bd8    78a.   .a87 88   88$(NL)\
-\t                    YP      YP       7YbbdP7   88   88$(NL)"\
+\t\t                                       88    ad88\n\
+\t                                               88   d87\n\
+\t                                               88   88\n\
+\t                8b      db      d8   adPPYba.  88 MM88MMM\n\
+\t                 8b    d88b    d8  a8       8a 88   88\n\
+\t                  8b  d8  8b  d8   8b       d8 88   88\n\
+\t                   8bd8    8bd8    78a.   .a87 88   88\n\
+\t                    YP      YP       7YbbdP7   88   88\n"\
 
 SRC_LIST = \
 	$(SLASH)main.c \
@@ -190,7 +188,11 @@ $(OBJ): $O%.o: $S% $(HEADERS)
 	$(CC) -c -o $@ $(CFLAGS) $(INCLUDES) $<
 
 $(LIBFT):
+ifeq ($(TARGET_SYSTEM), Linux)
 	@echo $(RED)$(LOGO)$(RESET)
+else
+	@echo $(RED)                 WOLF3D                   $(RESET)
+endif
 	make -C libft
 
 $(SDL2_DIR):
