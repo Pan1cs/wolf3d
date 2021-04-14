@@ -217,10 +217,10 @@ endif
 
 fclean: clean
 ifeq ($(TARGET_SYSTEM), Windows)
-	$(RM) $(NAME).exe
+	IF EXIST $(NAME).exe ( $(RM) "$(NAME).exe")
 else
 	$(RM) $(NAME)
 endif
-	$(RM) $(LIBFT)
+	make -C libft fclean
 
 re: fclean all

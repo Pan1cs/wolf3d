@@ -163,6 +163,10 @@ clean: cleanobjdir
 	@echo Removed object files.
 
 fclean: clean
-	@$(RM) $(NAME)
+ifeq ($(TARGET_SYSTEM), Linux)
+	$(RM) $(NAME)
+else
+	IF EXIST $(NAME) ( $(RM) "$(NAME)" )
+endif
 
 re: fclean all
