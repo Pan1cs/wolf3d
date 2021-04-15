@@ -6,20 +6,14 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/09 19:05:59 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/15 17:32:46 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-/*
-**	Non-standard includes
-*/
-
-# include <time.h>
 # include <fcntl.h>
-# include <dirent.h>
 
 # ifdef __unix__
 #  define OPEN_FILE open
@@ -36,11 +30,7 @@
 #  include <SDL2/SDL_mixer.h>
 #  include <string.h>
 #  include <unistd.h>
-# elif __APPLE__
-#  define OPEN_FILE open
-#  define READ_ONLY O_RDONLY
-#  include <string.h>
-#  include <unistd.h>
+#  include <sys/stat.h>
 # elif defined(_WIN32) || defined(WIN32)
 #  define OPEN_FILE _open
 #  define READ_FILE _read
@@ -54,7 +44,6 @@
 #  include "..\SDL2-2.0.14\i686-w64-mingw32\include\SDL2\SDL.h"
 #  include "..\SDL2_mixer-2.0.4\i686-w64-mingw32\include\SDL2\SDL_mixer.h"
 #  include <io.h>
-#  include <stdio.h>
 #  include <stdlib.h>
 #  include <math.h>
 

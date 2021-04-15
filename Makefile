@@ -6,7 +6,7 @@
 #    By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/04/14 17:37:35 by jnivala          ###   ########.fr        #
+#    Updated: 2021/04/15 18:00:11 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,16 @@ WIN_INCLUDE_PATHS = \
 	-ISDL2-2.0.14\i686-w64-mingw32\include\SDL2 \
 	-ISDL2_mixer-2.0.4\i686-w64-mingw32\include\SDL2 \
 	-Ilibft
-LINUX_INCLUDE_PATHS = -I/usr/local/include/SDL2 -Ilibft
+LINUX_INCLUDE_PATHS = -ISDL2-2.0.14/build/include/SDL2 -Ilibft
 
 WIN_LIBRARY_PATHS = \
 	-LSDL2-2.0.14\i686-w64-mingw32\lib \
 	-LSDL2_mixer-2.0.4\i686-w64-mingw32\lib \
 	-Llibft
-LINUX_LIBRARY_PATHS = -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -Llibft
+LINUX_LIBRARY_PATHS = -LSDL2-2.0.14/build/lib -Llibft
 
 WIN_COMPILER_FLAGS = -Wall -Wextra -Werror
-LINUX_COMPILER_FLAGS = -Wall -Wextra -Werror
+LINUX_COMPILER_FLAGS = -Wall -Wextra -Werror -O3
 
 WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lft -lm
 LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lft -lm
@@ -54,7 +54,7 @@ ifeq ($(TARGET_SYSTEM),Windows)
 	CFLAGS = $(WIN_COMPILER_FLAGS)
 	LDFLAGS = $(WIN_LINK_FLAGS)
 	LIBFT = $(LIBFT_WIN)
-	SDL2_DIR := .\SDL2-2.0.14\i686-w64-mingw32
+	SDL2_BUILD := .\SDL2-2.0.14\i686-w64-mingw32
 	SLASH = \\
 	MKDIR = mkdir
 	RM = del /s/q
@@ -73,7 +73,8 @@ else
 	CFLAGS = $(LINUX_COMPILER_FLAGS)
 	LDFLAGS = $(LINUX_LINK_FLAGS)
 	LIBFT = $(LIBFT_LINUX)
-	SDL2_DIR := SDL2-2.0.14/build
+	SDL2_BUILD = SDL2-2.0.14/build
+	SDL2_FULL_PATH = $(shell pwd)/$(SDL2_BUILD)
 	SLASH = /
 	MKDIR := mkdir -p
 	RM = /bin/rm -rf
@@ -195,7 +196,7 @@ else
 endif
 	make -C libft
 
-$(SDL2_DIR):
+$(SDL2_BUILD):
 ifndef WGET_EXISTS
 	sudo apt-get install wget -y
 endif
@@ -207,10 +208,10 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	tar -xzf SDL2-2.0.14.tar.gz; \
 	fi
 	@if [ ! -d "SDL2-2.0.14/build" ]; then \
-	cd "SDL2-2.0.14" && $(MKDIR) build && \
-	cd build && ../configure && \
+	cd "SDL2-2.0.14" && $(MKDIR) build && cd build && \
+	../configure --prefix $(SDL2_FULL_PATH) && \
 	make && \
-	sudo make install; \
+	make install; \
 	fi
 	@if [ ! -f "SDL2_mixer-2.0.4.tar.gz" ]; then \
 	wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz; \
@@ -219,17 +220,17 @@ ifeq ($(TARGET_SYSTEM), Linux)
 	tar -xzf SDL2_mixer-2.0.4.tar.gz; \
 	fi
 	@if [ ! -d "SDL2_mixer-2.0.4/build" ]; then \
-	cd SDL2_mixer-2.0.4 && \
-	./configure && \
+	cd SDL2_mixer-2.0.4 && $(MKDIR) build && cd build && \
+	../configure --prefix $(SDL2_FULL_PATH) && \
 	make && \
-	sudo make install; \
+	make install; \
 	fi
 else
 	@IF NOT EXIST "SDL2-2.0.14\x86_64-w64-mingw32" ( install.bat )\
 	ELSE ECHO $(GREEN)"Folder exists."$(RESET)
 endif
 
-$(NAME): $(LIBFT) $(SDL2_DIR) $(OBJ)
+$(NAME): $(LIBFT) $(SDL2_BUILD) $(OBJ)
 	$(CC) -o $@ $(INCLUDES) $(LIBS) $(CFLAGS) $(OBJ) $(LDFLAGS)
 	@echo $(GREEN)Compiled executable $(NAME).
 	@echo Run the map files $(NAME) map_files/map.TEST.
