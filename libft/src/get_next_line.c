@@ -6,12 +6,12 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 12:31:59 by jnivala           #+#    #+#             */
-/*   Updated: 2020/07/16 15:14:28 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/04/17 18:51:17 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./get_next_line.h"
-#include "./libft.h"
+#include "../get_next_line.h"
+#include "../libft.h"
 
 static int	ft_return_leftover_nl(char **line, char **left_over)
 {
@@ -21,10 +21,12 @@ static int	ft_return_leftover_nl(char **line, char **left_over)
 	newline_detected = ft_strchr(*left_over, '\n');
 	if (newline_detected)
 	{
-		if (!(*line = ft_strndup(*left_over, newline_detected - *left_over)))
+		*line = ft_strndup(*left_over, newline_detected - *left_over);
+		if (!(*line))
 			return (-1);
 		temp = *left_over;
-		if (!(*left_over = ft_strdup(++newline_detected)))
+		*left_over = ft_strdup(++newline_detected);
+		if (!(*left_over))
 			return (-1);
 		if (ft_strlen(*left_over) == 0)
 			ft_strdel(left_over);
@@ -42,9 +44,11 @@ static int	ft_return_nl_after_read(char *buf, char **line, char **left_over)
 	next_nl = ft_strchr(buf, '\n');
 	if (*left_over)
 	{
-		if (!(temp = ft_strndup(buf, next_nl - buf)))
+		temp = ft_strndup(buf, next_nl - buf);
+		if (temp == NULL)
 			return (-1);
-		if (!(*line = ft_strjoin(*left_over, temp)))
+		*line = ft_strjoin(*left_over, temp);
+		if (!(*line))
 		{
 			ft_strdel(left_over);
 			ft_strdel(&temp);

@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str3darrdel.c                                   :+:      :+:    :+:   */
+/*   ft_skipc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/17 15:47:41 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/17 19:13:14 by jnivala          ###   ########.fr       */
+/*   Created: 2021/04/17 18:33:32 by jnivala           #+#    #+#             */
+/*   Updated: 2021/04/17 18:37:06 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-#include <stdlib.h>
 
-char	***ft_str3darrdel(char ****a3d, size_t z, size_t y)
+char	*ft_skipc(char *str, char c)
 {
-	size_t		i;
-	size_t		j;
-
-	i = 0;
-	j = 0;
-	if (*a3d != NULL)
-	{
-		while (i < z)
-		{
-			j = 0;
-			while (j < y)
-			{
-				ft_strdel(&(*(*(*(a3d) + i) + j)));
-				j++;
-			}
-			free(*(*(a3d) + i));
-			*(*(a3d) + i) = NULL;
-			i++;
-		}
-		free(*a3d);
-		*a3d = NULL;
-	}
-	return (NULL);
+	while (*str == c && *str != '\0')
+		str++;
+	return (str);
 }
