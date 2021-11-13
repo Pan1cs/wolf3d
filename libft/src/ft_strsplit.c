@@ -6,7 +6,7 @@
 /*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 08:09:16 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/17 18:38:42 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/11/13 10:16:51 by kafkalain        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char	**ft_strsplit(char const *s, char c)
 	{
 		while (i < word_count)
 		{
-			s = ft_skipc(s, c);
+			s = ft_skipc((char*)s, c);
 			word_len = ft_word_len(s, c);
 			while (*s != c && *s != '\0')
 				s++;
