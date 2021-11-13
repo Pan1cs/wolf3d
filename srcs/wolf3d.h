@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnivala <jnivala@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: jnivala <joonas.nivala@student.hive.fi>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 16:06:53 by jnivala           #+#    #+#             */
-/*   Updated: 2021/04/15 17:32:46 by jnivala          ###   ########.fr       */
+/*   Updated: 2021/11/13 11:26:42 by jnivala          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 #  define CHECK_EXIST O_EXCL
 #  define CREATE_FILE O_CREAT
 #  define TRUNCATE O_TRUNC
-#  include "/usr/local/include/SDL2/SDL.h"
+#  include "../SDL2/include/SDL2/SDL.h"
 #  include <math.h>
-#  include <SDL2/SDL_mixer.h>
+#  include "../SDL2_mixer/include/SDL2/SDL_mixer.h"
 #  include <string.h>
 #  include <unistd.h>
 #  include <sys/stat.h>
