@@ -1,9 +1,12 @@
-SDL2-2.0.14/
+SDL2-2.0.14
+SDL2/
 SDL2_mixer-2.0.4/
+SDL2_mixer/
 libft/test_ftoa
 libft/test_ftoa.sh
 libft/test_main_ftoa.c
 libft/obj/
+libft/libft.a
 objs/
 wolf3d
 .vscode/
