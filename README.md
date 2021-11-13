@@ -20,22 +20,25 @@ This project assumes that it is installed to C:\MinGW
 
 ## Maps
 
+Data has been formatted in the map in following way.
+
 	#wolf3d_sectors#1
 	#sector0	4	0	10	-5	-4	-100,100,-1	-100,-100,-4	100,-100,2	100,100,-4
-* #wolf3d_sectors = program id
-* #1 = number of sectors
-* #sector0 = sector followed by it's index.
-* 4 = number of walls
-* 0 = floor height
-* 10 = ceiling height
-* -5 = floor colour
-* -4 = ceiling colour
-* -100,100,-1 = x and y coordinate, and index. Negative integers are textures, positive
-integers are portals.
+tag | explanation
+----|---------
+#wolf3d_sectors | program id
+#1 | number of sectors
+#sector0 | sector followed by it's index.
+4 | number of walls
+0 | floor height
+10 | ceiling height
+-5 | floor colour
+-4 | ceiling colour
+-100,100,-1 | x and y coordinate, and index. Negative integers are textures, positive integers are portals.
 
 ## Engine features
 - 2.5D engine completely written from scratch.
-- Running at 90-120 FPS using just hardware acceleration.
+- Running at 90-120 FPS using just software acceleration.
 - Perspective correct texture mapping in walls.
 - Graphics function only lighting up the pixel in the screen and managing input events through SDL2 library.
 - Music and sounds through SDL_Mixer library 🎵🎶
