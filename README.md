@@ -9,10 +9,17 @@ Our Hive Helsinki school graphics branch project, where our goal was to create a
 - In Windows environment, you have to install MingW gcc compiler for Windows.
 Download the installer from https://sourceforge.net/projects/mingw/files/Installer/
 This project assumes that it is installed to C:\MinGW
-- In Linux environment you will need `gcc` compiler to be installed.
+- In Linux environment you will need `gcc` compiler to be installed, and also the packages SDL2 needs to compile.
+However, these are not included in the makefile, as user should install these under their own discretion.
 
-	sudo apt-get update
-	sudo apt-get install build-essential
+		sudo apt-get update
+		sudo apt-get install build-essential git make cmake autoconf automake \
+		libtool pkg-config libasound2-dev libpulse-dev libaudio-dev libjack-dev \
+		libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev \
+		libxinerama-dev libxxf86vm-dev libxss-dev libgl1-mesa-dev libdbus-1-dev \
+		libudev-dev libgles2-mesa-dev libegl1-mesa-dev libibus-1.0-dev \
+		fcitx-libs-dev libsamplerate0-dev libsndio-dev libwayland-dev \
+		libxkbcommon-dev libdrm-dev libgbm-dev
 
 - Run `make` in the root to compile the program.
 - Run maps by piping them to program. ie.

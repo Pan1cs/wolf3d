@@ -6,7 +6,7 @@
 #    By: jnivala <joonas.nivala@student.hive.fi>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 09:44:44 by jnivala           #+#    #+#              #
-#    Updated: 2021/11/13 12:04:16 by jnivala          ###   ########.fr        #
+#    Updated: 2021/11/13 15:47:38 by jnivala          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ WIN_COMPILER_FLAGS = -Wall -Wextra -Werror
 LINUX_COMPILER_FLAGS = -Wall -Wextra -Werror -O3
 
 WIN_LINK_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lft -lm
-LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lft -lm
+LINUX_LINK_FLAGS = -lSDL2 -lSDL2main -lSDL2_mixer -lft -lm -lz
 
 ifeq ($(OS),Windows_NT)
 	TARGET_SYSTEM := Windows
