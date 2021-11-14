@@ -1,7 +1,7 @@
 # wolf3d
 ![Grade 125/100](md_assets/grade.png)
 
-Our Hive Helsinki school graphics branch project, where our goal was to create a maze where player can move using arrow keys using raycaster technique. We paired up with [Pan1cs](https://github.com/pan1cs) in January to use the engine in later project as well.
+Our Hive Helsinki school graphics branch project, where our goal was to create a maze where player can move using arrow keys using raycaster technique. We paired up with [kafkalainen](https://github.com/kafkalainen) in January to use the engine in later project as well.
 
 ![Inside the game gif](md_assets/game.gif)
 
