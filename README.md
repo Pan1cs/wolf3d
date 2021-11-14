@@ -127,3 +127,6 @@ Texture mapping is done in perspective correct texture mapping dividing texture 
 ## Links
 - Floor and Ceiling Drawing tutorial by Lodev. Idea of continuing drawing after the wall has been drawn stems from here! [Link](https://lodev.org/cgtutor/raycasting2.html)
 - Fabien's Sanglard's tutorial for Building Duke Nukem Graphics Engine [Link](https://fabiensanglard.net/duke3d/build_engine_internals.php)
+
+## Credits
+- Creadits to [kafkalainen](https://github.com/kafkalainen) for the project description.
